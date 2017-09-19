@@ -8,7 +8,8 @@
 #anime_list_nav a {
     display: block; 
     min-width: 72px;
-    padding: 0 0 12px 0;
+    padding: 0;
+    margin-bottom: 12px;
 }
 #completed_list, #on_hold_list, #dropped_list, #ptw_list {
 	display: none;
@@ -51,8 +52,7 @@
 	#anime_list_nav {
 		border-top: 1px solid rgba(0,0,0,.12);
 	    bottom: 0;
-	    position: fixed;
-	    background: white;
+	    background: #fff;
 	    width: 100%;
 	    height: 48px;
 	    padding:0;
@@ -61,7 +61,6 @@
 	}
 	#anime_list_nav a {
 		display: table-cell;
-		padding: 0px;
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;
