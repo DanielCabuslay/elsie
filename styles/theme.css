@@ -6,3 +6,6 @@
   --mdc-theme-secondary-light: #64c1ff;
   --mdc-theme-secondary-dark: #0064b7;
 }
+html {
+	background-color: #eee;
+}

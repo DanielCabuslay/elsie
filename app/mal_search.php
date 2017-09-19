@@ -11,5 +11,10 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 $output = curl_exec($ch);
 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
-var_dump($output);
+// $xml = file_get_contents($output);
+$data = new SimpleXMLElement($output);
+foreach($data->entry as $a) {
+    echo '<img src=' . $a->image . '>';
+    echo $a->title . '<br>';
+}
 ?>

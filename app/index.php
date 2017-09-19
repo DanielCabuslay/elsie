@@ -3,18 +3,21 @@ session_start();
 if(!isset($_SESSION['user'])) {
     header('Location: ../index.php');    
 }
+$xml = file_get_contents("http://myanimelist.net/malappinfo.php?u=DdcCabuslay&status=all&type=anime");
+$data = new SimpleXMLElement($xml);
 ?>
 <!DOCTYPE html>
 <html class="mdc-typography">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Elsie</title>
+    <title><?php echo $_SESSION['user']; ?>'s Anime List</title>
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/theme.css">
+    <link rel="stylesheet" href="../styles/anime_list.css">
     <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
     <link rel="shortcut_icon" href="/images/favicon/favicon.png">
     <link rel="manifest" href="/manifest.json">
@@ -29,11 +32,17 @@ if(!isset($_SESSION['user'])) {
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a>
-            <span class="mdc-toolbar__title">Elsie</span>
+            <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
+            <span class="mdc-toolbar__title"><?php echo $_SESSION['user']; ?>'s Anime List</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-            <span class="mdc-typography--body1 mdc-toolbar__icon"><?php echo $_SESSION['user']; ?></span>
+            <!-- <form id="mal_search">
+                <div class="mdc-textfield">
+                    <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
+                    <label class="mdc-textfield__label" for="search_query">Search</label>
+                </div>
+                <input type="submit" class="mdc-button" value="Search" />
+            </form> -->
             <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a>
         </section>
       </div>
@@ -42,14 +51,135 @@ if(!isset($_SESSION['user'])) {
     <div class="mdc-toolbar-fixed-adjust">
 
     <main>
-        <form id="mal_search">
-            <div class="mdc-textfield">
-                <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
-                <label class="mdc-textfield__label" for="search_query">Search</label>
+        <nav id="anime_list_nav" class="mdc-tab-bar mdc-tab-bar--icons-with-text">
+            <a id="watching_button" class="mdc-tab mdc-tab--with-icon-and-text mdc-tab--active">
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">ondemand_video</i>
+                <span class="mdc-tab__icon-text">Watching</span>
+            </a>
+            <a id="completed_button" class="mdc-tab mdc-tab--with-icon-and-text">
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">check</i>
+                <span class="mdc-tab__icon-text">Completed</span>
+            </a>
+            <a id="on_hold_button" class="mdc-tab mdc-tab--with-icon-and-text">
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">pause</i>
+                <span class="mdc-tab__icon-text">On Hold</span>
+            </a>
+            <a id="dropped_button" class="mdc-tab mdc-tab--with-icon-and-text">
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">remove_from_queue</i>
+                <span class="mdc-tab__icon-text">Dropped</span>
+            </a>
+            <a id="ptw_button" class="mdc-tab mdc-tab--with-icon-and-text">
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">queue_play_next</i>
+                <span class="mdc-tab__icon-text">Plan to Watch</span>
+            </a>
+            <!-- <span class="mdc-tab-bar__indicator"></span> -->
+        </nav>
+        <div id="anime_list" class="mdc-typography--body1">
+            <div class="mdc-layout-grid">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2 spacer"></div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-card">
+                        <div class="mdc-list-group">
+                            <section id="watching_list">
+                                <h3 class="mdc-list-group__subheader">Watching</h3>
+                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                                    <?php
+                                    foreach($data->anime as $a) {
+                                        if ($a->my_status == '1') {
+                                            echo '<li class="mdc-list-item anime_list_item">';
+                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
+                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                        }
+                                    }
+                                    ?>
+                                </ul>   
+                                <hr class="mdc-list-divider">
+                            </section>
+
+                            <section id="completed_list">
+                                <h3 class="mdc-list-group__subheader">Completed</h3>
+                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                                    <?php
+                                    foreach($data->anime as $a) {
+                                        if ($a->my_status == '2') {
+                                            echo '<li class="mdc-list-item anime_list_item">';
+                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '</span>';
+                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+                                <hr class="mdc-list-divider">
+                            </section>
+
+                            <section id="on_hold_list">
+                                
+                                <h3 class="mdc-list-group__subheader">On Hold</h3>
+                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                                    <?php
+                                    foreach($data->anime as $a) {
+                                        if ($a->my_status == '3') {
+                                            echo '<li class="mdc-list-item anime_list_item">';
+                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
+                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+                                <hr class="mdc-list-divider">
+                            </section>
+
+                            <section id="dropped_list">
+                                <h3 class="mdc-list-group__subheader">Dropped</h3>
+                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                                    <?php
+                                    foreach($data->anime as $a) {
+                                        if ($a->my_status == '4') {
+                                            echo '<li class="mdc-list-item anime_list_item">';
+                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
+                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+                                <hr class="mdc-list-divider">
+                            </section>
+
+                            <section id="ptw_list">
+                                <h3 class="mdc-list-group__subheader">Plan to Watch</h3>
+                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                                    <?php
+                                    foreach($data->anime as $a) {
+                                        if ($a->my_status == '6') {
+                                            echo '<li class="mdc-list-item anime_list_item">';
+                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_play</i> ' . $a->series_episodes . '</span>';
+                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                        }
+                                    }
+                                    ?>
+                                </ul>
+                                <hr class="mdc-list-divider">
+                            </section>
+
+                        </div>
+                    </div>
+                    <!-- <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2"></div> -->
+                    <div class="mobile_spacer"></div>
+                </div>
             </div>
-            <input type="submit" class="mdc-button" value="Search" />
-        </form>
-        <div id="search_results" class="mdc-typography--body1"></div>
+        </div>
+        <div id="search_results" class="mdc-typography--body1">
+        </div>
     </main>        
 
     </div>
@@ -58,6 +188,71 @@ if(!isset($_SESSION['user'])) {
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<!-- <script>
+  (function() {
+    // Delay initialization within development until styles have loaded
+    setTimeout(initInteractiveLists, 250);
+    function initInteractiveLists() {
+      var interactiveListItems = document.querySelectorAll('.anime_list_item');
+      for (var i = 0, li; li = interactiveListItems[i]; i++) {
+        mdc.ripple.MDCRipple.attachTo(li);
+        // Prevent link clicks from jumping demo to the top of the page
+        li.addEventListener('click', function(evt) {
+          evt.preventDefault();
+        });
+      }
+    }
+  })();
+</script> -->
+<script>
+$('#watching_button').click(function() {
+    $('#watching_list').css('display', 'block');
+    $('#completed_list').css('display', 'none');
+    $('#on_hold_list').css('display', 'none');
+    $('#dropped_list').css('display', 'none');
+    $('#ptw_list').css('display', 'none');
+    window.scrollTo(0, 0);
+});
+$('#completed_button').click(function() {
+    $('#completed_list').css('display', 'block');
+    $('#watching_list').css('display', 'none');
+    $('#on_hold_list').css('display', 'none');
+    $('#dropped_list').css('display', 'none');
+    $('#ptw_list').css('display', 'none');
+    window.scrollTo(0, 0);
+});
+$('#on_hold_button').click(function() {
+    $('#on_hold_list').css('display', 'block');
+    $('#watching_list').css('display', 'none');
+    $('#completed_list').css('display', 'none');
+    $('#dropped_list').css('display', 'none');
+    $('#ptw_list').css('display', 'none');
+    window.scrollTo(0, 0);
+});
+$('#dropped_button').click(function() {
+    $('#dropped_list').css('display', 'block');
+    $('#watching_list').css('display', 'none');
+    $('#completed_list').css('display', 'none');
+    $('#on_hold_list').css('display', 'none');
+    $('#ptw_list').css('display', 'none');
+    window.scrollTo(0, 0);
+});
+$('#ptw_button').click(function() {
+    $('#ptw_list').css('display', 'block');
+    $('#watching_list').css('display', 'none');
+    $('#completed_list').css('display', 'none');
+    $('#on_hold_list').css('display', 'none');
+    $('#dropped_list').css('display', 'none');
+    window.scrollTo(0, 0);
+});
+</script>
+<script>
+(function() {
+    setTimeout(function () {
+      window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('#anime_list_nav'));
+    },200)
+  })();
+</script>
 <script>
 var request;
 $("#mal_search").submit(function(event) {
@@ -77,7 +272,7 @@ $("#mal_search").submit(function(event) {
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         // console.log(response);
-        $('#search_results').text(response);
+        $('#search_results').html(response);
         console.log(textStatus);
     });
     request.fail(function (jqXHR, textStatus, errorThrown){

@@ -1,0 +1,18 @@
+body {
+	margin: 0;
+}
+.mobile_spacer {
+	display: none;
+}
+.mdc-card {
+	background-color: #fff;
+}
+@media (max-width: 768px) {
+	.mobile_spacer {
+		display: inline;
+		height: 48px;
+	}
+	.spacer {
+		display: none;
+	}
+}
