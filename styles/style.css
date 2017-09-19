@@ -10,7 +10,7 @@ body {
 @media (max-width: 768px) {
 	.mobile_spacer {
 		display: block;
-		height: 61px;
+		height: 60px;
 	}
 	.spacer {
 		display: none;
