@@ -12,7 +12,7 @@
 }
 #anime_list_nav a {
     display: block; 
-    min-width: 72px;
+    min-width: 60px;
     padding: 0;
     margin-bottom: 12px;
 }
