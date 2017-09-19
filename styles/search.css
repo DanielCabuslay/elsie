@@ -1,0 +1,15 @@
+#search_sheet {
+	position: absolute;
+    display: none;
+    background: white;
+    height: 100%;
+    width: 100%;
+    z-index: 12;
+    top: 0;
+}
+#search_sheet .mdc-toolbar {
+    background-color: white;
+}
+#search_sheet .mdc-toolbar, #search_close {
+	color: var(--mdc-theme-text-primary-on-light);
+}

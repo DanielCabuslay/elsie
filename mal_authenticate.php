@@ -13,6 +13,7 @@ $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 if ($status == '200') {
 	$_SESSION['user'] = $user;
+	$_SESSION['password'] = $password;
 	header('Location: app/index.php');
 } else {
 	header('Location: index.php');

@@ -18,6 +18,7 @@ $data = new SimpleXMLElement($xml);
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/theme.css">
     <link rel="stylesheet" href="../styles/anime_list.css">
+    <link rel="stylesheet" href="../styles/search.css">
     <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
     <link rel="shortcut_icon" href="/images/favicon/favicon.png">
     <link rel="manifest" href="/manifest.json">
@@ -36,13 +37,6 @@ $data = new SimpleXMLElement($xml);
             <span class="mdc-toolbar__title">Watching</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-            <!-- <form id="mal_search">
-                <div class="mdc-textfield">
-                    <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
-                    <label class="mdc-textfield__label" for="search_query">Search</label>
-                </div>
-                <input type="submit" class="mdc-button" value="Search" />
-            </form> -->
             <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a>
         </section>
       </div>
@@ -161,7 +155,31 @@ $data = new SimpleXMLElement($xml);
             </div>
             <div class="mobile_spacer"></div>
         </div>
-        <div id="search_results" class="mdc-typography--body1">
+        <button id="search_fab" class="mdc-fab material-icons" aria-label="Favorite">
+            <span class="mdc-fab__icon">
+                search
+            </span>
+        </button>
+        <div id="search_sheet" class="mdc-typography--body1">
+            <header class="mdc-toolbar mdc-toolbar--fixed">
+              <div class="mdc-toolbar__row">
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+                    <a href="#" id="search_close" class="material-icons mdc-toolbar__icon--menu">close</a>
+                    <span class="mdc-toolbar__title">Search</span>
+                    <form id="mal_search">
+                        <div class="mdc-textfield">
+                            <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
+                            <label class="mdc-textfield__label" for="search_query">Search</label>
+                        </div>
+                        <input type="submit" class="mdc-button" value="Search" />
+                    </form>
+                </section>
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+                </section>
+              </div>
+            </header>
+            <div id="search_results" class="mdc-toolbar-fixed-adjust">
+            </div>
         </div>
     </main>        
 
@@ -187,6 +205,14 @@ $data = new SimpleXMLElement($xml);
     }
   })();
 </script> -->
+<script>
+    $('#search_fab').click(function() {
+        $('#search_sheet').css('display', 'block');
+    });
+    $('#search_close').click(function() {
+        $('#search_sheet').css('display', 'none');
+    })
+</script>
 <script>
 $('#watching_button').click(function() {
     $('#watching_list').css('display', 'block');

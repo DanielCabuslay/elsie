@@ -7,6 +7,12 @@ body {
 .mdc-card {
 	background-color: #fff;
 }
+.mdc-fab {
+	position: fixed;
+	z-index: 6;
+    bottom: 2rem;
+    right: 2rem;
+}
 @media (max-width: 768px) {
 	.mobile_spacer {
 		display: block;
@@ -14,5 +20,10 @@ body {
 	}
 	.spacer {
 		display: none;
+	}
+	.mdc-fab {
+		display: block;
+    	bottom: 4.5rem;
+    	right: 1rem;
 	}
 }
