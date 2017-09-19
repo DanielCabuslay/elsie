@@ -42,11 +42,11 @@ if(isset($_SESSION['user'])) {
     <main>
         <form action="mal_authenticate.php" method="post" id="mal_login">
             <div class="mdc-textfield">
-                <input type="text" id="mal_user" name="mal_user" required class="mdc-textfield__input">
+                <input type="text" id="mal_user" name="mal_user" class="mdc-textfield__input">
                 <label class="mdc-textfield__label" for="mal_user">Username</label>
             </div>
             <div class="mdc-textfield">
-                <input type="password" id="mal_pw" name="mal_pw" class="mdc-textfield__input" required minlength=8>
+                <input type="password" id="mal_pw" name="mal_pw" class="mdc-textfield__input">
                 <label for="mal_pw" class="mdc-textfield__label">Password</label>
             </div>
             <input type="submit" class="mdc-button" value="Login" />

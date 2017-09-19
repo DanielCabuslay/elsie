@@ -11,10 +11,10 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
 $output = curl_exec($ch);
 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
-var_dump($output);
-
-$_SESSION['user'] = $user;
-$_SESSION['password'] = $password;
-header('Location: app/index.php');
-exit();
+if ($status == '200') {
+	$_SESSION['user'] = $user;
+	header('Location: app/index.php');
+} else {
+	header('Location: index.php');
+}
 ?>
