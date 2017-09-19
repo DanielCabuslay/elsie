@@ -33,7 +33,7 @@ $data = new SimpleXMLElement($xml);
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
-            <span class="mdc-toolbar__title"><?php echo $_SESSION['user']; ?>'s Anime List</span>
+            <span class="mdc-toolbar__title">Watching</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
             <!-- <form id="mal_search">
@@ -81,7 +81,7 @@ $data = new SimpleXMLElement($xml);
                     <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-card">
                         <div class="mdc-list-group">
                             <section id="watching_list">
-                                <h3 class="mdc-list-group__subheader">Watching</h3>
+                                <!-- <h3 class="mdc-list-group__subheader">Watching</h3> -->
                                 <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                                     <?php
                                     foreach($data->anime as $a) {
@@ -90,16 +90,15 @@ $data = new SimpleXMLElement($xml);
                                             echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
                                             echo '<span class="mdc-list-item__text">' . $a->series_title;
                                             echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                            echo '</span></li><hr class="mdc-list-divider">';
                                         }
                                     }
                                     ?>
-                                </ul>   
-                                <hr class="mdc-list-divider">
+                                </ul>
                             </section>
 
                             <section id="completed_list">
-                                <h3 class="mdc-list-group__subheader">Completed</h3>
+                                <!-- <h3 class="mdc-list-group__subheader">Completed</h3> -->
                                 <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                                     <?php
                                     foreach($data->anime as $a) {
@@ -108,17 +107,16 @@ $data = new SimpleXMLElement($xml);
                                             echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
                                             echo '<span class="mdc-list-item__text">' . $a->series_title;
                                             echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '</span>';
-                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                            echo '</span></li><hr class="mdc-list-divider">';
                                         }
                                     }
                                     ?>
                                 </ul>
-                                <hr class="mdc-list-divider">
                             </section>
 
                             <section id="on_hold_list">
                                 
-                                <h3 class="mdc-list-group__subheader">On Hold</h3>
+                                <!-- <h3 class="mdc-list-group__subheader">On Hold</h3> -->
                                 <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                                     <?php
                                     foreach($data->anime as $a) {
@@ -127,16 +125,15 @@ $data = new SimpleXMLElement($xml);
                                             echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
                                             echo '<span class="mdc-list-item__text">' . $a->series_title;
                                             echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                            echo '</span></li><hr class="mdc-list-divider">';
                                         }
                                     }
                                     ?>
                                 </ul>
-                                <hr class="mdc-list-divider">
                             </section>
 
                             <section id="dropped_list">
-                                <h3 class="mdc-list-group__subheader">Dropped</h3>
+                                <!-- <h3 class="mdc-list-group__subheader">Dropped</h3> -->
                                 <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                                     <?php
                                     foreach($data->anime as $a) {
@@ -145,16 +142,15 @@ $data = new SimpleXMLElement($xml);
                                             echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
                                             echo '<span class="mdc-list-item__text">' . $a->series_title;
                                             echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                            echo '</span></li><hr class="mdc-list-divider">';
                                         }
                                     }
                                     ?>
                                 </ul>
-                                <hr class="mdc-list-divider">
                             </section>
 
                             <section id="ptw_list">
-                                <h3 class="mdc-list-group__subheader">Plan to Watch</h3>
+                                <!-- <h3 class="mdc-list-group__subheader">Plan to Watch</h3> -->
                                 <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                                     <?php
                                     foreach($data->anime as $a) {
@@ -163,12 +159,11 @@ $data = new SimpleXMLElement($xml);
                                             echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
                                             echo '<span class="mdc-list-item__text">' . $a->series_title;
                                             echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_play</i> ' . $a->series_episodes . '</span>';
-                                            // echo '</span></li><hr class="mdc-list-divider">';
+                                            echo '</span></li><hr class="mdc-list-divider">';
                                         }
                                     }
                                     ?>
                                 </ul>
-                                <hr class="mdc-list-divider">
                             </section>
 
                         </div>
@@ -211,6 +206,7 @@ $('#watching_button').click(function() {
     $('#on_hold_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
+    $('.mdc-toolbar__title').html('Watching');
     window.scrollTo(0, 0);
 });
 $('#completed_button').click(function() {
@@ -219,6 +215,7 @@ $('#completed_button').click(function() {
     $('#on_hold_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
+    $('.mdc-toolbar__title').html('Completed');
     window.scrollTo(0, 0);
 });
 $('#on_hold_button').click(function() {
@@ -227,6 +224,7 @@ $('#on_hold_button').click(function() {
     $('#completed_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
+    $('.mdc-toolbar__title').html('On Hold');
     window.scrollTo(0, 0);
 });
 $('#dropped_button').click(function() {
@@ -235,6 +233,7 @@ $('#dropped_button').click(function() {
     $('#completed_list').css('display', 'none');
     $('#on_hold_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
+    $('.mdc-toolbar__title').html('Dropped');
     window.scrollTo(0, 0);
 });
 $('#ptw_button').click(function() {
@@ -243,6 +242,7 @@ $('#ptw_button').click(function() {
     $('#completed_list').css('display', 'none');
     $('#on_hold_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
+    $('.mdc-toolbar__title').html('Plan to Watch');
     window.scrollTo(0, 0);
 });
 </script>
