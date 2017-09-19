@@ -1,3 +1,8 @@
+#anime_list {
+	align-items: center;
+    width: calc(100vw - 212px);
+    margin: auto;
+}
 #anime_list_nav {
     display: block; 
     position: fixed;
@@ -49,6 +54,11 @@
     overflow: hidden;
 }
 @media (max-width: 768px) {
+	#anime_list {
+		align-items: center;
+	    width: 100%;
+	    margin: auto;
+	}
 	#anime_list_nav {
 		border-top: 1px solid rgba(0,0,0,.12);
 	    bottom: 0;
@@ -64,5 +74,8 @@
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;
+	}
+	.mdc-tab__icon-text {
+		font-size: .5rem;
 	}
 }

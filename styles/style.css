@@ -9,8 +9,8 @@ body {
 }
 @media (max-width: 768px) {
 	.mobile_spacer {
-		display: inline;
-		height: 48px;
+		display: block;
+		height: 61px;
 	}
 	.spacer {
 		display: none;

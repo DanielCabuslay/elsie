@@ -3,7 +3,7 @@ session_start();
 if(!isset($_SESSION['user'])) {
     header('Location: ../index.php');    
 }
-$xml = file_get_contents("http://myanimelist.net/malappinfo.php?u=DdcCabuslay&status=all&type=anime");
+$xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
 $data = new SimpleXMLElement($xml);
 ?>
 <!DOCTYPE html>
@@ -75,103 +75,91 @@ $data = new SimpleXMLElement($xml);
             <!-- <span class="mdc-tab-bar__indicator"></span> -->
         </nav>
         <div id="anime_list" class="mdc-typography--body1">
-            <div class="mdc-layout-grid">
-                <div class="mdc-layout-grid__inner">
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2 spacer"></div>
-                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-8 mdc-card">
-                        <div class="mdc-list-group">
-                            <section id="watching_list">
-                                <!-- <h3 class="mdc-list-group__subheader">Watching</h3> -->
-                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                    <?php
-                                    foreach($data->anime as $a) {
-                                        if ($a->my_status == '1') {
-                                            echo '<li class="mdc-list-item anime_list_item">';
-                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                            echo '</span></li><hr class="mdc-list-divider">';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </section>
+            <div class="mdc-card">
+                <div class="mdc-list-group">
+                    <section id="watching_list">
+                        <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                            <?php
+                            foreach($data->anime as $a) {
+                                if ($a->my_status == '1') {
+                                    echo '<li class="mdc-list-item anime_list_item">';
+                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
+                                    echo '</span></li><hr class="mdc-list-divider">';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </section>
 
-                            <section id="completed_list">
-                                <!-- <h3 class="mdc-list-group__subheader">Completed</h3> -->
-                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                    <?php
-                                    foreach($data->anime as $a) {
-                                        if ($a->my_status == '2') {
-                                            echo '<li class="mdc-list-item anime_list_item">';
-                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '</span>';
-                                            echo '</span></li><hr class="mdc-list-divider">';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </section>
+                    <section id="completed_list">
+                        <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                            <?php
+                            foreach($data->anime as $a) {
+                                if ($a->my_status == '2') {
+                                    echo '<li class="mdc-list-item anime_list_item">';
+                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '</span>';
+                                    echo '</span></li><hr class="mdc-list-divider">';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </section>
 
-                            <section id="on_hold_list">
-                                
-                                <!-- <h3 class="mdc-list-group__subheader">On Hold</h3> -->
-                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                    <?php
-                                    foreach($data->anime as $a) {
-                                        if ($a->my_status == '3') {
-                                            echo '<li class="mdc-list-item anime_list_item">';
-                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                            echo '</span></li><hr class="mdc-list-divider">';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </section>
+                    <section id="on_hold_list">
+                        <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                            <?php
+                            foreach($data->anime as $a) {
+                                if ($a->my_status == '3') {
+                                    echo '<li class="mdc-list-item anime_list_item">';
+                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
+                                    echo '</span></li><hr class="mdc-list-divider">';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </section>
 
-                            <section id="dropped_list">
-                                <!-- <h3 class="mdc-list-group__subheader">Dropped</h3> -->
-                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                    <?php
-                                    foreach($data->anime as $a) {
-                                        if ($a->my_status == '4') {
-                                            echo '<li class="mdc-list-item anime_list_item">';
-                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                            echo '</span></li><hr class="mdc-list-divider">';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </section>
+                    <section id="dropped_list">
+                        <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                            <?php
+                            foreach($data->anime as $a) {
+                                if ($a->my_status == '4') {
+                                    echo '<li class="mdc-list-item anime_list_item">';
+                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
+                                    echo '</span></li><hr class="mdc-list-divider">';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </section>
 
-                            <section id="ptw_list">
-                                <!-- <h3 class="mdc-list-group__subheader">Plan to Watch</h3> -->
-                                <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                    <?php
-                                    foreach($data->anime as $a) {
-                                        if ($a->my_status == '6') {
-                                            echo '<li class="mdc-list-item anime_list_item">';
-                                            echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                            echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                            echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_play</i> ' . $a->series_episodes . '</span>';
-                                            echo '</span></li><hr class="mdc-list-divider">';
-                                        }
-                                    }
-                                    ?>
-                                </ul>
-                            </section>
+                    <section id="ptw_list">
+                        <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                            <?php
+                            foreach($data->anime as $a) {
+                                if ($a->my_status == '6') {
+                                    echo '<li class="mdc-list-item anime_list_item">';
+                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
+                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
+                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_play</i> ' . $a->series_episodes . '</span>';
+                                    echo '</span></li><hr class="mdc-list-divider">';
+                                }
+                            }
+                            ?>
+                        </ul>
+                    </section>
 
-                        </div>
-                    </div>
-                    <!-- <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2"></div> -->
-                    <div class="mobile_spacer"></div>
                 </div>
             </div>
+            <div class="mobile_spacer"></div>
         </div>
         <div id="search_results" class="mdc-typography--body1">
         </div>
