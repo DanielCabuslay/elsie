@@ -53,7 +53,7 @@ $data = new SimpleXMLElement($xml);
     <main>
         <nav id="anime_list_nav" class="mdc-tab-bar mdc-tab-bar--icons-with-text">
             <a id="watching_button" class="mdc-tab mdc-tab--with-icon-and-text mdc-tab--active">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">ondemand_video</i>
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">play_arrow</i>
                 <span class="mdc-tab__icon-text">Watching</span>
             </a>
             <a id="completed_button" class="mdc-tab mdc-tab--with-icon-and-text">
@@ -65,11 +65,11 @@ $data = new SimpleXMLElement($xml);
                 <span class="mdc-tab__icon-text">On Hold</span>
             </a>
             <a id="dropped_button" class="mdc-tab mdc-tab--with-icon-and-text">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">remove_from_queue</i>
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">remove</i>
                 <span class="mdc-tab__icon-text">Dropped</span>
             </a>
             <a id="ptw_button" class="mdc-tab mdc-tab--with-icon-and-text">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">queue_play_next</i>
+                <i class="material-icons mdc-tab__icon" aria-hidden="true">add</i>
                 <span class="mdc-tab__icon-text">Plan to Watch</span>
             </a>
             <!-- <span class="mdc-tab-bar__indicator"></span> -->
