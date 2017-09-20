@@ -73,81 +73,91 @@ $data = new SimpleXMLElement($xml);
                 <div class="mdc-list-group">
                     <section id="watching_list">
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                            <?php
-                            foreach($data->anime as $a) {
-                                if ($a->my_status == '1') {
-                                    echo '<li class="mdc-list-item anime_list_item">';
-                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                    echo '</span></li><hr class="mdc-list-divider">';
-                                }
-                            }
-                            ?>
+                            <?php foreach($data->anime as $a):
+                                if ($a->my_status == '1'): ?>
+                                    <li class="mdc-list-item anime_list_item">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                            <span class="mdc-list-item__text__secondary">
+                                                <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
+                                                <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <hr class="mdc-list-divider">
+                            <?php endif; endforeach; ?>
                         </ul>
                     </section>
 
                     <section id="completed_list">
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                            <?php
-                            foreach($data->anime as $a) {
-                                if ($a->my_status == '2') {
-                                    echo '<li class="mdc-list-item anime_list_item">';
-                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '</span>';
-                                    echo '</span></li><hr class="mdc-list-divider">';
-                                }
-                            }
-                            ?>
+                            <?php foreach($data->anime as $a):
+                                if ($a->my_status == '2'): ?>
+                                    <li class="mdc-list-item anime_list_item">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                            <span class="mdc-list-item__text__secondary">
+                                                <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
+                                                <i class="material-icons list-icon">playlist_add_check</i> <?= $a->series_episodes ?>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <hr class="mdc-list-divider">
+                            <?php endif; endforeach; ?>
                         </ul>
                     </section>
 
                     <section id="on_hold_list">
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                            <?php
-                            foreach($data->anime as $a) {
-                                if ($a->my_status == '3') {
-                                    echo '<li class="mdc-list-item anime_list_item">';
-                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                    echo '</span></li><hr class="mdc-list-divider">';
-                                }
-                            }
-                            ?>
+                            <?php foreach($data->anime as $a):
+                                if ($a->my_status == '3'): ?>
+                                    <li class="mdc-list-item anime_list_item">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                            <span class="mdc-list-item__text__secondary">
+                                                <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
+                                                <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <hr class="mdc-list-divider">
+                            <?php endif; endforeach; ?>
                         </ul>
                     </section>
 
                     <section id="dropped_list">
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                            <?php
-                            foreach($data->anime as $a) {
-                                if ($a->my_status == '4') {
-                                    echo '<li class="mdc-list-item anime_list_item">';
-                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_add_check</i> ' . $a->my_watched_episodes . '/' . $a->series_episodes . '</span>';
-                                    echo '</span></li><hr class="mdc-list-divider">';
-                                }
-                            }
-                            ?>
+                            <?php foreach($data->anime as $a):
+                                if ($a->my_status == '4'): ?>
+                                    <li class="mdc-list-item anime_list_item">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                            <span class="mdc-list-item__text__secondary">
+                                                <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
+                                                <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <hr class="mdc-list-divider">
+                            <?php endif; endforeach; ?>
                         </ul>
                     </section>
 
                     <section id="ptw_list">
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                            <?php
-                            foreach($data->anime as $a) {
-                                if ($a->my_status == '6') {
-                                    echo '<li class="mdc-list-item anime_list_item">';
-                                    echo '<img class="mdc-list-item__start-detail anime_list_thumb" src=' . $a->series_image . '>';
-                                    echo '<span class="mdc-list-item__text">' . $a->series_title;
-                                    echo '<span class="mdc-list-item__text__secondary"><i class="material-icons list-icon">star_rate</i> ' . $a->my_score . '/10  <i class="material-icons list-icon">playlist_play</i> ' . $a->series_episodes . '</span>';
-                                    echo '</span></li><hr class="mdc-list-divider">';
-                                }
-                            }
-                            ?>
+                            <?php foreach($data->anime as $a):
+                                if ($a->my_status == '6'): ?>
+                                    <li class="mdc-list-item anime_list_item">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                            <span class="mdc-list-item__text__secondary">
+                                                <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
+                                                <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
+                                            </span>
+                                        </span>
+                                    </li>
+                                    <hr class="mdc-list-divider">
+                            <?php endif; endforeach; ?>
                         </ul>
                     </section>
 
@@ -161,24 +171,34 @@ $data = new SimpleXMLElement($xml);
             </span>
         </button>
         <div id="search_sheet" class="mdc-typography--body1">
-            <header class="mdc-toolbar mdc-toolbar--fixed">
+            <header id="search_header" class="mdc-toolbar mdc-toolbar--fixed">
               <div class="mdc-toolbar__row">
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
                     <a href="#" id="search_close" class="material-icons mdc-toolbar__icon--menu">close</a>
-                    <span class="mdc-toolbar__title">Search</span>
+                    <!-- <span class="mdc-toolbar__title">Search</span> -->
                     <form id="mal_search">
-                        <div class="mdc-textfield">
-                            <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
-                            <label class="mdc-textfield__label" for="search_query">Search</label>
-                        </div>
-                        <input type="submit" class="mdc-button" value="Search" />
+                        <div class="mdc-textfield" id="search_textfield" data-demo-no-auto-js="">
+                            <input type="text" class="mdc-textfield__input" id="search_query" name="search_query" autocomplete="off" placeholder="Search">
+                          </div>
+                        <!-- <div class="mdc-form-field mdc-form-field--align-end">
+                            <div class="mdc-textfield" data-demo-no-auto-js>
+                                <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
+                                <label for="search_query">Search</label>
+                            </div>
+                        </div> -->
+                        <!-- <input type="submit" class="mdc-button" value="Search" /> -->
                     </form>
                 </section>
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
                 </section>
               </div>
             </header>
-            <div id="search_results" class="mdc-toolbar-fixed-adjust">
+            <div id="search_body">
+                <div id="search_results">
+                    <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                        <!-- handled through mal_search.php -->
+                    </ul>
+                </div>
             </div>
         </div>
     </main>        
@@ -208,9 +228,11 @@ $data = new SimpleXMLElement($xml);
 <script>
     $('#search_fab').click(function() {
         $('#search_sheet').css('display', 'block');
+        $('html').css('overflow-y', 'hidden');
     });
     $('#search_close').click(function() {
         $('#search_sheet').css('display', 'none');
+        $('html').css('overflow-y', 'visible');
     })
 </script>
 <script>
@@ -277,7 +299,7 @@ $("#mal_search").submit(function(event) {
     var $form = $(this);
     var $inputs = $form.find("input, button");
     var serializedData = $form.serialize();
-    $inputs.prop("disabled", true);
+    // $inputs.prop("disabled", true);
     request = $.ajax({
         url: "mal_search.php",
         type: "post",
@@ -286,7 +308,7 @@ $("#mal_search").submit(function(event) {
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
         // console.log(response);
-        $('#search_results').html(response);
+        $('#search_results ul').html(response);
         console.log(textStatus);
     });
     request.fail(function (jqXHR, textStatus, errorThrown){
@@ -318,6 +340,7 @@ $("#mal_search").submit(function(event) {
             var flexibleExpansionRatio = evt.detail.flexibleExpansionRatio;
         });
         toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
+        toolbar.fixedAdjustElement = document.querySelector('#search_body');
     }
 })();
 </script>

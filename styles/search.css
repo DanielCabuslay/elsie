@@ -13,3 +13,36 @@
 #search_sheet .mdc-toolbar, #search_close {
 	color: var(--mdc-theme-text-primary-on-light);
 }
+#mal_search {
+    width: 100%;
+}
+#search_body {
+  vertical-align: top;
+  height: calc(100vh - 64px);
+}
+#search_textfield {
+    padding-top: 16px;
+}
+#search_query {
+    font-size: 1.25rem;
+    border-bottom: none;
+}
+#search_results {
+	overflow-y: auto;
+    overflow-x: hidden;
+    height: inherit;
+}
+#search_results .mdc-list {
+    padding: 0 16px;
+}
+.mdc-list-item__start-detail {
+    width: 49px;
+    height: 72px;
+    margin-right: 18px;
+}
+.search_result_item {
+	height: 80px!important;
+}
+.search_result_thumb {
+    object-fit: cover;
+}
