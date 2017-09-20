@@ -32,7 +32,7 @@
 .mdc-tab--active {
 	color: var(--mdc-theme-primary)!important;
 }
-.mdc-list--two-line.mdc-list--dense .mdc-list-item {
+.mdc-list--two-line.mdc-list--dense .mdc-list-item, .mdc-list--two-line .mdc-list-item {
 	height: 80px;
 }
 .mdc-list--dense .mdc-list-item__start-detail {
@@ -50,11 +50,6 @@
 	font-size: 1rem;
 	width: 1rem;
 	margin: 0px 5px;
-}
-.mdc-list-item__text {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
 }
 @media (max-width: 768px) {
 	#anime_list {
@@ -74,11 +69,12 @@
 	}
 	#anime_list_nav a {
 		display: table-cell;
+		width: 20vw;
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;
 	}
 	.mdc-tab__icon-text {
-		font-size: .5rem;
+		font-size: .55rem;
 	}
 }

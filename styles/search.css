@@ -1,11 +1,11 @@
 #search_sheet {
 	position: fixed;
-    display: none;
     background: white;
     height: 100%;
     width: 100%;
     z-index: 12;
-    top: 0;
+    top: -100%;
+    transition: 0.2s;
 }
 #search_sheet .mdc-toolbar {
     background-color: white;
@@ -13,15 +13,18 @@
 #search_sheet .mdc-toolbar, #search_close {
 	color: var(--mdc-theme-text-primary-on-light);
 }
+#search_header {
+    display: none;
+}
 #mal_search {
     width: 100%;
 }
 #search_body {
-  vertical-align: top;
-  height: calc(100vh - 64px);
+    vertical-align: top;
 }
 #search_textfield {
     padding-top: 16px;
+    width: 100%;
 }
 #search_query {
     font-size: 1.25rem;
@@ -45,4 +48,9 @@
 }
 .search_result_thumb {
     object-fit: cover;
+}
+@media (max-width: 768px) {
+    #search_button_menu {
+        display: none;
+    }   
 }

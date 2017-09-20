@@ -1,4 +1,8 @@
+html {
+	overflow-y: hidden;
+}
 body {
+	overflow-y: visible;
 	margin: 0;
 }
 .mobile_spacer {
@@ -12,6 +16,19 @@ body {
 	z-index: 6;
     bottom: 2rem;
     right: 2rem;
+}
+.mdc-toolbar-fixed-adjust {
+    overflow-y: visible;
+    overflow-x: hidden;
+}
+.translucent {
+	background-color: rgba(0,0,0,0.54);
+	display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    z-index: 8;
+    top: 0;
 }
 @media (max-width: 768px) {
 	.mobile_spacer {
