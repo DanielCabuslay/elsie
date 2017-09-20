@@ -12,6 +12,7 @@ body {
 	background-color: #fff;
 }
 .mdc-fab {
+	display: none;
 	position: fixed;
 	z-index: 6;
     bottom: 2rem;
