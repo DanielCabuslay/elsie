@@ -1,5 +1,5 @@
 #search_sheet {
-	position: absolute;
+	position: fixed;
     display: none;
     background: white;
     height: 100%;
