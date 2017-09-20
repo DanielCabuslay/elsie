@@ -46,7 +46,7 @@ $data = new SimpleXMLElement($xml);
     <div class="mdc-toolbar-fixed-adjust">
 
     <main>
-        <nav id="anime_list_nav" class="mdc-tab-bar mdc-tab-bar--icons-with-text">
+        <nav id="anime_list_nav" class="mdc-tab-bar mdc-tab-bar--icons-with-text bottom_bar_nav">
             <a id="watching_button" class="mdc-tab mdc-tab--with-icon-and-text mdc-tab--active">
                 <i class="material-icons mdc-tab__icon" aria-hidden="true">play_arrow</i>
                 <span class="mdc-tab__icon-text">Watching</span>
@@ -166,41 +166,16 @@ $data = new SimpleXMLElement($xml);
             </div>
             <div class="mobile_spacer"></div>
         </div>
+
         <div class="translucent"></div>
         <button id="search_fab" class="search_button mdc-fab material-icons" aria-label="Favorite">
             <span class="mdc-fab__icon">
                 search
             </span>
         </button>
-        <div id="search_sheet" class="mdc-typography--body1">
-            <header id="search_header" class="mdc-toolbar mdc-toolbar--fixed">
-              <div class="mdc-toolbar__row">
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <a href="#" id="search_close" class="material-icons mdc-toolbar__icon--menu">close</a>
-                    <!-- <span class="mdc-toolbar__title">Search</span> -->
-                    <form id="mal_search">
-                        <div class="mdc-textfield" id="search_textfield" data-demo-no-auto-js="">
-                            <input type="text" class="mdc-textfield__input" id="search_query" name="search_query" autocomplete="off" placeholder="Search" onkeyup="showResults()">
-                          </div>
-                        <!-- <div class="mdc-form-field mdc-form-field--align-end">
-                            <div class="mdc-textfield" data-demo-no-auto-js>
-                                <input type="text" id="search_query" name="search_query" class="mdc-textfield__input">
-                                <label for="search_query">Search</label>
-                            </div>
-                        </div> -->
-                        <!-- <input type="submit" class="mdc-button" value="Search" /> -->
-                    </form>
-                </section>
-              </div>
-            </header>
-            <div id="search_body">
-                <div id="search_results">
-                    <ul id="search_results_list" class="mdc-list mdc-list--two-line mdc-list--dense">
-                        <!-- handled through mal_search.php -->
-                    </ul>
-                </div>
-            </div>
-        </div>
+
+        <?php include 'search.php' ?>
+
     </main>        
 
     </div>
@@ -209,6 +184,9 @@ $data = new SimpleXMLElement($xml);
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script src="../scripts/search.js"></script>
+<script src="../scripts/toolbar.js"></script>
+<script src="../scripts/textfield.js"></script>
 <!-- <script>
   (function() {
     // Delay initialization within development until styles have loaded
@@ -225,31 +203,6 @@ $data = new SimpleXMLElement($xml);
     }
   })();
 </script> -->
-<script>
-    $('.search_button').click(function() {
-        $('#search_header').fadeIn('fast');
-        $('.translucent').fadeIn('fast');
-        $('#search_fab').fadeOut('fast');
-        // $('html').css('overflow-y', 'hidden');
-    });
-    $('#search_close').click(function() {
-        if ($(window).width() <= 768) {
-            $('#search_fab').fadeIn('fast');            
-        }
-        $('#search_sheet').css('top', '-100%');
-        $('#search_header').fadeOut('fast');
-        $('#search_query').val('');
-        $('#search_results_list').empty();
-        $('.translucent').fadeOut('fast');
-        // $('html').css('overflow-y', 'visible');
-    });
-    function showResults() {
-        if ($('#search_query').val().length == 0) {
-            $('#search_sheet').css('top', '-100%');
-        }
-    }
-    
-</script>
 <script>
 $('#watching_button').click(function() {
     $('#watching_list').css('display', 'block');
@@ -300,84 +253,8 @@ $('#ptw_button').click(function() {
 <script>
 (function() {
     setTimeout(function () {
-      window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('#anime_list_nav'));
+      window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
     },200)
   })();
 </script>
-<script>
-var request;
-var delay = (function(){
-  var timer = 0;
-  return function(callback, ms){
-  clearTimeout (timer);
-  timer = setTimeout(callback, ms);
- };
-})();
-$("#mal_search").keyup(function(event) {
-    event.preventDefault();
-    if (request) {
-        request.abort();
-    }
-    var $form = $(this);
-    var $inputs = $form.find("input, button");
-    var serializedData = $form.serialize();
-    // $inputs.prop("disabled", true);
-    delay(function(){
-        if ($('#search_query').val().length > 0) {
-            request = $.ajax({
-                url: "mal_search.php",
-                type: "post",
-                data: serializedData
-            });
-            request.done(function (response, textStatus, jqXHR){
-                // Log a message to the console
-                // console.log(response);
-                $('#search_results ul').html(response);
-                $('#search_sheet').css('top', '0');
-                // console.log(textStatus);
-            });
-            request.fail(function (jqXHR, textStatus, errorThrown){
-                // Log the error to the console
-                console.error(
-                    "The following error occurred: "+
-                    textStatus, errorThrown
-                );
-            });
-        }  
-    }, 300);
-    
-});
-</script>
-<script>
-(function() {
-    var pollId = 0;
-    pollId = setInterval(function() {
-        var pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
-        if (pos === 'fixed' || pos === 'relative') {
-            init();
-            clearInterval(pollId);
-        }
-    }, 250);
-    function init() {
-        var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
-        toolbar.listen('MDCToolbar:change', function(evt) {
-            var flexibleExpansionRatio = evt.detail.flexibleExpansionRatio;
-        });
-        toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
-        toolbar.fixedAdjustElement = document.querySelector('#search_body');
-        toolbarHeight = $('.mdc-toolbar-fixed-adjust').css('margin-top');
-        $('.mdc-toolbar-fixed-adjust').css('height', 'calc(100vh - ' + toolbarHeight + ')');
-        $('#search_body').css('height', 'calc(100vh - ' + toolbarHeight + ')');
-    }
-})();
-</script>
-<script>
-    (function() {
-        var tfs = document.querySelectorAll('.mdc-textfield:not([data-demo-no-auto-js])');
-        for (var i = 0, tf; tf = tfs[i]; i++) {
-            mdc.textfield.MDCTextfield.attachTo(tf);
-        }
-    })();
-</script>
-</html>
 </html>
