@@ -1,3 +1,10 @@
+<div class="translucent"></div>
+<button id="search_fab" class="search_button mdc-fab material-icons" aria-label="Favorite">
+    <span class="mdc-fab__icon">
+        search
+    </span>
+</button>
+
 <div id="search_sheet" class="mdc-typography--body1">
     <header id="search_header" class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">

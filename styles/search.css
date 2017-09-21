@@ -38,8 +38,11 @@
 #search_results .mdc-list {
     padding: 0 16px;
 }
+.search_result_item {
+    cursor: pointer;
+}
 .mdc-list-item__start-detail {
-    width: 49px;
+    width: 49px!important;
     height: 72px;
     margin-right: 18px;
 }

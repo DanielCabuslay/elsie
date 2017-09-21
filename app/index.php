@@ -3,6 +3,7 @@ session_start();
 if(!isset($_SESSION['user'])) {
     header('Location: ../index.php');    
 }
+unset($_SESSION['searchResultsXml']);
 $xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
 $data = new SimpleXMLElement($xml);
 ?>
@@ -76,9 +77,9 @@ $data = new SimpleXMLElement($xml);
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                             <?php foreach($data->anime as $a):
                                 if ($a->my_status == '1'): ?>
-                                    <li class="mdc-list-item anime_list_item">
+                                    <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
                                         <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
-                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                        <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
@@ -94,9 +95,10 @@ $data = new SimpleXMLElement($xml);
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                             <?php foreach($data->anime as $a):
                                 if ($a->my_status == '2'): ?>
-                                    <li class="mdc-list-item anime_list_item">
+                                    <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
+                                        <span class="anime_id"><?= $a->series_animedb_id ?></span>
                                         <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
-                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                        <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
                                                 <i class="material-icons list-icon">playlist_add_check</i> <?= $a->series_episodes ?>
@@ -112,9 +114,10 @@ $data = new SimpleXMLElement($xml);
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                             <?php foreach($data->anime as $a):
                                 if ($a->my_status == '3'): ?>
-                                    <li class="mdc-list-item anime_list_item">
+                                    <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
+                                        <span class="anime_id"><?= $a->series_animedb_id ?></span>
                                         <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
-                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                        <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
@@ -130,9 +133,10 @@ $data = new SimpleXMLElement($xml);
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                             <?php foreach($data->anime as $a):
                                 if ($a->my_status == '4'): ?>
-                                    <li class="mdc-list-item anime_list_item">
+                                    <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
+                                        <span class="anime_id"><?= $a->series_animedb_id ?></span>
                                         <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
-                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                        <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
@@ -148,9 +152,10 @@ $data = new SimpleXMLElement($xml);
                         <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                             <?php foreach($data->anime as $a):
                                 if ($a->my_status == '6'): ?>
-                                    <li class="mdc-list-item anime_list_item">
+                                    <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
+                                        <span class="anime_id"><?= $a->series_animedb_id ?></span>
                                         <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
-                                        <span class="mdc-list-item__text"><?= $a->series_title ?>
+                                        <span class="mdc-list-item__text title anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
@@ -167,13 +172,6 @@ $data = new SimpleXMLElement($xml);
             <div class="mobile_spacer"></div>
         </div>
 
-        <div class="translucent"></div>
-        <button id="search_fab" class="search_button mdc-fab material-icons" aria-label="Favorite">
-            <span class="mdc-fab__icon">
-                search
-            </span>
-        </button>
-
         <?php include 'search.php' ?>
 
     </main>        
@@ -187,6 +185,31 @@ $data = new SimpleXMLElement($xml);
 <script src="../scripts/search.js"></script>
 <script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
+<script type="text/javascript">
+var request;
+$('.anime_list_item').click(function() {
+    var id = $(this).attr('anime_id');
+    var title = $(this).attr('anime_title');
+    request = $.ajax({
+        url: "anime_fetch_info.php",
+        type: "post",
+        data: {id: id, title: title}
+    });
+    request.done(function (response, textStatus, jqXHR){
+        // console.log(response);
+        window.location.href = 'anime.php?id=' + id;
+    });
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+
+});
+
+</script>
 <!-- <script>
   (function() {
     // Delay initialization within development until styles have loaded

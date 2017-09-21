@@ -1,0 +1,33 @@
+#toolbar_title {
+	display: none;
+}
+.mdc-toolbar--fixed {
+	background-color: transparent;
+	box-shadow: none;
+}
+.mdc-toolbar-fixed-adjust {
+	margin-top: 0;
+	height: 100vh;
+}
+#anime_info_section {
+	align-items: center;
+	margin: auto;
+}
+#header_image {
+	width: 100vw;
+	height: 400px;
+	background-position: center;
+    background-size: cover;
+}
+#anime_info_header {
+	display: flex;
+}
+#anime_image, #anime_description, #extra_detail_section {
+	margin: 12px;
+}
+#anime_title {
+	margin-top: 12px;
+}
+#anime_title_info span {
+	margin-right: 12px;
+}

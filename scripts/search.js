@@ -2,6 +2,7 @@ $('.search_button').click(function() {
     $('#search_header').fadeIn('fast');
     $('.translucent').fadeIn('fast');
     $('#search_fab').fadeOut('fast');
+    $('#search_query').focus();
     // $('html').css('overflow-y', 'hidden');
 });
 $('#search_close').click(function() {
@@ -50,6 +51,28 @@ $("#mal_search").keyup(function(event) {
                 // console.log(response);
                 $('#search_results ul').html(response);
                 $('#search_sheet').css('top', '0');
+
+                var request2;
+                $('.search_result_item').click(function() {
+                    var id = $(this).attr('anime_id');
+                    var title = $(this).attr('anime_title');
+                    request2 = $.ajax({
+                        url: "anime_fetch_info.php",
+                        type: "post",
+                        data: {id: id, title: title}
+                    });
+                    request.done(function (response, textStatus, jqXHR){
+                        window.location.href = 'anime.php?id=' + id;
+                    });
+                    request.fail(function (jqXHR, textStatus, errorThrown){
+                        // Log the error to the console
+                        console.error(
+                            "The following error occurred: "+
+                            textStatus, errorThrown
+                        );
+                    });
+
+                });
                 // console.log(textStatus);
             });
             request.fail(function (jqXHR, textStatus, errorThrown){
@@ -61,5 +84,4 @@ $("#mal_search").keyup(function(event) {
             });
         }  
     }, 300);
-    
 });

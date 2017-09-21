@@ -1,7 +1,13 @@
+.anime_id {
+	display: none;
+}
 #anime_list {
 	align-items: center;
     width: calc(100vw - 212px);
     margin: auto;
+}
+.anime_list_item {
+	cursor: pointer;
 }
 #completed_list, #on_hold_list, #dropped_list, #ptw_list {
 	display: none;
@@ -23,7 +29,7 @@
 	height: 80px;
 }
 .mdc-list--dense .mdc-list-item__start-detail {
-    width: 49px;
+    width: 49px!important;
     height: 72px;
     margin-right: 18px;
 }
@@ -32,11 +38,6 @@
 }*/
 .anime_list_thumb {
     object-fit: cover;
-}
-.list-icon {
-	font-size: 1rem;
-	width: 1rem;
-	margin: 0px 5px;
 }
 @media (max-width: 768px) {
 	#anime_list {

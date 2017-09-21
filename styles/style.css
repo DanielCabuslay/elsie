@@ -44,6 +44,12 @@ body {
     padding: 0;
     margin-bottom: 12px;
 }
+.list-icon {
+	font-size: 1rem;
+	width: 1rem;
+	margin: 0px 5px;
+	vertical-align: top;
+}
 @media (max-width: 768px) {
 	.mobile_spacer {
 		display: block;
