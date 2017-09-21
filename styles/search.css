@@ -52,8 +52,3 @@
 .search_result_thumb {
     object-fit: cover;
 }
-@media (max-width: 768px) {
-    #search_button_menu {
-        display: none;
-    }   
-}

@@ -1,7 +1,8 @@
 #toolbar_title {
 	display: none;
 }
-.mdc-toolbar--fixed {
+#main_toolbar {
+	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 	background-color: transparent;
 	box-shadow: none;
 }
@@ -9,20 +10,37 @@
 	margin-top: 0;
 	height: 100vh;
 }
+.opaque {
+	background: var(--mdc-theme-primary)!important;
+	box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12)!important;
+    transition: background-color 0.1s linear 0s;
+}
 #anime_info_section {
 	align-items: center;
 	margin: auto;
 }
+#anime_info_section .mdc-card {
+	width: 90vw;
+    margin: auto;
+}
 #header_image {
 	width: 100vw;
-	height: 400px;
+	height: 300px;
 	background-position: center;
     background-size: cover;
+    margin-bottom: -50px;
 }
 #anime_info_header {
 	display: flex;
 }
-#anime_image, #anime_description, #extra_detail_section {
+#anime_image {
+	margin-right: 12px;
+	height: 275px;
+}
+#anime_image img {
+	height: inherit;
+}
+#anime_description, #extra_detail_section {
 	margin: 12px;
 }
 #anime_title {
@@ -30,4 +48,16 @@
 }
 #anime_title_info span {
 	margin-right: 12px;
+}
+@media (max-width: 768px) {
+	#anime_info_section .mdc-card {
+		width: 100vw;
+	}
+	#header_image {
+		height: 150px;
+    	margin-bottom: 0px;
+	}
+	#anime_image {
+		height: 200px;
+	}
 }

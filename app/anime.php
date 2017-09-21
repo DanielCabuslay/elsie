@@ -4,6 +4,15 @@ if(!isset($_SESSION['user'])) {
     header('Location: ../index.php');    
 }
 $id = $_GET['id'];
+
+$searchResults = new SimpleXMLElement($_SESSION['searchResultsXml']);
+foreach($searchResults->entry as $a) {
+    if ($a->id == $id) {
+        $animeInfo = $a;
+        break;
+    }
+}
+
 $userListXml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
 
 $userList = new SimpleXMLElement($userListXml);
@@ -12,13 +21,6 @@ foreach($userList->anime as $a) {
     if ($a->series_animedb_id == $id) {
         $userInfo = $a;
         $userSaved = true;
-        break;
-    }
-}
-$searchResults = new SimpleXMLElement($_SESSION['searchResultsXml']);
-foreach($searchResults->entry as $a) {
-    if ($a->id == $id) {
-        $animeInfo = $a;
         break;
     }
 }
@@ -47,7 +49,7 @@ foreach($searchResults->entry as $a) {
 </head>
 <body>
 
-    <header class="mdc-toolbar mdc-toolbar--fixed">
+    <header id="main_toolbar" class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <a href="index.php" class="material-icons mdc-toolbar__icon--menu menu">arrow_back</a>
@@ -90,16 +92,33 @@ foreach($searchResults->entry as $a) {
             <div class="mdc-card">
                 <section id="anime_info_header">
                     <div id="anime_image">
-                        <img src="<?= $animeInfo->image ?>">
+                        <img id="image" src="<?= $animeInfo->image ?>">
                     </div>
                     <div id="anime_title_section">
                         <div id="anime_title">
-                            <span class="mdc-typography--headline"><?= $animeInfo->title ?></span>
+                            <span class="mdc-typography--title"><?= $animeInfo->title ?></span>
                         </div>
                         <div id="anime_title_info">
-                            <span class="mdc-typography--body1"><?= $animeInfo->status ?></span>
-                            <span class="mdc-typography--body1"><?= $animeInfo->type ?></span>
-                            <span class="mdc-typography--body1"><?= $animeInfo->episodes ?> episodes</span>
+                            <span class="mdc-typography--caption">
+                                <?php 
+                                $seasonNum = substr($animeInfo->start_date, 5, 2);
+                                $year = substr($animeInfo->start_date, 0, 4);
+                                if ($seasonNum == '01' || $seasonNum == '02' || $seasonNum == '03') {
+                                    echo 'Winter ' . $year;
+                                } else if ($seasonNum == '04' || $seasonNum == '05' || $seasonNum == '06') {
+                                    echo 'Spring ' . $year;
+                                } else if ($seasonNum == '07' || $seasonNum == '08' || $seasonNum == '09') {
+                                    echo 'Summer ' . $year;
+                                } else if ($seasonNum == '10' || $seasonNum == '11' || $seasonNum == '12') {
+                                    echo 'Fall ' . $year;
+                                } else {
+                                    echo $year;
+                                }
+                                 ?>
+                            </span>
+                            <span class="mdc-typography--caption"><?= $animeInfo->episodes ?> episodes</span>
+                        </div>
+                        <div id="anime_scores">
                             <span id="anime_rating">
                                 <i class="material-icons list-icon">star_rate</i>
                                 <span class="mdc-typography--body1"><?= $animeInfo->score ?></span>
@@ -107,9 +126,15 @@ foreach($searchResults->entry as $a) {
                         </div>
                     </div>
                 </section>
+
+                <hr class="mdc-list-divider">
+
                 <section id="anime_description">
                     <div id="description"><?= $animeInfo->synopsis ?></div>
                 </section>
+
+                <hr class="mdc-list-divider">
+
                 <section id="extra_detail_section">
                     <div id="extra_details">
                         <?php if(strlen($animeInfo->synonyms) > 0): ?>   
@@ -118,6 +143,14 @@ foreach($searchResults->entry as $a) {
                                 <span class="mdc-typography--body1"><?= $animeInfo->synonyms ?></span>
                             </div>
                         <?php endif; ?>
+                        <div id="type">
+                            <span class="mdc-typography--body2">Type</span><br>
+                            <span class="mdc-typography--body1"><?= $animeInfo->type ?></span>
+                        </div>
+                        <div id="status">
+                            <span class="mdc-typography--body2">Status</span><br>
+                            <span class="mdc-typography--body1"><?= $animeInfo->status ?></span> 
+                        </div>
                         <div id="start_date">
                             <span class="mdc-typography--body2">Start Date</span><br>
                             <span class="mdc-typography--body1"><?= $animeInfo->start_date ?></span>
@@ -131,17 +164,24 @@ foreach($searchResults->entry as $a) {
 
                     </div>
                 </section>
-                <div><?= $userInfo->my_watched_episodes ?></div>
-                <div><?= $userInfo->my_start_date ?></div>
-                <div><?= $userInfo->my_finish_date ?></div>
-                <div><?= $userInfo->my_score ?></div>
-                <div><?= $userInfo->my_status ?></div>
-                <div><?= $userInfo->my_rewatching ?></div>
-                <div><?= $userInfo->my_rewatching_ep ?></div>
-                <div><?= $userInfo->my_last_updated ?></div>
-                <div><?= $userInfo->my_tags ?></div>
+                <?php if($userSaved): ?>
+                    <div><?= $userInfo->my_watched_episodes ?></div>
+                    <div><?= $userInfo->my_start_date ?></div>
+                    <div><?= $userInfo->my_finish_date ?></div>
+                    <div><?= $userInfo->my_score ?></div>
+                    <div><?= $userInfo->my_status ?></div>
+                    <div><?= $userInfo->my_rewatching ?></div>
+                    <div><?= $userInfo->my_rewatching_ep ?></div>
+                    <div><?= $userInfo->my_last_updated ?></div>
+                    <div><?= $userInfo->my_tags ?></div>
+                <?php endif;?>
             </div>
         </div>
+        <button id="anime_fab" class="search_button mdc-fab material-icons">
+            <span class="mdc-fab__icon">
+                add
+            </span>
+        </button>
 
         <?php include 'search.php' ?>
 
@@ -155,8 +195,21 @@ foreach($searchResults->entry as $a) {
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 <script src="../scripts/search.js"></script>
 <!-- <script src="../scripts/toolbar.js"></script> -->
+<script src="../scripts/textfield.js"></script>
 <script>
-    (function() {
+$('.mdc-toolbar-fixed-adjust').scroll(function() {
+    var offset = $('#anime_info_header').offset().top;
+    if($(this).scrollTop() > offset) {
+        $('#main_toolbar').addClass('opaque');
+        $('#toolbar_title').fadeIn(100);
+    } else {
+        $('#main_toolbar').removeClass('opaque');
+        $('#toolbar_title').fadeOut(100);
+    }
+});
+</script>
+<script>
+(function() {   
     var pollId = 0;
     pollId = setInterval(function() {
         var pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
@@ -177,7 +230,6 @@ foreach($searchResults->entry as $a) {
     }
 })();
 </script>
-<script src="../scripts/textfield.js"></script>
 <script>
 var query = `
 query ($idMal: Int) {
@@ -215,7 +267,7 @@ function handleResponse(response) {
 }
 
 function handleData(data) {
-    console.log(data);
+    // console.log(data);
     var bgUrl = data['data']['Media']['bannerImage'];
     $('#header_image').css('background-image', 'url(' + bgUrl + ')');
     // var json = JSON.parse(data);
