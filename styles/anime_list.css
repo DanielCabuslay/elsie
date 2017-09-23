@@ -5,6 +5,7 @@
 	align-items: center;
     width: calc(100vw - 212px);
     margin: auto;
+    padding-left: 61px;
 }
 .anime_list_item {
 	cursor: pointer;
@@ -17,7 +18,8 @@
 }
 .mdc-tab__icon+.mdc-tab__icon-text {
 	padding-bottom: 6px;
-	padding-top: 0px;	
+	padding-top: 0px;
+	display: none;	
 }
 .mdc-tab__icon-text {
 	font-size: .6rem;
@@ -44,9 +46,11 @@
 		align-items: center;
 	    width: 100%;
 	    margin: auto;
+    	padding-left: 0px;
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;
+		display: block;
 	}
 	.mdc-tab__icon-text {
 		font-size: .55rem;
