@@ -1,14 +1,10 @@
 $('.search_button').click(function() {
     $('#search_header').fadeIn('fast');
     $('.translucent').fadeIn('fast');
-    $('#search_fab').fadeOut('fast');
     $('#search_query').focus();
     // $('html').css('overflow-y', 'hidden');
 });
 $('#search_close').click(function() {
-    if ($(window).width() <= 768) {
-        $('#search_fab').fadeIn('fast');            
-    }
     $('#search_sheet').css('top', '-100%');
     $('#search_header').fadeOut('fast');
     $('#search_query').val('');
@@ -83,5 +79,5 @@ $("#mal_search").keyup(function(event) {
                 );
             });
         }  
-    }, 300);
+    }, 200);
 });
