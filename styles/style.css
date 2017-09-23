@@ -57,7 +57,11 @@ body {
 	font-size: 1rem;
 	width: 1rem;
 	margin: 0px 5px;
-	vertical-align: top;
+	vertical-align: sub;
+}
+.mdc-list-item__end-detail {
+	color: var(--mdc-theme-text-secondary-on-background,rgba(0,0,0,.54));
+	text-decoration: none;
 }
 @media (max-width: 1023px) {
 	.mobile_spacer {

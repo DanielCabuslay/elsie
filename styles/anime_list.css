@@ -9,6 +9,22 @@
 }
 .anime_list_item {
 	cursor: pointer;
+	position: relative;
+}
+.anime_list_options {
+	height: 48px!important;
+	display: none;
+}
+.anime_list_add, .anime_list_edit, .anime_list_delete {
+	width: calc(100vw / 3);
+}
+.anime_list_add i, .anime_list_edit i, .anime_list_delete i {
+	vertical-align: middle;
+}
+.mdc-button__icon {
+	/*font-size: 18px;*/
+	/*vertical-align: sub;*/
+	margin-right: 0px;
 }
 #completed_list, #on_hold_list, #dropped_list, #ptw_list {
 	display: none;

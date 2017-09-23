@@ -151,7 +151,13 @@ foreach($userList->anime as $a) {
                 <hr class="mdc-list-divider">
 
                 <section id="anime_description">
-                    <div id="description"><?php echo preg_replace('#\[i\](.+)\[\/i\]#iUs', '<span class="mdc-typography--body2">$1</span>', $animeInfo->synopsis); ?></div>
+                    <div id="description">
+                        <?php if (strlen($animeInfo->synopsis) == 0) {
+                            echo 'No synopsis information has been added for this title.';
+                        } else {
+                            echo preg_replace('#\[i\](.+)\[\/i\]#iUs', '<span class="mdc-typography--body2">$1</span>', $animeInfo->synopsis);
+                        } ?>        
+                        </div>
                 </section>
 
                 <hr class="mdc-list-divider">

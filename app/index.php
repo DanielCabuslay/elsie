@@ -85,8 +85,28 @@ $data = new SimpleXMLElement($xml);
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
                                             </span>
                                         </span>
+                                        <!-- <span class="mdc-list-item__text__secondary list_options">
+                                            <i class="material-icons">add</i>
+                                            <i class="material-icons">edit</i>
+                                            <i class="material-icons">delete</i>
+                                        </span> -->
+                                        <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
                                     <hr class="mdc-list-divider">
+                                    <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
+                                            <a class="mdc-tab anime_list_add">
+                                              <i class="material-icons mdc-tab__icon">add</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_edit">
+                                              <i class="material-icons mdc-tab__icon">edit</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_delete">
+                                              <i class="material-icons mdc-tab__icon">delete</i>
+                                            </a>
+                                          </nav>
+                                        <hr class="mdc-list-divider">
+                                    </li>
                             <?php endif; endforeach; ?>
                         </ul>
                     </section>
@@ -104,8 +124,23 @@ $data = new SimpleXMLElement($xml);
                                                 <i class="material-icons list-icon">playlist_add_check</i> <?= $a->series_episodes ?>
                                             </span>
                                         </span>
+                                        <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
                                     <hr class="mdc-list-divider">
+                                    <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
+                                            <a class="mdc-tab anime_list_add">
+                                              <i class="material-icons mdc-tab__icon">add</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_edit">
+                                              <i class="material-icons mdc-tab__icon">edit</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_delete">
+                                              <i class="material-icons mdc-tab__icon">delete</i>
+                                            </a>
+                                          </nav>
+                                        <hr class="mdc-list-divider">
+                                    </li>
                             <?php endif; endforeach; ?>
                         </ul>
                     </section>
@@ -123,8 +158,22 @@ $data = new SimpleXMLElement($xml);
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
                                             </span>
                                         </span>
+                                        <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
                                     <hr class="mdc-list-divider">
+                                    <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
+                                            <a class="mdc-tab anime_list_add">
+                                              <i class="material-icons mdc-tab__icon">add</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_edit">
+                                              <i class="material-icons mdc-tab__icon">edit</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_delete">
+                                              <i class="material-icons mdc-tab__icon">delete</i>
+                                            </a>
+                                          </nav>
+                                        <hr class="mdc-list-divider">
                             <?php endif; endforeach; ?>
                         </ul>
                     </section>
@@ -142,8 +191,22 @@ $data = new SimpleXMLElement($xml);
                                                 <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
                                             </span>
                                         </span>
+                                        <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
                                     <hr class="mdc-list-divider">
+                                    <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
+                                            <a class="mdc-tab anime_list_add">
+                                              <i class="material-icons mdc-tab__icon">add</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_edit">
+                                              <i class="material-icons mdc-tab__icon">edit</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_delete">
+                                              <i class="material-icons mdc-tab__icon">delete</i>
+                                            </a>
+                                          </nav>
+                                        <hr class="mdc-list-divider">
                             <?php endif; endforeach; ?>
                         </ul>
                     </section>
@@ -158,11 +221,25 @@ $data = new SimpleXMLElement($xml);
                                         <span class="mdc-list-item__text title anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
-                                                <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
+                                                <i class="material-icons list-icon">playlist_play</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
                                             </span>
                                         </span>
+                                        <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
                                     <hr class="mdc-list-divider">
+                                    <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
+                                            <a class="mdc-tab anime_list_add">
+                                              <i class="material-icons mdc-tab__icon">add</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_edit">
+                                              <i class="material-icons mdc-tab__icon">edit</i>
+                                            </a>
+                                            <a class="mdc-tab anime_list_delete">
+                                              <i class="material-icons mdc-tab__icon">delete</i>
+                                            </a>
+                                          </nav>
+                                        <hr class="mdc-list-divider">
                             <?php endif; endforeach; ?>
                         </ul>
                     </section>
@@ -273,6 +350,24 @@ $('#ptw_button').click(function() {
     window.scrollTo(0, 0);
 });
 </script>
+<script>
+    $('.anime_list_menu_button').click(function(evt) {
+      evt.stopPropagation();
+      if ($(this).text() == 'expand_more') {
+        $(this).text('expand_less');
+      } else {
+        $(this).text('expand_more');
+      }
+      // var id = $(this).parent().attr('anime_id');
+      var options = $(this).parent().next().next().slideToggle(0);
+      // if (options.css('display') == 'none') {
+      //   options.slideDown();
+      // } else {
+      //   options.slideUp();        
+      // }
+      // console.log($(this).parent().next('.anime_list_options'));
+    });
+  </script>
 <script>
 (function() {
     setTimeout(function () {
