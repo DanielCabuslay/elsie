@@ -1,0 +1,37 @@
+#edit_dialog_header {
+	background-color: var(--mdc-theme-primary);
+	padding: 0;
+	min-height: 48px;
+}
+#edit_dialog_header, #edit_dialog_header .mdc-toolbar__section button {	
+	color: var(--mdc-theme-text-primary-on-primary,#fff)!important;
+}
+#edit_dialog, #edit_dialog .mdc-dialog__surface {
+	width: 100vw;
+	height: 100vh;
+}
+#user_episode {
+	width: fit-content;
+}
+#edit_dialog_image {
+	height: 100px;
+	margin-right: 12px;
+}
+#edit_dialog_anime_info {
+	align-items: center;
+	display: flex;
+}
+#edit_dialog_body {
+	margin-top: 0px;
+	padding: 0 24px;
+	max-height: inherit;
+	border-top: none;
+	border-bottom: none;
+}
+.edit_dialog_body_section {
+	margin: 12px 0;
+}
+.edit_dialog_body_section i {
+	vertical-align: middle;
+	margin-right: 12px;
+}

@@ -20,15 +20,16 @@
 	margin: auto;
 }
 #anime_info_section .mdc-card {
-	width: 90vw;
+	width: 95vw;
     margin: auto;
 }
 #header_image {
 	width: 100vw;
-	height: 300px;
+	height: 250px;
 	background-position: center;
     background-size: cover;
-    margin-bottom: -50px;
+    background-color: var(--mdc-theme-primary);
+    margin-bottom: -100px;
 }
 #anime_info_header {
 	display: flex;
@@ -49,7 +50,7 @@
 #anime_title_info span {
 	margin-right: 12px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
 	#anime_info_section .mdc-card {
 		width: 100vw;
 	}

@@ -5,6 +5,12 @@ body {
 	overflow-y: visible;
 	margin: 0;
 }
+.mdc-dialog {
+	z-index: 24;
+}
+.mdc-dialog__body {
+	color: var(--mdc-theme-text-primary-on-light,rgba(0,0,0,.87));
+}
 .mobile_spacer {
 	display: none;
 }
@@ -12,15 +18,17 @@ body {
 	background-color: #fff;
 }
 .mdc-fab {
-	display: none;
 	position: fixed;
 	z-index: 6;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1.5rem;
+    right: 1.5rem;
 }
 .mdc-toolbar-fixed-adjust {
     overflow-y: visible;
     overflow-x: hidden;
+}
+.mdc-toolbar__section--align-end {
+	max-width: 88px;
 }
 .translucent {
 	background-color: rgba(0,0,0,0.54);
@@ -50,7 +58,7 @@ body {
 	margin: 0px 5px;
 	vertical-align: top;
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
 	.mobile_spacer {
 		display: block;
 		height: 60px;

@@ -30,7 +30,7 @@ foreach($userList->anime as $a) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title><?php echo $animeInfo->title ?> | Elsie</title>
+    <title><?= $animeInfo->title ?> Details | Elsie</title>
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -38,6 +38,7 @@ foreach($userList->anime as $a) {
     <link rel="stylesheet" href="../styles/theme.css">
     <link rel="stylesheet" href="../styles/anime.css">
     <link rel="stylesheet" href="../styles/search.css">
+    <link rel="stylesheet" href="../styles/edit_user_details_dialog.css">
     <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
     <link rel="shortcut_icon" href="/images/favicon/favicon.png">
     <link rel="manifest" href="/manifest.json">
@@ -53,7 +54,7 @@ foreach($userList->anime as $a) {
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <a href="index.php" class="material-icons mdc-toolbar__icon--menu menu">arrow_back</a>
-            <span id="toolbar_title" class="mdc-toolbar__title"><?php echo $animeInfo->title ?></span>
+            <span id="toolbar_title" class="mdc-toolbar__title"><?= $animeInfo->title ?></span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
             <a href="#" id="search_button_menu" class="material-icons mdc-toolbar__icon--menu search_button">search</a>
@@ -63,6 +64,26 @@ foreach($userList->anime as $a) {
     </header>
 
     <div class="mdc-toolbar-fixed-adjust">
+
+        <aside id="add_dialog" class="mdc-dialog" role="alertdialog" aria-labelledby="my-mdc-dialog-label" aria-describedby="my-mdc-dialog-description">
+          <div class="mdc-dialog__surface">
+            <header class="mdc-dialog__header">
+              <h2 id="my-mdc-dialog-label" class="mdc-dialog__header__title">
+                Add Anime?
+              </h2>
+            </header>
+            <section id="my-mdc-dialog-description" class="mdc-dialog__body">
+              Add <?= $animeInfo->title ?> to your list?
+            </section>
+            <footer class="mdc-dialog__footer">
+              <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">No</button>
+              <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Yes</button>
+            </footer>
+          </div>
+          <div class="mdc-dialog__backdrop"></div>
+        </aside>
+
+        <?php include 'edit_dialog.php' ?>
 
     <main>
         <!-- <nav id="anime_list_nav" class="mdc-tab-bar mdc-tab-bar--icons-with-text bottom_bar_nav">
@@ -130,7 +151,7 @@ foreach($userList->anime as $a) {
                 <hr class="mdc-list-divider">
 
                 <section id="anime_description">
-                    <div id="description"><?= $animeInfo->synopsis ?></div>
+                    <div id="description"><?php echo preg_replace('#\[i\](.+)\[\/i\]#iUs', '<span class="mdc-typography--body2">$1</span>', $animeInfo->synopsis); ?></div>
                 </section>
 
                 <hr class="mdc-list-divider">
@@ -164,24 +185,18 @@ foreach($userList->anime as $a) {
 
                     </div>
                 </section>
-                <?php if($userSaved): ?>
-                    <div><?= $userInfo->my_watched_episodes ?></div>
-                    <div><?= $userInfo->my_start_date ?></div>
-                    <div><?= $userInfo->my_finish_date ?></div>
-                    <div><?= $userInfo->my_score ?></div>
-                    <div><?= $userInfo->my_status ?></div>
-                    <div><?= $userInfo->my_rewatching ?></div>
-                    <div><?= $userInfo->my_rewatching_ep ?></div>
-                    <div><?= $userInfo->my_last_updated ?></div>
-                    <div><?= $userInfo->my_tags ?></div>
-                <?php endif;?>
             </div>
         </div>
-        <button id="anime_fab" class="search_button mdc-fab material-icons">
-            <span class="mdc-fab__icon">
-                add
-            </span>
-        </button>
+
+        <?php if($userSaved): ?>
+            <button id="anime_fab" class="mdc-fab material-icons">
+                <span class="mdc-fab__icon">edit</span>
+            </button>
+        <?php else: ?>
+            <button id="anime_fab" class="mdc-fab material-icons">
+                <span class="mdc-fab__icon">add</span>
+            </button>
+        <?php endif;?>
 
         <?php include 'search.php' ?>
 
@@ -197,8 +212,8 @@ foreach($userList->anime as $a) {
 <!-- <script src="../scripts/toolbar.js"></script> -->
 <script src="../scripts/textfield.js"></script>
 <script>
+var offset = $('#anime_title').offset().top;
 $('.mdc-toolbar-fixed-adjust').scroll(function() {
-    var offset = $('#anime_info_header').offset().top;
     if($(this).scrollTop() > offset) {
         $('#main_toolbar').addClass('opaque');
         $('#toolbar_title').fadeIn(100);
@@ -267,9 +282,10 @@ function handleResponse(response) {
 }
 
 function handleData(data) {
-    // console.log(data);
     var bgUrl = data['data']['Media']['bannerImage'];
-    $('#header_image').css('background-image', 'url(' + bgUrl + ')');
+    if (bgUrl != null) {
+        $('#header_image').css('background-image', 'url(' + bgUrl + ')');
+    }
     // var json = JSON.parse(data);
 }
 
@@ -278,26 +294,23 @@ function handleError(error) {
     console.error(error);
 }
 </script>
-<!-- <script>
-  (function() {
-    // Delay initialization within development until styles have loaded
-    setTimeout(initInteractiveLists, 250);
-    function initInteractiveLists() {
-      var interactiveListItems = document.querySelectorAll('.anime_list_item');
-      for (var i = 0, li; li = interactiveListItems[i]; i++) {
-        mdc.ripple.MDCRipple.attachTo(li);
-        // Prevent link clicks from jumping demo to the top of the page
-        li.addEventListener('click', function(evt) {
-          evt.preventDefault();
-        });
-      }
+<script>
+document.querySelector('#anime_fab').addEventListener('click', function (evt) {
+    // $('#anime_fab').fadeOut('fast');
+    if ($('#anime_fab span').text() == 'edit') {
+        var dialog = new mdc.dialog.MDCDialog(document.querySelector('#edit_dialog'));
+    } else {
+        var dialog = new mdc.dialog.MDCDialog(document.querySelector('#add_dialog'));
     }
-  })();
-</script> -->
+    dialog.lastFocusedTarget = evt.target;
+    dialog.show();     
+})
+</script>
 <script>
 (function() {
+    mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-fab'));
     setTimeout(function () {
-      window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
+        window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
     },200)
   })();
 </script>

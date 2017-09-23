@@ -39,7 +39,7 @@
 .anime_list_thumb {
     object-fit: cover;
 }
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
 	#anime_list {
 		align-items: center;
 	    width: 100%;
