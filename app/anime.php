@@ -86,28 +86,6 @@ foreach($userList->anime as $a) {
         <?php include 'edit_dialog.php' ?>
 
     <main>
-        <!-- <nav id="anime_list_nav" class="mdc-tab-bar mdc-tab-bar--icons-with-text bottom_bar_nav">
-            <a id="watching_button" class="mdc-tab mdc-tab--with-icon-and-text mdc-tab--active">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">play_arrow</i>
-                <span class="mdc-tab__icon-text">Watching</span>
-            </a>
-            <a id="completed_button" class="mdc-tab mdc-tab--with-icon-and-text">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">check</i>
-                <span class="mdc-tab__icon-text">Completed</span>
-            </a>
-            <a id="on_hold_button" class="mdc-tab mdc-tab--with-icon-and-text">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">pause</i>
-                <span class="mdc-tab__icon-text">On Hold</span>
-            </a>
-            <a id="dropped_button" class="mdc-tab mdc-tab--with-icon-and-text">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">remove</i>
-                <span class="mdc-tab__icon-text">Dropped</span>
-            </a>
-            <a id="ptw_button" class="mdc-tab mdc-tab--with-icon-and-text">
-                <i class="material-icons mdc-tab__icon" aria-hidden="true">add</i>
-                <span class="mdc-tab__icon-text">Plan to Watch</span>
-            </a>
-        </nav> -->
         <div id="anime_info_section" class="mdc-typography--body1" anime_id="<?= $animeInfo->id ?>">
         <div id="header_image"></div>
             <div class="mdc-card">
@@ -150,8 +128,19 @@ foreach($userList->anime as $a) {
 
                 <hr class="mdc-list-divider">
 
+                <?php if($userSaved): ?>
+                    <button id="anime_fab" class="mdc-fab material-icons">
+                        <span class="mdc-fab__icon">edit</span>
+                    </button>
+                <?php else: ?>
+                    <button id="anime_fab" class="mdc-fab material-icons">
+                        <span class="mdc-fab__icon">add</span>
+                    </button>
+                <?php endif;?>
+
                 <section id="anime_description">
                     <div id="description">
+                        <span class="mdc-typography--body2">Description</span><br>
                         <?php if (strlen($animeInfo->synopsis) == 0) {
                             echo 'No synopsis information has been added for this title.';
                         } else {
@@ -193,16 +182,6 @@ foreach($userList->anime as $a) {
                 </section>
             </div>
         </div>
-
-        <?php if($userSaved): ?>
-            <button id="anime_fab" class="mdc-fab material-icons">
-                <span class="mdc-fab__icon">edit</span>
-            </button>
-        <?php else: ?>
-            <button id="anime_fab" class="mdc-fab material-icons">
-                <span class="mdc-fab__icon">add</span>
-            </button>
-        <?php endif;?>
 
         <?php include 'search.php' ?>
 
@@ -311,13 +290,5 @@ document.querySelector('#anime_fab').addEventListener('click', function (evt) {
     dialog.lastFocusedTarget = evt.target;
     dialog.show();     
 })
-</script>
-<script>
-(function() {
-    mdc.ripple.MDCRipple.attachTo(document.querySelector('.mdc-fab'));
-    setTimeout(function () {
-        window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
-    },200)
-  })();
 </script>
 </html>

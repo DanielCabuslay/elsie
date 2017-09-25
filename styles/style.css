@@ -53,6 +53,9 @@ body {
     min-width: 60px;
     padding: 0 6px;
 }
+.bottom_bar_nav a .mdc-tab__icon-text {
+	text-transform: initial;
+}
 .list-icon {
 	font-size: 1rem;
 	width: 1rem;

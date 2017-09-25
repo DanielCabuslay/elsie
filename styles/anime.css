@@ -22,10 +22,11 @@
 #anime_info_section .mdc-card {
 	width: 95vw;
     margin: auto;
+    position: relative;
 }
 #header_image {
 	width: 100vw;
-	height: 250px;
+	height: 400px;
 	background-position: center;
     background-size: cover;
     background-color: var(--mdc-theme-primary);
@@ -50,6 +51,12 @@
 #anime_title_info span {
 	margin-right: 12px;
 }
+#anime_fab {
+	position: absolute;
+	top: 15.5rem;
+    right: 1rem;
+    z-index: 3;
+}
 @media (max-width: 1023px) {
 	#anime_info_section .mdc-card {
 		width: 100vw;
@@ -60,5 +67,10 @@
 	}
 	#anime_image {
 		height: 200px;
+	}
+	#anime_fab {
+		position: fixed;
+		top: auto;
+
 	}
 }
