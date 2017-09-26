@@ -98,6 +98,7 @@ foreach($userList->anime as $a) {
                             <span class="mdc-typography--title"><?= $animeInfo->title ?></span>
                         </div>
                         <div id="anime_title_info">
+                            <div id="hashtag"></div>
                             <span class="mdc-typography--caption">
                                 <?php 
                                 $seasonNum = substr($animeInfo->start_date, 5, 2);
@@ -123,6 +124,8 @@ foreach($userList->anime as $a) {
                                 <span class="mdc-typography--body1"><?= $animeInfo->score ?></span>
                             </span>
                         </div>
+                        <div id="next_episode">
+                        </div>
                     </div>
                 </section>
 
@@ -146,6 +149,9 @@ foreach($userList->anime as $a) {
                         } else {
                             echo preg_replace('#\[i\](.+)\[\/i\]#iUs', '<span class="mdc-typography--body2">$1</span>', $animeInfo->synopsis);
                         } ?>        
+                        </div>
+                        <div id="externalLinks">
+                        <span class="mdc-typography--body2">External Links</span><br>
                         </div>
                 </section>
 
@@ -177,7 +183,6 @@ foreach($userList->anime as $a) {
                                 <span class="mdc-typography--body1"><?= $animeInfo->end_date ?></span>
                             </div>
                         <?php endif; ?>
-
                     </div>
                 </section>
             </div>
@@ -193,6 +198,7 @@ foreach($userList->anime as $a) {
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
 <script src="../scripts/search.js"></script>
 <!-- <script src="../scripts/toolbar.js"></script> -->
 <script src="../scripts/textfield.js"></script>
@@ -237,11 +243,22 @@ query ($idMal: Int) {
     id
     hashtag
     bannerImage
+    youtubeId
+    nextAiringEpisode {
+      airingAt
+      timeUntilAiring
+      episode
+    }
+    externalLinks {
+      url
+      site
+    }
   }
 }
 `;
+var id = $('#anime_info_section').attr('anime_id')
 var variables = {
-    idMal: $('#anime_info_section').attr('anime_id')
+    idMal: id
 };
 
 var url = 'https://graphql.anilist.co',
@@ -268,15 +285,35 @@ function handleResponse(response) {
 
 function handleData(data) {
     var bgUrl = data['data']['Media']['bannerImage'];
+    var hashtag = data['data']['Media']['hashtag'];
+    var links = data['data']['Media']['externalLinks'];
+    var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (bgUrl != null) {
         $('#header_image').css('background-image', 'url(' + bgUrl + ')');
+    }
+    // if (youtubeId != null) {
+
+    // }
+    // if (nextEp != null) {
+    //     var timeUntilAiring = moment().seconds(nextEp['timeUntilAiring']).format('HH:mm');
+    //     // var airingAt = moment.unix(nextEp['airingAt']).format('MM d, h:mm a');
+    //     console.log(nextEp);
+    //     $('#next_episode').html('<span class="mdc-typography--body1">Episode ' + nextEp['episode'] + ' airing in ' + timeUntilAiring + ' hours</span>');
+    // }
+    if (links != null) {
+        for(var i = 0; i < links.length; i++) {
+            $('#externalLinks').append('<a class="mdc-button mdc-button--raised" target="_blank" href="' + links[i]['url'] + '">' + links[i]['site'] + '</a> ');
+        }
+    }
+    if (hashtag != null) {
+        $('#hashtag').append('<a class="mdc-typography--body2" target="_blank" href="https://twitter.com/search?q=%23' + hashtag.substring(1) + '">' + hashtag + '</a>');
     }
     // var json = JSON.parse(data);
 }
 
 function handleError(error) {
-    alert('Error, check console');
-    console.error(error);
+    // alert('Error, check console');
+    console.error('No match found on AniList for MAL ID ' + id);
 }
 </script>
 <script>
