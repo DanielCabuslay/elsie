@@ -51,18 +51,48 @@ a {
 }
 #anime_title_section {
 	position: relative;
+	width: 100%;
+    margin-right: 12px;
 }
 #anime_title {
 	margin-top: 12px;
 }
+#anime_title .mdc-typography--title {
+	margin-right: 10px;
+}
 #anime_title_info span {
 	margin-right: 12px;
+}
+#circle_row {
+    text-align: center;
+    margin: 12px;
+}
+.description_circle {
+	width: 64px;
+    height: 64px;
+    background-color: var(--mdc-theme-primary);
+    border-radius: 50%;
+    color: var(--mdc-theme-text-primary-on-primary);
+    display: inline-block;
+    margin: 0px 5px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+.description_circle  .mdc-typography--caption {
+	font-size: 0.7rem;
+	display: inline-block;
+	margin-top: 10px;
+}
+.description_circle  .mdc-typography--body2 {
+	font-size: 1rem;
 }
 #anime_fab {
 	position: absolute;
 	top: 15.5rem;
     right: 1rem;
     z-index: 3;
+}
+#description {
+	margin-top: 12px;
 }
 #externalLinks {
 	margin-top: 12px;

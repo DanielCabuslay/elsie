@@ -96,9 +96,10 @@ foreach($userList->anime as $a) {
                     <div id="anime_title_section">
                         <div id="anime_title">
                             <span class="mdc-typography--title"><?= $animeInfo->title ?></span>
+                            <span id="hashtag"></span>
                         </div>
                         <div id="anime_title_info">
-                            <div id="hashtag"></div>
+                            <div id="studio"></div>
                             <span class="mdc-typography--caption">
                                 <?php 
                                 $seasonNum = substr($animeInfo->start_date, 5, 2);
@@ -115,13 +116,6 @@ foreach($userList->anime as $a) {
                                     echo $year;
                                 }
                                  ?>
-                            </span>
-                            <span class="mdc-typography--caption"><?= $animeInfo->episodes ?> episodes</span>
-                        </div>
-                        <div id="anime_scores">
-                            <span id="anime_rating">
-                                <i class="material-icons list-icon">star_rate</i>
-                                <span class="mdc-typography--body1"><?= $animeInfo->score ?></span>
                             </span>
                         </div>
                         <div id="next_episode">
@@ -141,9 +135,20 @@ foreach($userList->anime as $a) {
                     </button>
                 <?php endif;?>
 
+                <section id="circle_row">
+                    <div class="description_circle">
+                        <span class="mdc-typography--caption">Episodes</span>
+                        <span class="mdc-typography--body2"><?= $animeInfo->episodes ?></span>
+                    </div>
+                    <div class="description_circle">
+                        <span class="mdc-typography--caption">Rating</span>
+                        <span class="mdc-typography--body2"><?= $animeInfo->score ?></span>
+                    </div>
+                </section>
+                
+                <hr class="mdc-list-divider">
                 <section id="anime_description">
                     <div id="description">
-                        <span class="mdc-typography--body2">Description</span><br>
                         <?php if (strlen($animeInfo->synopsis) == 0) {
                             echo 'No synopsis information has been added for this title.';
                         } else {
@@ -151,7 +156,6 @@ foreach($userList->anime as $a) {
                         } ?>        
                         </div>
                         <div id="externalLinks">
-                        <span class="mdc-typography--body2">External Links</span><br>
                         </div>
                 </section>
 
@@ -244,6 +248,13 @@ query ($idMal: Int) {
     hashtag
     bannerImage
     youtubeId
+    studios {
+      edges {
+        node {
+          name
+        }
+      }
+    }
     nextAiringEpisode {
       airingAt
       timeUntilAiring
@@ -288,6 +299,7 @@ function handleData(data) {
     var hashtag = data['data']['Media']['hashtag'];
     var links = data['data']['Media']['externalLinks'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
+    var studios = data['data']['Media']['studios']['edges'];
     if (bgUrl != null) {
         $('#header_image').css('background-image', 'url(' + bgUrl + ')');
     }
@@ -300,6 +312,9 @@ function handleData(data) {
     //     console.log(nextEp);
     //     $('#next_episode').html('<span class="mdc-typography--body1">Episode ' + nextEp['episode'] + ' airing in ' + timeUntilAiring + ' hours</span>');
     // }
+    if (studios != null) {
+        $('#studio').append('<span class="mdc-typography--body2">' + studios[0]['node']['name'] + '</span>');
+    }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
             $('#externalLinks').append('<a class="mdc-button mdc-button--raised" target="_blank" href="' + links[i]['url'] + '">' + links[i]['site'] + '</a> ');
