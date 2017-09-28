@@ -57,9 +57,6 @@ a {
 #anime_title {
 	margin-top: 12px;
 }
-#anime_title .mdc-typography--title {
-	margin-right: 10px;
-}
 #anime_title_info span {
 	margin-right: 12px;
 }
@@ -104,7 +101,7 @@ a {
 #next_episode {
 	position: absolute;
 	bottom: 12px;
-	width: max-content;
+	width: 100%;
 }
 #description .mdc-typography--body2 {
 	line-height: 0;

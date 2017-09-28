@@ -96,10 +96,9 @@ foreach($userList->anime as $a) {
                     <div id="anime_title_section">
                         <div id="anime_title">
                             <span class="mdc-typography--title"><?= $animeInfo->title ?></span>
-                            <span id="hashtag"></span>
                         </div>
+                        <div id="hashtag"></div>
                         <div id="anime_title_info">
-                            <div id="studio"></div>
                             <span class="mdc-typography--caption">
                                 <?php 
                                 $seasonNum = substr($animeInfo->start_date, 5, 2);
@@ -248,13 +247,6 @@ query ($idMal: Int) {
     hashtag
     bannerImage
     youtubeId
-    studios {
-      edges {
-        node {
-          name
-        }
-      }
-    }
     nextAiringEpisode {
       airingAt
       timeUntilAiring
@@ -299,21 +291,17 @@ function handleData(data) {
     var hashtag = data['data']['Media']['hashtag'];
     var links = data['data']['Media']['externalLinks'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
-    var studios = data['data']['Media']['studios']['edges'];
     if (bgUrl != null) {
         $('#header_image').css('background-image', 'url(' + bgUrl + ')');
     }
     // if (youtubeId != null) {
 
     // }
-    // if (nextEp != null) {
-    //     var timeUntilAiring = moment().seconds(nextEp['timeUntilAiring']).format('HH:mm');
-    //     // var airingAt = moment.unix(nextEp['airingAt']).format('MM d, h:mm a');
-    //     console.log(nextEp);
-    //     $('#next_episode').html('<span class="mdc-typography--body1">Episode ' + nextEp['episode'] + ' airing in ' + timeUntilAiring + ' hours</span>');
-    // }
-    if (studios != null) {
-        $('#studio').append('<span class="mdc-typography--body2">' + studios[0]['node']['name'] + '</span>');
+    if (nextEp != null) {
+        var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
+        var timeUntilAiring = moment.unix(nextEp['airingAt']).fromNow();
+        console.log(timeUntilAiring);
+        $('#next_episode').html('<span class="mdc-typography--body1">Episode ' + nextEp['episode'] + ' airing ' + timeUntilAiring + ' (' + airingAt + ')</span>');
     }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
@@ -328,7 +316,7 @@ function handleData(data) {
 
 function handleError(error) {
     // alert('Error, check console');
-    console.error('No match found on AniList for MAL ID ' + id);
+    console.error(error);
 }
 </script>
 <script>
