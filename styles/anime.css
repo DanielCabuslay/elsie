@@ -106,6 +106,26 @@ a {
 #description .mdc-typography--body2 {
 	line-height: 0;
 }
+#youtube_section {
+	margin: 12px;
+	display: none;
+}
+#youtube_section .mdc-grid-tile, #youtube_section .mdc-grid-tile__primary, #youtube_section, .mdc-grid-tile__primary-content {
+	height: 180px;
+	width: 320px;
+}
+#youtube_section .mdc-grid-list .mdc-grid-tile__primary {
+	padding-bottom: 0;
+}
+#youtube_section .mdc-grid-tile__secondary {
+	background-color: rgba(0,0,0,.54);
+}
+#youtube_section .mdc-grid-list .mdc-grid-list__tiles {
+	margin: 0px auto;
+}
+#youtube_section .mdc-grid-list .mdc-grid-tile {
+	margin: 0;
+}
 @media (max-width: 1023px) {
 	#anime_info_section .mdc-card {
 		width: 100vw;

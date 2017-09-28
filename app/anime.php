@@ -160,6 +160,25 @@ foreach($userList->anime as $a) {
 
                 <hr class="mdc-list-divider">
 
+                <section id="youtube_section">
+                    <div class="mdc-grid-list">
+                      <ul class="mdc-grid-list__tiles">
+                        <li class="mdc-grid-tile">
+                          <div class="mdc-grid-tile__primary">
+                            <a target="_blank" href="">
+                                <img class="mdc-grid-tile__primary-content" src="" />
+                            </a>
+                          </div>
+                          <span class="mdc-grid-tile__secondary">
+                            <span class="mdc-grid-tile__title">Trailer</span>
+                          </span>
+                        </li>
+                      </ul>
+                    </div>                
+                </section>
+
+                <hr class="mdc-list-divider" style="display: none;">
+
                 <section id="extra_detail_section">
                     <div id="extra_details">
                         <?php if(strlen($animeInfo->synonyms) > 0): ?>   
@@ -249,7 +268,6 @@ query ($idMal: Int) {
     youtubeId
     nextAiringEpisode {
       airingAt
-      timeUntilAiring
       episode
     }
     externalLinks {
@@ -290,18 +308,22 @@ function handleData(data) {
     var bgUrl = data['data']['Media']['bannerImage'];
     var hashtag = data['data']['Media']['hashtag'];
     var links = data['data']['Media']['externalLinks'];
+    var youtubeId = data['data']['Media']['youtubeId'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (bgUrl != null) {
         $('#header_image').css('background-image', 'url(' + bgUrl + ')');
     }
-    // if (youtubeId != null) {
-
-    // }
+    if (youtubeId != null) {
+        $('#youtube_section').css('display', 'block');
+        $('#youtube_section').next().css('display', 'block');
+        var thumbUrl = 'https://img.youtube.com/vi/' + youtubeId + '/mqdefault.jpg';
+        $('.mdc-grid-tile__primary-content').attr('src', thumbUrl);
+        $('.mdc-grid-tile__primary a').attr('href', 'https://www.youtube.com/watch?v=' + youtubeId);
+    }
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
-        var timeUntilAiring = moment.unix(nextEp['airingAt']).fromNow();
-        console.log(timeUntilAiring);
-        $('#next_episode').html('<span class="mdc-typography--body1">Episode ' + nextEp['episode'] + ' airing ' + timeUntilAiring + ' (' + airingAt + ')</span>');
+        // var timeUntilAiring = moment.unix(nextEp['airingAt']).fromNow();
+        $('#next_episode').html('<span class="mdc-typography--caption">Episode ' + nextEp['episode'] + ': ' +  airingAt + '</span>');
     }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
