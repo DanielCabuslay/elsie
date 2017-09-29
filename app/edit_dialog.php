@@ -20,9 +20,8 @@
         <?php if($userSaved): ?>
             <form id="user_details">
                 <div id="user_status_section" class="edit_dialog_body_section">
-                    <i class="material-icons">tv</i>
+                    <div class="mdc-typography--body2">Status</div>
                     <select id="user_status" class="mdc-select" default="<?= $userInfo->my_status ?>">
-                      <!-- <option value="" default selected>Pick a food</option> -->
                       <option value="1">Watching</option>
                       <option value="2">Completed</option>
                       <option value="3">On Hold</option>
@@ -34,7 +33,7 @@
                 <hr class="mdc-list-divider">
 
                 <div id="user_episode_section" class="edit_dialog_body_section">
-                    <i class="material-icons">playlist_add_check</i>
+                    <div class="mdc-typography--body2">Episodes Watched</div>
                     <div id="user_episode_textfield" class="mdc-textfield" data-demo-no-auto-js>
                         <input type="text" id="user_episode" class="mdc-textfield__input" size="3" type="number" value="<?php if ($userInfo->my_rewatching == 0) { echo $userInfo->my_watched_episodes; } else { echo $userInfo->my_rewatching_ep; } ?>"> / <?= $animeInfo->episodes ?>
                     </div>
@@ -62,7 +61,7 @@
                 <hr class="mdc-list-divider">
 
                 <div id="user_score_section" class="edit_dialog_body_section">
-                    <i class="material-icons">star</i>
+                    <div class="mdc-typography--body2">Your Score</div>
                     <select id="user_score" class="mdc-select" default="<?= $userInfo->my_score ?>">
                       <option value="0">No Score</option>
                       <option value="1">1 (Appalling)</option>
@@ -81,7 +80,7 @@
                 <hr class="mdc-list-divider">
 
                 <div id="user_date_section" class="edit_dialog_body_section">
-                    <i class="material-icons">date_range</i>
+                    <div class="mdc-typography--body2">Start Date</div>
                     <select id="user_start_year" class="mdc-select" default="<?= substr($userInfo->my_start_date, 0, 4) ?>">
                       <option value="0000"></option>
                       <option value="2017">2017</option>
@@ -143,7 +142,7 @@
                       <option value="31">31</option>
                     </select>
                     <br>
-                    <i class="material-icons" style="visibility: hidden;">event_available</i>
+                    <div class="mdc-typography--body2">Finish Date</div>
                     <select id="user_finish_year" class="mdc-select" default="<?= substr($userInfo->my_finish_date, 0, 4) ?>">
                       <option value="0000"></option>
                       <option value="2017">2017</option>
@@ -209,7 +208,7 @@
                 <hr class="mdc-list-divider">
 
                 <div id="user_tag_section" class="edit_dialog_body_section">
-                    <i class="material-icons">label</i>
+                    <div class="mdc-typography--body2">Tags</div>
                     <div class="mdc-textfield mdc-textfield--multiline">
                       <textarea class="mdc-textfield__input" id="user_tags" rows="8" cols="26" placeholder="Tags"><?= $userInfo->my_tags ?></textarea>
                     </div>

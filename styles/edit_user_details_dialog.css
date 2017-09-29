@@ -35,3 +35,9 @@
 	vertical-align: middle;
 	margin-right: 12px;
 }
+.mdc-textfield--upgraded:not(.mdc-textfield--fullwidth):not(.mdc-textfield--box) {
+	margin-top: 8px;
+}
+.mdc-textfield {
+	margin-bottom: 0px;
+}
