@@ -119,6 +119,12 @@ foreach($userList->anime as $a) {
                         </div>
                         <div id="next_episode">
                         </div>
+                        <div id="external_links">
+                            <i class="material-icons" id="sites_toggle">public</i>
+                            <div class="mdc-simple-menu" style="position: absolute; right: 0;" tabindex="-1" id="external_links_menu">
+                                <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true"></ul>
+                            </div>
+                        </div>
                     </div>
                 </section>
 
@@ -146,6 +152,7 @@ foreach($userList->anime as $a) {
                 </section>
                 
                 <hr class="mdc-list-divider">
+
                 <section id="anime_description">
                     <div id="description">
                         <?php if (strlen($animeInfo->synopsis) == 0) {
@@ -153,8 +160,6 @@ foreach($userList->anime as $a) {
                         } else {
                             echo preg_replace('#\[i\](.+)\[\/i\]#iUs', '<span class="mdc-typography--body2">$1</span>', $animeInfo->synopsis);
                         } ?>        
-                        </div>
-                        <div id="externalLinks">
                         </div>
                 </section>
 
@@ -327,7 +332,8 @@ function handleData(data) {
     }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
-            $('#externalLinks').append('<a class="mdc-button mdc-button--raised" target="_blank" href="' + links[i]['url'] + '">' + links[i]['site'] + '</a> ');
+            $('#external_links').css('display', 'block');
+            $('#external_links_menu ul').append('<a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="' + links[i]['url'] + '">' + links[i]['site'] + '</a>');
         }
     }
     if (hashtag != null) {
@@ -352,5 +358,13 @@ document.querySelector('#anime_fab').addEventListener('click', function (evt) {
     dialog.lastFocusedTarget = evt.target;
     dialog.show();     
 })
+</script>
+<script>
+    var menuEl = document.querySelector('#external_links_menu');
+      var menu = new mdc.menu.MDCSimpleMenu(menuEl);
+      var toggle = document.querySelector('#sites_toggle');
+      toggle.addEventListener('click', function() {
+        menu.open = !menu.open;
+      });
 </script>
 </html>

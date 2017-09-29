@@ -56,9 +56,18 @@ a {
 }
 #anime_title {
 	margin-top: 12px;
+	width: calc(100% - 24px);
 }
 #anime_title_info span {
 	margin-right: 12px;
+}
+#external_links {
+	display: none;
+	position: absolute;
+	top: 16px;
+	right: 0;
+	cursor: pointer;
+	color: var(--mdc-theme-text-primary-on-light);
 }
 #circle_row {
     text-align: center;
@@ -88,16 +97,6 @@ a {
     right: 1rem;
     z-index: 3;
 }
-#description {
-	margin-top: 12px;
-}
-#externalLinks {
-	margin-top: 12px;
-}
-#externalLinks .mdc-button {
-	background-color: var(--mdc-theme-primary);
-	margin-bottom: 4px;
-}
 #next_episode {
 	position: absolute;
 	bottom: 12px;
@@ -111,8 +110,8 @@ a {
 	display: none;
 }
 #youtube_section .mdc-grid-tile, #youtube_section .mdc-grid-tile__primary, #youtube_section, .mdc-grid-tile__primary-content {
-	height: 180px;
-	width: 320px;
+	height: 135px;
+	width: 240px;
 }
 #youtube_section .mdc-grid-list .mdc-grid-tile__primary {
 	padding-bottom: 0;
