@@ -19,10 +19,6 @@ body {
     bottom: 1.5rem;
     right: 1.5rem;
 }
-.mdc-toolbar-fixed-adjust {
-    /*overflow-y: visible;*/
-    overflow-x: hidden;
-}
 .mdc-toolbar__section--align-end {
 	max-width: 88px;
 }
