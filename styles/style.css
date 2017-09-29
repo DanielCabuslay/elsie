@@ -1,8 +1,4 @@
-html {
-	overflow-y: hidden;
-}
 body {
-	overflow-y: visible;
 	margin: 0;
 }
 .mdc-dialog {
@@ -24,7 +20,7 @@ body {
     right: 1.5rem;
 }
 .mdc-toolbar-fixed-adjust {
-    overflow-y: visible;
+    /*overflow-y: visible;*/
     overflow-x: hidden;
 }
 .mdc-toolbar__section--align-end {
