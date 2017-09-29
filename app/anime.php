@@ -231,7 +231,7 @@ foreach($userList->anime as $a) {
 <script src="../scripts/textfield.js"></script>
 <script>
 var offset = $('#anime_title').offset().top;
-$('.mdc-toolbar-fixed-adjust').scroll(function() {
+$(window).scroll(function() {
     if($(this).scrollTop() > offset) {
         $('#main_toolbar').addClass('opaque');
         $('#toolbar_title').fadeIn(100);
