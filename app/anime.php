@@ -42,7 +42,7 @@ foreach($userList->anime as $a) {
     <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
     <link rel="shortcut_icon" href="/images/favicon/favicon.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0d47a1">
+    <meta name="theme-color" content="#673ab7">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
