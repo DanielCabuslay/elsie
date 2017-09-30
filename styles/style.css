@@ -19,6 +19,9 @@ body {
     bottom: 1.5rem;
     right: 1.5rem;
 }
+.mdc-temporary-drawer {
+	z-index: 16;
+}
 .mdc-temporary-drawer__header {
     background-color: var(--mdc-theme-primary);
     color: var(--mdc-theme-text-primary-on-primary);
