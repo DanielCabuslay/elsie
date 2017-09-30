@@ -1,6 +1,6 @@
 $('.search_button').click(function() {
     $('#search_header').fadeIn('fast');
-    $('.translucent').fadeIn('fast');
+    $('#search_background').fadeIn('fast');
     $('#search_query').focus();
     // $('html').css('overflow-y', 'hidden');
 });
@@ -9,7 +9,7 @@ $('#search_close').click(function() {
     $('#search_header').fadeOut('fast');
     $('#search_query').val('');
     $('#search_results_list').empty();
-    $('.translucent').fadeOut('fast');
+    $('#search_background').fadeOut('fast');
     // $('html').css('overflow-y', 'visible');
 });
 function showResults() {

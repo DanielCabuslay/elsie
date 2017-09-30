@@ -1,4 +1,4 @@
-<div class="translucent"></div>
+<div id="search_background"></div>
 <!-- <button id="search_fab" class="search_button mdc-fab material-icons" aria-label="Favorite">
     <span class="mdc-fab__icon">
         search
