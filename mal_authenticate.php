@@ -20,6 +20,7 @@ if ($status == '200') {
 	echo $_SESSION['user'];
 	header('Location: app/index.php');
 } else {
-	// header('Location: index.php');
+	$_SESSION['message'] = 'Login failed. Please try again.';
+	header('Location: index.php');
 }
 ?>

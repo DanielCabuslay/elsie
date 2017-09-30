@@ -1,0 +1,34 @@
+main {
+	text-align: center;
+	margin: 12px;
+}
+#help {
+	position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+}
+.mdc-button--primary {
+	background-color: var(--mdc-theme-primary)!important;
+}
+#elsie_circle {
+	background-image: url(../images/elsie-1080.jpg);
+    height: 250px;
+    background-position: center;
+    background-size: cover;
+    width: 250px;
+    margin: auto;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+}
+#title, #server_message {
+	margin-bottom: 1rem;
+}
+#server_message {
+	max-width: 500px;
+	margin: auto;
+}
+.mdc-textfield {
+	width: 300px;
+}
