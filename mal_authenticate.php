@@ -12,10 +12,14 @@ $output = curl_exec($ch);
 $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 if ($status == '200') {
-	$_SESSION['user'] = $user;
+	$credentialsXml = new SimpleXMLElement($output);
+	$_SESSION['user'] = (string) $credentialsXml->username;
+	$_SESSION['id'] = (string) $credentialsXml->id;
+	// $_SESSION['user'] = $user;
 	$_SESSION['password'] = $password;
+	echo $_SESSION['user'];
 	header('Location: app/index.php');
 } else {
-	header('Location: index.php');
+	// header('Location: index.php');
 }
 ?>

@@ -34,7 +34,7 @@ $data = new SimpleXMLElement($xml);
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
+            <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a>
             <span class="mdc-toolbar__title">Watching</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
@@ -43,6 +43,28 @@ $data = new SimpleXMLElement($xml);
         </section>
       </div>
     </header>
+
+    <aside class="mdc-temporary-drawer mdc-typography">
+      <nav class="mdc-temporary-drawer__drawer">
+        <header class="mdc-temporary-drawer__header">
+          <div class="mdc-temporary-drawer__header-content">
+            <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
+            <span class="mdc-typography--body2"><?= $_SESSION['user'] ?></span>
+          </div>
+        </header>
+        <nav id="icon-with-text-demo" class="mdc-temporary-drawer__content mdc-list">
+          <a class="mdc-list-item mdc-temporary-drawer--selected" href="index.php">
+            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">tv</i>Anime
+          </a>
+          <a class="mdc-list-item" href="#">
+            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">book</i>Manga
+          </a>
+          <a class="mdc-list-item" href="logout.php">
+            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">cancel</i>Logout
+          </a>
+        </nav>
+      </nav>
+    </aside>
 
     <div class="mdc-toolbar-fixed-adjust">
 
@@ -262,6 +284,14 @@ $data = new SimpleXMLElement($xml);
 <script src="../scripts/search.js"></script>
 <script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
+<script>
+    var drawerEl = document.querySelector('.mdc-temporary-drawer');
+    var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
+    var drawer = new MDCTemporaryDrawer(drawerEl);
+    document.querySelector('.menu').addEventListener('click', function() {
+        drawer.open = true;
+    });
+</script>
 <script type="text/javascript">
 var request;
 $('.anime_list_item').click(function() {

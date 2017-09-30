@@ -19,6 +19,14 @@ body {
     bottom: 1.5rem;
     right: 1.5rem;
 }
+.mdc-temporary-drawer__header {
+    background-color: var(--mdc-theme-primary);
+    color: var(--mdc-theme-text-primary-on-primary);
+}
+.mdc-temporary-drawer__header-content span {
+	font-size: 1rem;
+	margin-bottom: 12px;
+}
 .mdc-toolbar__section--align-end {
 	max-width: 88px;
 }
