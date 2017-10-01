@@ -13,9 +13,9 @@
             var flexibleExpansionRatio = evt.detail.flexibleExpansionRatio;
         });
         toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
-        toolbar.fixedAdjustElement = document.querySelector('#search_body');
-        toolbarHeight = $('.mdc-toolbar-fixed-adjust').css('margin-top');
-        $('.mdc-toolbar-fixed-adjust').css('height', 'calc(100vh - ' + toolbarHeight + ')');
-        $('#search_body').css('height', 'calc(100vh - ' + toolbarHeight + ')');
+        // toolbar.fixedAdjustElement = document.querySelector('#search_body');
+        // toolbarHeight = $('.mdc-toolbar-fixed-adjust').css('margin-top');
+        // $('.mdc-toolbar-fixed-adjust').css('height', 'calc(100vh - ' + toolbarHeight + ')');
+        // $('#search_body').css('height', 'calc(100vh - ' + toolbarHeight + ')');
     }
 })();

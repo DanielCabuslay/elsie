@@ -54,7 +54,7 @@ foreach($userList->anime as $a) {
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <a href="index.php" class="material-icons mdc-toolbar__icon--menu menu">arrow_back</a>
-            <!-- <span class="mdc-toolbar__title"><?= $animeInfo->title ?></span> -->
+            <span class="mdc-toolbar__title">Anime Details</span>
         </section>
         <section id="search_section" class="mdc-toolbar__section">
             <i class="material-icons mdc-toolbar__icon--menu">search</i>
@@ -246,9 +246,9 @@ foreach($userList->anime as $a) {
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
 <script src="../scripts/search.js"></script>
-<!-- <script src="../scripts/toolbar.js"></script> -->
+<script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
-<script>
+<!-- <script>
 var offset = $('#anime_title').offset().top;
 $(window).scroll(function() {
     if($(this).scrollTop() > offset) {
@@ -257,8 +257,8 @@ $(window).scroll(function() {
         $('#main_toolbar').removeClass('opaque');
     }
 });
-</script>
-<script>
+</script> -->
+<!-- <script>
 (function() {   
     var pollId = 0;
     pollId = setInterval(function() {
@@ -279,7 +279,7 @@ $(window).scroll(function() {
         $('#search_body').css('height', 'calc(100vh - ' + toolbarHeight + ')');
     }
 })();
-</script>
+</script> -->
 <script>
 var query = `
 query ($idMal: Int) {
@@ -334,7 +334,8 @@ function handleData(data) {
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (bgUrl != null) {
         $('#header_image').css('background-image', 'url(' + bgUrl + ')');
-    }
+        $('#header_image').css('display', 'block');
+    } 
     if (youtubeId != null) {
         $('#youtube_section').css('display', 'block');
         $('#youtube_section').next().css('display', 'block');
