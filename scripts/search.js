@@ -60,6 +60,7 @@ $("#mal_search").keyup(function(event) {
     // $inputs.prop("disabled", true);
     delay(function(){
         if ($('#search_query').val().length > 0) {
+            $('.mdc-linear-progress').css('display', 'block');
             request = $.ajax({
                 url: "mal_search.php",
                 type: "post",
@@ -68,6 +69,7 @@ $("#mal_search").keyup(function(event) {
             request.done(function (response, textStatus, jqXHR){
                 // Log a message to the console
                 // console.log(response);
+                $('.mdc-linear-progress').css('display', 'none');
                 $('#search_results ul').html(response);
                 $('#search_sheet').css('top', '0');
 

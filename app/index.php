@@ -51,6 +51,16 @@ $data = new SimpleXMLElement($xml);
             <!-- <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a> -->
         </section>
       </div>
+      <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+      <div class="mdc-linear-progress__buffering-dots"></div>
+      <div class="mdc-linear-progress__buffer"></div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+    </div>
     </header>
 
     <aside class="mdc-temporary-drawer mdc-typography">
@@ -305,6 +315,12 @@ $data = new SimpleXMLElement($xml);
 <script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
 <script>
+    window.onload = function() {
+        $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+        $('.mdc-linear-progress').css('display', 'none');
+    };
+</script>
+<script>
     var drawerEl = document.querySelector('.mdc-temporary-drawer');
     var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
     var drawer = new MDCTemporaryDrawer(drawerEl);
@@ -317,6 +333,7 @@ var request;
 $('.anime_list_item').click(function() {
     var id = $(this).attr('anime_id');
     var title = $(this).attr('anime_title');
+    $('.mdc-linear-progress').css('display', 'block');
     request = $.ajax({
         url: "anime_fetch_info.php",
         type: "post",

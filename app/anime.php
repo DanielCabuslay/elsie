@@ -70,6 +70,16 @@ foreach($userList->anime as $a) {
             <!-- <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a> -->
         </section>
       </div>
+      <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+      <div class="mdc-linear-progress__buffering-dots"></div>
+      <div class="mdc-linear-progress__buffer"></div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+      <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+        <span class="mdc-linear-progress__bar-inner"></span>
+      </div>
+    </div>
     </header>
 
     <div class="mdc-toolbar-fixed-adjust">
@@ -248,6 +258,12 @@ foreach($userList->anime as $a) {
 <script src="../scripts/search.js"></script>
 <script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
+<script>
+    window.onload = function() {
+        $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+        $('.mdc-linear-progress').css('display', 'none');
+    };
+</script>
 <!-- <script>
 var offset = $('#anime_title').offset().top;
 $(window).scroll(function() {
@@ -333,8 +349,8 @@ function handleData(data) {
     var youtubeId = data['data']['Media']['youtubeId'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (bgUrl != null) {
-        $('#header_image').css('background-image', 'url(' + bgUrl + ')');
         $('#header_image').css('display', 'block');
+        $('#header_image').css('background-image', 'url(' + bgUrl + ')');
     } 
     if (youtubeId != null) {
         $('#youtube_section').css('display', 'block');
