@@ -54,10 +54,19 @@ foreach($userList->anime as $a) {
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <a href="index.php" class="material-icons mdc-toolbar__icon--menu menu">arrow_back</a>
-            <span id="toolbar_title" class="mdc-toolbar__title"><?= $animeInfo->title ?></span>
+            <!-- <span class="mdc-toolbar__title"><?= $animeInfo->title ?></span> -->
+        </section>
+        <section id="search_section" class="mdc-toolbar__section">
+            <i class="material-icons mdc-toolbar__icon--menu">search</i>
+            <form id="mal_search">
+                <div class="mdc-textfield" id="search_textfield" data-demo-no-auto-js="">
+                    <input type="text" class="mdc-textfield__input" id="search_query" name="search_query" autocomplete="off" placeholder="Search" onkeyup="showResults()">
+                  </div>
+            </form>
+            <i id="search_close" class="material-icons mdc-toolbar__icon--menu">close</i>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-            <a href="#" id="search_button_menu" class="material-icons mdc-toolbar__icon--menu search_button">search</a>
+            <i id="search_button_menu" class="material-icons mdc-toolbar__icon--menu">search</i>
             <!-- <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a> -->
         </section>
       </div>
@@ -215,7 +224,17 @@ foreach($userList->anime as $a) {
             </div>
         </div>
 
-        <?php include 'search.php' ?>
+        <div id="search_background"></div>
+
+        <div id="search_sheet" class="mdc-typography--body1">
+            <div id="search_body">
+                <div id="search_results">
+                    <ul id="search_results_list" class="mdc-list mdc-list--two-line mdc-list--dense">
+                        <!-- handled through mal_search.php -->
+                    </ul>
+                </div>
+            </div>
+        </div>
 
     </main>        
 
@@ -234,10 +253,8 @@ var offset = $('#anime_title').offset().top;
 $(window).scroll(function() {
     if($(this).scrollTop() > offset) {
         $('#main_toolbar').addClass('opaque');
-        $('#toolbar_title').fadeIn(100);
     } else {
         $('#main_toolbar').removeClass('opaque');
-        $('#toolbar_title').fadeOut(100);
     }
 });
 </script>

@@ -30,8 +30,8 @@ body {
 	font-size: 1rem;
 	margin-bottom: 12px;
 }
-.mdc-toolbar__section--align-end {
-	max-width: 88px;
+.mdc-toolbar__section--align-start, .mdc-toolbar__section--align-end {
+	max-width: 250px;
 }
 .translucent {
 	background-color: rgba(0,0,0,0.54);
@@ -90,7 +90,7 @@ body {
 	    padding: 0;
 	    display: table;
 	    margin-left: 0px;
-	    z-index: 8;
+	    z-index: 3;
 	}
 	.bottom_bar_nav a {
 		display: table-cell;

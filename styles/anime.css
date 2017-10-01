@@ -2,13 +2,13 @@ a {
 	text-decoration: none;
     color: var(--mdc-theme-primary);
 }
-#toolbar_title {
-	display: none;
-}
 #main_toolbar {
 	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 	background-color: transparent;
 	box-shadow: none;
+}
+.mdc-toolbar__title {
+	display: none;
 }
 .mdc-toolbar-fixed-adjust {
 	margin-top: 0;
