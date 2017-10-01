@@ -4,7 +4,7 @@ if(isset($_SESSION['user'])) {
     header('Location: app/index.php');
 }
 if (!isset($_SESSION['message'])) {
-    $_SESSION['message'] = 'Please login with your MyAnimeList credentials to continue.';
+    $_SESSION['message'] = 'Login with your MyAnimeList credentials.';
 }
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ if (!isset($_SESSION['message'])) {
           </h2>
         </header>
         <section id="my-mdc-dialog-description" class="mdc-dialog__body">
-          Elsie is a Material Design MyAnimeList Web Client. You can browse your anime list, modify entries and search for anime. Additional information is also pulled from AniList that isn't available from MyAnimeList, such as upcoming episode times, official websites and social media accounts for shows.
+          Elsie is a Material Design MyAnimeList Web Client. You can browse your anime list, modify list entries and search for anime. Additional information is also pulled from AniList that isn't available from MyAnimeList, such as upcoming episode times, official websites and social media accounts for shows.
         </section>
         <footer class="mdc-dialog__footer">
           <a type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel" target="_blank" href="https://github.com/DdcCabuslay/elsie">View on GitHub</a>
@@ -50,7 +50,7 @@ if (!isset($_SESSION['message'])) {
         <i id="help" class="material-icons">help</i>
         <div id="elsie_circle"></div>
         <div id="title" class="mdc-typography--display3">Elsie</div>
-        <div id="server_message" class="mdc-typography--body1"><?= $_SESSION['message']; ?></div>
+        <div id="server_message" class="mdc-typography--body1"><?php echo $_SESSION['message']; unset($_SESSION['message']); ?></div>
         <div id="login_form">
             <form action="mal_authenticate.php" method="post" id="mal_login">
                 <div class="mdc-textfield">

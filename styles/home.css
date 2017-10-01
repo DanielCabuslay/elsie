@@ -13,15 +13,18 @@ main {
 }
 #elsie_circle {
 	background-image: url(../images/elsie-1080.jpg);
-    height: 250px;
+    height: 200px;
     background-position: center;
     background-size: cover;
-    width: 250px;
+    width: 200px;
     margin: 1rem auto;
     border-radius: 50%;
 }
 #title, #server_message {
 	margin-bottom: 1rem;
+}
+#title {
+	color: var(--mdc-theme-primary);
 }
 #server_message {
 	max-width: 500px;
