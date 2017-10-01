@@ -17,7 +17,7 @@ try {
 	    echo '<img class="mdc-list-item__start-detail search_result_thumb" src="' . $a->image . '">';
 	    echo '<span class="mdc-list-item__text anime_title">' . $a->title;
 	    echo '<span class="mdc-list-item__text__secondary">(' . $a->type . ', ' . substr($a->start_date, 0, 4) . ') <i class="material-icons list-icon">star_rate</i>' . $a->score;
-	    echo '</span></span></li><hr class="mdc-list-divider">';
+	    echo '</span></span></li>';
 	}
 } catch (Exception $e) {
 	echo '<li class="mdc-list-item">';

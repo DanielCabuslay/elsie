@@ -79,3 +79,8 @@
 		font-size: .6rem;
 	}
 }
+@media (min-width: 1024px) {
+	.mdc-tab-bar--icons-with-text .mdc-tab__icon {
+		margin-top: 11px;
+	}
+}

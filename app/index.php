@@ -123,8 +123,8 @@ $data = new SimpleXMLElement($xml);
                                         </span> -->
                                         <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
-                                    <hr class="mdc-list-divider">
                                     <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <hr class="mdc-list-divider">
                                         <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
                                             <a class="mdc-tab anime_list_add">
                                               <i class="material-icons mdc-tab__icon">add</i>
@@ -157,8 +157,8 @@ $data = new SimpleXMLElement($xml);
                                         </span>
                                         <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
-                                    <hr class="mdc-list-divider">
                                     <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <hr class="mdc-list-divider">
                                         <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
                                             <a class="mdc-tab anime_list_add">
                                               <i class="material-icons mdc-tab__icon">add</i>
@@ -191,8 +191,8 @@ $data = new SimpleXMLElement($xml);
                                         </span>
                                         <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
-                                    <hr class="mdc-list-divider">
                                     <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <hr class="mdc-list-divider">
                                         <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
                                             <a class="mdc-tab anime_list_add">
                                               <i class="material-icons mdc-tab__icon">add</i>
@@ -224,8 +224,8 @@ $data = new SimpleXMLElement($xml);
                                         </span>
                                         <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
-                                    <hr class="mdc-list-divider">
                                     <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <hr class="mdc-list-divider">
                                         <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
                                             <a class="mdc-tab anime_list_add">
                                               <i class="material-icons mdc-tab__icon">add</i>
@@ -257,8 +257,8 @@ $data = new SimpleXMLElement($xml);
                                         </span>
                                         <i role="button" class="mdc-list-item__end-detail material-icons anime_list_menu_button" onclick="event.preventDefault();">expand_more</i>
                                     </li>
-                                    <hr class="mdc-list-divider">
                                     <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
+                                        <hr class="mdc-list-divider">
                                         <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
                                             <a class="mdc-tab anime_list_add">
                                               <i class="material-icons mdc-tab__icon">add</i>
@@ -409,7 +409,7 @@ $('#ptw_button').click(function() {
         $(this).text('expand_more');
       }
       // var id = $(this).parent().attr('anime_id');
-      var options = $(this).parent().next().next().slideToggle(0);
+      var options = $(this).parent().next().slideToggle(0);
       // if (options.css('display') == 'none') {
       //   options.slideDown();
       // } else {
