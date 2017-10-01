@@ -130,7 +130,7 @@ foreach($userList->anime as $a) {
                                     echo 'Summer ' . $year;
                                 } else if ($seasonNum == '10' || $seasonNum == '11' || $seasonNum == '12') {
                                     echo 'Fall ' . $year;
-                                } else {
+                                } else if ($year != '0000') {
                                     echo $year;
                                 }
                                  ?>
@@ -166,7 +166,12 @@ foreach($userList->anime as $a) {
                     </div>
                     <div class="description_circle">
                         <span class="mdc-typography--caption">Rating</span>
-                        <span class="mdc-typography--body2"><?= $animeInfo->score ?></span>
+                        <span class="mdc-typography--body2">
+                            <?php if($animeInfo->status != 'Not yet aired') {
+                                echo $animeInfo->score;
+                            } else {
+                                echo 'N/A';
+                            }  ?></span>
                     </div>
                 </section>
                 
@@ -219,10 +224,12 @@ foreach($userList->anime as $a) {
                             <span class="mdc-typography--body2">Status</span><br>
                             <span class="mdc-typography--body1"><?= $animeInfo->status ?></span> 
                         </div>
-                        <div id="start_date">
-                            <span class="mdc-typography--body2">Start Date</span><br>
-                            <span class="mdc-typography--body1"><?= $animeInfo->start_date ?></span>
-                        </div>
+                        <?php if($animeInfo->start_date != '0000-00-00'): ?>  
+                            <div id="start_date">
+                                <span class="mdc-typography--body2">Start Date</span><br>
+                                <span class="mdc-typography--body1"><?= $animeInfo->start_date ?></span>
+                            </div>
+                        <?php endif; ?>
                         <?php if($animeInfo->end_date != '0000-00-00'): ?>   
                             <div id="end_date">
                                 <span class="mdc-typography--body2">End Date</span><br>
@@ -264,38 +271,6 @@ foreach($userList->anime as $a) {
         $('.mdc-linear-progress').css('display', 'none');
     };
 </script>
-<!-- <script>
-var offset = $('#anime_title').offset().top;
-$(window).scroll(function() {
-    if($(this).scrollTop() > offset) {
-        $('#main_toolbar').addClass('opaque');
-    } else {
-        $('#main_toolbar').removeClass('opaque');
-    }
-});
-</script> -->
-<!-- <script>
-(function() {   
-    var pollId = 0;
-    pollId = setInterval(function() {
-        var pos = getComputedStyle(document.querySelector('.mdc-toolbar')).position;
-        if (pos === 'fixed' || pos === 'relative') {
-            init();
-            clearInterval(pollId);
-        }
-    }, 250);
-    function init() {
-        var toolbar = mdc.toolbar.MDCToolbar.attachTo(document.querySelector('.mdc-toolbar'));
-        toolbar.listen('MDCToolbar:change', function(evt) {
-            var flexibleExpansionRatio = evt.detail.flexibleExpansionRatio;
-        });
-        // toolbar.fixedAdjustElement = document.querySelector('.mdc-toolbar-fixed-adjust');
-        toolbar.fixedAdjustElement = document.querySelector('#search_body');
-        toolbarHeight = $('#search_body').css('margin-top');
-        $('#search_body').css('height', 'calc(100vh - ' + toolbarHeight + ')');
-    }
-})();
-</script> -->
 <script>
 var query = `
 query ($idMal: Int) {

@@ -333,7 +333,6 @@ var request;
 $('.anime_list_item').click(function() {
     var id = $(this).attr('anime_id');
     var title = $(this).attr('anime_title');
-    $('.mdc-linear-progress').css('display', 'block');
     request = $.ajax({
         url: "anime_fetch_info.php",
         type: "post",

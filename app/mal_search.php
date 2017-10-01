@@ -13,10 +13,18 @@ curl_close($ch);
 try {
 	$data = new SimpleXMLElement($output);
 	foreach($data->entry as $a) {
+		$score = $a->score;
+		$year = substr($a->start_date, 0, 4);
+		if ($a->status == 'Not yet aired') {
+			$score = 'N/A';
+		}
+		if ($year == '0000') {
+			$year = 'N/A';
+		}
 	    echo '<li class="mdc-list-item search_result_item" anime_id="' . $a->id . '" anime_title="' . $a->title . '">';
 	    echo '<img class="mdc-list-item__start-detail search_result_thumb" src="' . $a->image . '">';
 	    echo '<span class="mdc-list-item__text anime_title">' . $a->title;
-	    echo '<span class="mdc-list-item__text__secondary">(' . $a->type . ', ' . substr($a->start_date, 0, 4) . ') <i class="material-icons list-icon">star_rate</i>' . $a->score;
+	    echo '<span class="mdc-list-item__text__secondary">(' . $a->type . ', ' . $year . ') <i class="material-icons list-icon">star_rate</i>' . $score;
 	    echo '</span></span></li>';
 	}
 } catch (Exception $e) {
