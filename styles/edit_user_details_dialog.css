@@ -6,9 +6,12 @@
 #edit_dialog_header, #edit_dialog_header .mdc-toolbar__section button {	
 	color: var(--mdc-theme-text-primary-on-primary,#fff)!important;
 }
+#edit_dialog_header .mdc-toolbar__section {
+	max-width: 50%;
+}
 #edit_dialog, #edit_dialog .mdc-dialog__surface {
-	width: 100vw;
-	height: 100vh;
+	width: 100%;
+	height: 100%;
 }
 #user_episode {
 	width: fit-content;
