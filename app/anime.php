@@ -147,7 +147,9 @@ foreach($userList->anime as $a) {
                         <div id="external_links">
                             <i class="material-icons" id="sites_toggle">public</i>
                             <div class="mdc-simple-menu" style="position: absolute; top: 0; right: 0;" tabindex="-1" id="external_links_menu">
-                                <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true"></ul>
+                                <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+                                    <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/anime/<?= $id ?>">MyAnimeList Page</a>
+                                </ul>
                             </div>
                         </div>
                     </div>
