@@ -76,7 +76,7 @@ foreach($userList->anime as $a) {
             </div>
         </section>
       </div>
-      <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+      <div role="progressbar" id="page_progress" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
       <div class="mdc-linear-progress__buffering-dots"></div>
       <div class="mdc-linear-progress__buffer"></div>
       <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">

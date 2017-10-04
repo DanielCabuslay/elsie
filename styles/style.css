@@ -10,6 +10,10 @@ body {
     padding: 12px 0px;
     cursor: pointer;
 }
+#page_progress {
+	position: absolute;
+	bottom: 0;
+}
 .mdc-dialog {
 	z-index: 24;
 }

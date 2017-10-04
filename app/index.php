@@ -35,7 +35,7 @@ $data = new SimpleXMLElement($xml);
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
-            <span class="mdc-toolbar__title">Watching</span>
+            <span class="mdc-toolbar__title">Anime List</span>
         </section>
         <section id="search_section" class="mdc-toolbar__section">
             <i class="material-icons mdc-toolbar__icon--menu">search</i>
@@ -57,7 +57,7 @@ $data = new SimpleXMLElement($xml);
             </div>
         </section>
       </div>
-      <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+      <div role="progressbar" id="page_progress" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
       <div class="mdc-linear-progress__buffering-dots"></div>
       <div class="mdc-linear-progress__buffer"></div>
       <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
