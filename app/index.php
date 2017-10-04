@@ -34,7 +34,7 @@ $data = new SimpleXMLElement($xml);
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a>
+            <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
             <span class="mdc-toolbar__title">Watching</span>
         </section>
         <section id="search_section" class="mdc-toolbar__section">
@@ -48,7 +48,13 @@ $data = new SimpleXMLElement($xml);
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
             <i id="search_button_menu" class="material-icons mdc-toolbar__icon--menu">search</i>
-            <!-- <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a> -->
+            <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
+            <div class="mdc-simple-menu" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="user_menu">
+                <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+                    <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/profile/<?= $_SESSION['user'] ?>">MyAnimeList Profile</a>
+                    <a class="mdc-list-item" role="menuitem" tabindex="0" href="logout.php">Logout</a>
+                </ul>
+            </div>
         </section>
       </div>
       <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
@@ -62,28 +68,6 @@ $data = new SimpleXMLElement($xml);
       </div>
     </div>
     </header>
-
-    <aside class="mdc-temporary-drawer mdc-typography">
-      <nav class="mdc-temporary-drawer__drawer">
-        <header class="mdc-temporary-drawer__header">
-          <div class="mdc-temporary-drawer__header-content">
-            <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
-            <span class="mdc-typography--body2"><?= $_SESSION['user'] ?></span>
-          </div>
-        </header>
-        <nav id="icon-with-text-demo" class="mdc-temporary-drawer__content mdc-list">
-          <a class="mdc-list-item mdc-temporary-drawer--selected" href="index.php">
-            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">tv</i>Anime
-          </a>
-          <a class="mdc-list-item" href="#">
-            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">book</i>Manga
-          </a>
-          <a class="mdc-list-item" href="logout.php">
-            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">cancel</i>Logout
-          </a>
-        </nav>
-      </nav>
-    </aside>
 
     <div class="mdc-toolbar-fixed-adjust">
 
@@ -314,6 +298,7 @@ $data = new SimpleXMLElement($xml);
 <script src="../scripts/search.js"></script>
 <script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
+<script src="../scripts/user_menu.js"></script>
 <script>
     window.onload = function() {
         $('.mdc-toolbar-fixed-adjust').css('display', 'block');

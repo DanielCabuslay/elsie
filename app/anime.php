@@ -67,7 +67,13 @@ foreach($userList->anime as $a) {
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
             <i id="search_button_menu" class="material-icons mdc-toolbar__icon--menu">search</i>
-            <!-- <a href="logout.php" class="mdc-typography--body1 mdc-toolbar__icon">Logout</a> -->
+            <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
+            <div class="mdc-simple-menu" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="user_menu">
+                <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+                    <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/profile/<?= $_SESSION['user'] ?>">MyAnimeList Profile</a>
+                    <a class="mdc-list-item" role="menuitem" tabindex="0" href="logout.php">Logout</a>
+                </ul>
+            </div>
         </section>
       </div>
       <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
@@ -140,7 +146,7 @@ foreach($userList->anime as $a) {
                         </div>
                         <div id="external_links">
                             <i class="material-icons" id="sites_toggle">public</i>
-                            <div class="mdc-simple-menu" style="position: absolute; right: 0;" tabindex="-1" id="external_links_menu">
+                            <div class="mdc-simple-menu" style="position: absolute; top: 0; right: 0;" tabindex="-1" id="external_links_menu">
                                 <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true"></ul>
                             </div>
                         </div>
@@ -265,6 +271,7 @@ foreach($userList->anime as $a) {
 <script src="../scripts/search.js"></script>
 <script src="../scripts/toolbar.js"></script>
 <script src="../scripts/textfield.js"></script>
+<script src="../scripts/user_menu.js"></script>
 <script>
     window.onload = function() {
         $('.mdc-toolbar-fixed-adjust').css('display', 'block');

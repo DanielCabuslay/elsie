@@ -1,6 +1,15 @@
 body {
 	margin: 0;
 }
+#avatar {
+	width: 32px;
+    border-radius: 50%;
+    margin-right: 16px;
+    height: 32px;
+    object-fit: cover;
+    padding: 12px 0px;
+    cursor: pointer;
+}
 .mdc-dialog {
 	z-index: 24;
 }
@@ -32,6 +41,9 @@ body {
 }
 .mdc-toolbar__section--align-start, .mdc-toolbar__section--align-end {
 	max-width: 250px;
+}
+.mdc-simple-menu {
+	overflow-y: hidden;
 }
 .translucent {
 	background-color: rgba(0,0,0,0.54);
