@@ -110,7 +110,7 @@ $data = new SimpleXMLElement($xml);
                             <?php foreach($data->anime as $a):
                                 if ($a->my_status == '1'): ?>
                                     <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
-                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
                                         <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
@@ -149,7 +149,7 @@ $data = new SimpleXMLElement($xml);
                                 if ($a->my_status == '2'): ?>
                                     <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
                                         <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
                                         <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
@@ -161,9 +161,9 @@ $data = new SimpleXMLElement($xml);
                                     <li class="mdc-list-item anime_list_options" anime_id="<?= $a->series_animedb_id ?>">
                                         <hr class="mdc-list-divider">
                                         <nav class="mdc-tab-bar mdc-tab-bar--icon-tabs">
-                                            <a class="mdc-tab anime_list_add">
+                                            <!-- <a class="mdc-tab anime_list_add">
                                               <i class="material-icons mdc-tab__icon">add</i>
-                                            </a>
+                                            </a> -->
                                             <a class="mdc-tab anime_list_edit">
                                               <i class="material-icons mdc-tab__icon">edit</i>
                                             </a>
@@ -183,7 +183,7 @@ $data = new SimpleXMLElement($xml);
                                 if ($a->my_status == '3'): ?>
                                     <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
                                         <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
                                         <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
@@ -216,7 +216,7 @@ $data = new SimpleXMLElement($xml);
                                 if ($a->my_status == '4'): ?>
                                     <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
                                         <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
                                         <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  
@@ -249,7 +249,7 @@ $data = new SimpleXMLElement($xml);
                                 if ($a->my_status == '6'): ?>
                                     <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>" anime_title="<?= $a->series_title ?>">
                                         <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                        <img class="mdc-list-item__start-detail anime_list_thumb" src="<?= $a->series_image ?>">
+                                        <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
                                         <span class="mdc-list-item__text title anime_title"><?= $a->series_title ?>
                                             <span class="mdc-list-item__text__secondary">
                                                 <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10  

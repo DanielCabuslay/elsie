@@ -22,7 +22,7 @@ try {
 			$year = 'N/A';
 		}
 	    echo '<li class="mdc-list-item search_result_item" anime_id="' . $a->id . '" anime_title="' . $a->title . '">';
-	    echo '<img class="mdc-list-item__start-detail search_result_thumb" src="' . $a->image . '">';
+	    echo '<img class="mdc-list-item__start-detail search_result_thumb" style="width: 49px; height: 72px;" src="' . $a->image . '">';
 	    echo '<span class="mdc-list-item__text anime_title">' . $a->title;
 	    echo '<span class="mdc-list-item__text__secondary">(' . $a->type . ', ' . $year . ') <i class="material-icons list-icon">star_rate</i>' . $score;
 	    echo '</span></span></li>';

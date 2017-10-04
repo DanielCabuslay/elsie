@@ -56,16 +56,12 @@
 .search_result_item, #search_button_menu, #search_close {
     cursor: pointer;
 }
-.search_result_item .mdc-list-item__start-detail {
-    width: 49px!important;
-    height: 72px!important;
-    margin-right: 18px;
-}
 .search_result_item {
 	height: 80px!important;
 }
 .search_result_thumb {
     object-fit: cover;
+    margin-right: 18px;
 }
 #search_button_menu {
     display: none;
