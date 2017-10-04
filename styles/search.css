@@ -61,7 +61,7 @@
 }
 .search_result_thumb {
     object-fit: cover;
-    margin-right: 18px;
+    margin-right: 18px!important;
 }
 #search_button_menu {
     display: none;
@@ -74,7 +74,6 @@
         display: none;
         border-radius: 0px;
         margin: 0px;
-
     }
     .mdc-toolbar__section--align-start {
         max-width: inherit;
