@@ -350,7 +350,6 @@ function handleData(data) {
     }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
-            $('#external_links').css('display', 'block');
             $('#external_links_menu ul').append('<a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="' + links[i]['url'] + '">' + links[i]['site'] + '</a>');
         }
     }
