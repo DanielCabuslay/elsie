@@ -51,7 +51,7 @@ $data = new SimpleXMLElement($xml);
             <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
             <div class="mdc-simple-menu" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="user_menu">
                 <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-                    <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/profile/<?= $_SESSION['user'] ?>">MyAnimeList Profile</a>
+                    <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/profile/<?= $_SESSION['user'] ?>">Profile</a>
                     <a class="mdc-list-item" role="menuitem" tabindex="0" href="logout.php">Logout</a>
                 </ul>
             </div>
