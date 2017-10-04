@@ -76,6 +76,9 @@
     }
     #search_section {
         display: none;
+        border-radius: 0px;
+        margin: 0px;
+
     }
     .mdc-toolbar__section--align-start {
         max-width: inherit;
