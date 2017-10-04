@@ -1,6 +1,9 @@
 .anime_id {
 	display: none;
 }
+#list_drop_down {
+	padding-left: 8px;
+}
 #anime_list {
 	align-items: center;
     width: calc(100vw - 212px);

@@ -9,6 +9,7 @@ $('#search_query').focus(function() {
     $('#search_close').css('display', 'block');
     $('.mdc-toolbar #search_section').css('background-color', 'white');
     $('.mdc-toolbar__title').css('display', 'none');
+    $('#list_drop_down').css('display', 'none');
     $('.mdc-toolbar__section--align-start .menu').css('display', 'none');
     $('#avatar').css('display', 'none');
     $('#search_section i').css('color', 'var(--mdc-theme-text-primary-on-primary-light)');
@@ -22,6 +23,7 @@ $('#search_close').click(function() {
     $('#main_toolbar').removeClass('opaque');
     $('.mdc-toolbar #search_section').css('background-color', 'rgba(0,0,0,.2)');
     $('.mdc-toolbar__title').css('display', 'block');
+    $('#list_drop_down').css('display', 'inline-block');
     $('.mdc-toolbar__section--align-start .menu').css('display', 'inline-block');
     $('#avatar').css('display', 'block');
     $('#search_section i').css('color', 'var(--mdc-theme-text-primary-on-primary)');

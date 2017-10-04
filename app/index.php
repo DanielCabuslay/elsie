@@ -36,6 +36,13 @@ $data = new SimpleXMLElement($xml);
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
             <span class="mdc-toolbar__title">Anime List</span>
+            <i id="list_drop_down" class="material-icons mdc-toolbar__icon--menu">arrow_drop_down</i>
+            <div class="mdc-simple-menu" style="position: absolute; top: 12px; left: 12px;" tabindex="-1" id="list_menu">
+                <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
+                    <li class="mdc-list-item" role="menuitem" tabindex="0">Anime List</li>
+                    <li class="mdc-list-item" role="menuitem" tabindex="0">Manga List</li>
+                </ul>
+            </div>
         </section>
         <section id="search_section" class="mdc-toolbar__section">
             <i class="material-icons mdc-toolbar__icon--menu">search</i>
@@ -361,7 +368,7 @@ $('#watching_button').click(function() {
     $('#on_hold_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
-    $('.mdc-toolbar__title').html('Watching');
+    // $('.mdc-toolbar__title').html('Watching');
     window.scrollTo(0, 0);
 });
 $('#completed_button').click(function() {
@@ -370,7 +377,7 @@ $('#completed_button').click(function() {
     $('#on_hold_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
-    $('.mdc-toolbar__title').html('Completed');
+    // $('.mdc-toolbar__title').html('Completed');
     window.scrollTo(0, 0);
 });
 $('#on_hold_button').click(function() {
@@ -379,7 +386,7 @@ $('#on_hold_button').click(function() {
     $('#completed_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
-    $('.mdc-toolbar__title').html('On Hold');
+    // $('.mdc-toolbar__title').html('On Hold');
     window.scrollTo(0, 0);
 });
 $('#dropped_button').click(function() {
@@ -388,7 +395,7 @@ $('#dropped_button').click(function() {
     $('#completed_list').css('display', 'none');
     $('#on_hold_list').css('display', 'none');
     $('#ptw_list').css('display', 'none');
-    $('.mdc-toolbar__title').html('Dropped');
+    // $('.mdc-toolbar__title').html('Dropped');
     window.scrollTo(0, 0);
 });
 $('#ptw_button').click(function() {
@@ -397,7 +404,7 @@ $('#ptw_button').click(function() {
     $('#completed_list').css('display', 'none');
     $('#on_hold_list').css('display', 'none');
     $('#dropped_list').css('display', 'none');
-    $('.mdc-toolbar__title').html('Plan to Watch');
+    // $('.mdc-toolbar__title').html('Plan to Watch');
     window.scrollTo(0, 0);
 });
 </script>
@@ -425,5 +432,13 @@ $('#ptw_button').click(function() {
       window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
     },200)
   })();
+</script>
+<script>
+var list_menu_element = document.querySelector('#list_menu');
+var list_menu = new mdc.menu.MDCSimpleMenu(list_menu_element);
+var list_menu_toggle = document.querySelector('#list_drop_down');
+list_menu_toggle.addEventListener('click', function() {
+    list_menu.open = !list_menu.open;
+});
 </script>
 </html>
