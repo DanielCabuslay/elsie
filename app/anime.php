@@ -12,6 +12,44 @@ foreach($searchResults->entry as $a) {
         break;
     }
 }
+$start_date = formatDate($animeInfo->start_date);
+$end_date = formatDate($animeInfo->end_date);
+function formatDate($date) {
+    $year = substr($date, 0, 4);
+    $month = substr($date, 5, 2);
+    $day = substr($date, 8, 2);
+    $formatted_date = '';
+    if ($month == '01') {
+        $formatted_date = 'January ' . $day . ', ' . $year;
+    } else if ($month == '02') {
+        $formatted_date = 'February ' . $day . ', ' . $year;
+    } else if ($month == '03') {
+        $formatted_date = 'March ' . $day . ', ' . $year;
+    } else if ($month == '04') {
+        $formatted_date = 'April ' . $day . ', ' . $year;
+    } else if ($month == '05') {
+        $formatted_date = 'May ' . $day . ', ' . $year;
+    } else if ($month == '06') {
+        $formatted_date = 'June ' . $day . ', ' . $year;
+    } else if ($month == '07') {
+        $formatted_date = 'July ' . $day . ', ' . $year;
+    } else if ($month == '08') {
+        $formatted_date = 'August ' . $day . ', ' . $year;
+    } else if ($month == '09') {
+        $formatted_date = 'September ' . $day . ', ' . $year;
+    } else if ($month == '10') {
+        $formatted_date = 'October ' . $day . ', ' . $year;
+    } else if ($month == '11') {
+        $formatted_date = 'November ' . $day . ', ' . $year;
+    } else if ($month == '12') {
+        $formatted_date = 'December ' . $day . ', ' . $year;
+    } else {
+        if ($year != '0000') {
+            $formatted_date = $year;
+        }
+    }
+    return $formatted_date;
+}
 
 $userListXml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
 
@@ -140,7 +178,7 @@ foreach($userList->anime as $a) {
                                     echo 'Fall ' . $year;
                                 } else if ($year != '0000') {
                                     echo $year;
-                                }
+                                    }
                                  ?>
                             </span>
                         </div>
@@ -236,14 +274,17 @@ foreach($userList->anime as $a) {
                         </div>
                         <?php if($animeInfo->start_date != '0000-00-00'): ?>  
                             <div id="start_date">
-                                <span class="mdc-typography--body2">Start Date</span><br>
-                                <span class="mdc-typography--body1"><?= $animeInfo->start_date ?></span>
+                                <span class="mdc-typography--body2">
+                                    <?php if ($animeInfo->episodes != '1') { echo 'Start Date'; } 
+                                    else { echo 'Release Date'; } ?>
+                                </span><br>
+                                <span class="mdc-typography--body1"><?= $start_date ?></span>
                             </div>
                         <?php endif; ?>
-                        <?php if($animeInfo->end_date != '0000-00-00'): ?>   
+                        <?php if($animeInfo->end_date != '0000-00-00' && $animeInfo->episodes != '1'): ?>   
                             <div id="end_date">
                                 <span class="mdc-typography--body2">End Date</span><br>
-                                <span class="mdc-typography--body1"><?= $animeInfo->end_date ?></span>
+                                <span class="mdc-typography--body1"><?= $end_date ?></span>
                             </div>
                         <?php endif; ?>
                     </div>
