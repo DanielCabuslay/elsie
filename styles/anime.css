@@ -27,12 +27,12 @@ a {
 }
 #header_image {
 	display: none;
+    margin-bottom: -50px;
+}
+#header_image img {
 	width: 100%;
-	height: 400px;
-	background-position: center;
-    background-size: cover;
-    background-color: var(--mdc-theme-primary);
-    margin-bottom: -100px;
+	max-height: 500px;
+    object-fit: cover;
 }
 #anime_info_header {
 	display: flex;
@@ -127,8 +127,10 @@ a {
 		width: 100vw;
 	}
 	#header_image {
-		height: 150px;
-    	margin-bottom: 0px;
+    	margin-bottom: -10px;
+	}
+	#header_image img {
+    	max-height: 150px;
 	}
 	#anime_image {
 		height: 200px;

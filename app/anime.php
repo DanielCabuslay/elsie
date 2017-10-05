@@ -112,7 +112,9 @@ foreach($userList->anime as $a) {
 
     <main>
         <div id="anime_info_section" class="mdc-typography--body1" anime_id="<?= $animeInfo->id ?>">
-        <div id="header_image"></div>
+        <div id="header_image">
+            <img src="">
+        </div>
             <div class="mdc-card">
                 <section id="anime_info_header">
                     <div id="anime_image">
@@ -275,12 +277,6 @@ foreach($userList->anime as $a) {
 <script src="../scripts/textfield.js"></script>
 <script src="../scripts/user_menu.js"></script>
 <script>
-    window.onload = function() {
-        $('.mdc-toolbar-fixed-adjust').css('display', 'block');
-        $('.mdc-linear-progress').css('display', 'none');
-    };
-</script>
-<script>
 var query = `
 query ($idMal: Int) {
   Media (idMal: $idMal, type: ANIME) {
@@ -334,7 +330,7 @@ function handleData(data) {
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (bgUrl != null) {
         $('#header_image').css('display', 'block');
-        $('#header_image').css('background-image', 'url(' + bgUrl + ')');
+        $('#header_image img').attr('src', bgUrl);
     } 
     if (youtubeId != null) {
         $('#youtube_section').css('display', 'block');
@@ -356,6 +352,16 @@ function handleData(data) {
     if (hashtag != null) {
         $('#hashtag').append('<a class="mdc-typography--body2" target="_blank" href="https://twitter.com/search?q=%23' + hashtag.substring(1) + '">' + hashtag + '</a>');
     }
+
+    if ($('#header_image img').attr('src').length > 0) {
+        $('#header_image img').on('load', function() {
+            $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+            $('#page_progress').css('display', 'none');
+        });
+    } else {
+        $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+        $('#page_progress').css('display', 'none');
+    }
     // var json = JSON.parse(data);
 }
 
@@ -363,6 +369,8 @@ function handleError(error) {
     // alert('Error, check console');
     console.error(error);
 }
+
+// window.onload = function() {
 </script>
 <script>
 document.querySelector('#anime_fab').addEventListener('click', function (evt) {
