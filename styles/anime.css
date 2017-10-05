@@ -31,7 +31,7 @@ a {
 }
 #header_image img {
 	width: 100%;
-	max-height: 500px;
+	max-height: 400px;
     object-fit: cover;
 }
 #anime_info_header {
@@ -130,7 +130,7 @@ a {
     	margin-bottom: -6px;
 	}
 	#header_image img {
-    	max-height: 150px;
+    	max-height: 200px;
 	}
 	#anime_image {
 		height: 200px;
