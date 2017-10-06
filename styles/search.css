@@ -11,6 +11,7 @@
     background-color: rgba(0,0,0,.2);
     border-radius: 2px;
     margin: 4px;
+    min-width: 500px;
 }
 #search_section i {
     background-color: transparent;
@@ -66,7 +67,7 @@
 #search_button_menu {
     display: none;
 }
-@media (max-width: 1024px) {
+@media (max-width: 1023px) {
     #search_button_menu {
         display: inline-block;
     }
