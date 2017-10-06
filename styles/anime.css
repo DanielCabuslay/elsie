@@ -112,9 +112,6 @@ a {
 #episode_section .mdc-grid-list {
 	width: max-content;
 }
-#episode_section .mdc-grid-tile__secondary {
-	height: 69px;
-}
 .mdc-grid-tile, .mdc-grid-tile__primary, .mdc-grid-tile__primary-content {
 	height: 135px;
 	width: 240px;

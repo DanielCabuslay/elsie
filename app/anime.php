@@ -239,7 +239,7 @@ foreach($userList->anime as $a) {
                 <hr class="mdc-list-divider">
 
                 <section id="episode_section">
-                    <div class="mdc-grid-list">
+                    <div class="mdc-grid-list mdc-grid-list--twoline-caption">
                       <ul class="mdc-grid-list__tiles">
                       </ul>
                     </div>                
@@ -250,16 +250,14 @@ foreach($userList->anime as $a) {
                 <section id="youtube_section">
                     <div class="mdc-grid-list">
                       <ul class="mdc-grid-list__tiles">
-                        <li class="mdc-grid-tile">
+                        <a class="mdc-grid-tile" target="_blank" href="">
                           <div class="mdc-grid-tile__primary">
-                            <a target="_blank" href="">
-                                <img class="mdc-grid-tile__primary-content" src="" />
-                            </a>
+                            <img class="mdc-grid-tile__primary-content" src="" />
                           </div>
                           <span class="mdc-grid-tile__secondary">
                             <span class="mdc-grid-tile__title">Trailer</span>
                           </span>
-                        </li>
+                        </a>
                       </ul>
                     </div>                
                 </section>
@@ -395,7 +393,7 @@ function handleData(data) {
         $('#youtube_section').next().css('display', 'block');
         var thumbUrl = 'https://img.youtube.com/vi/' + youtubeId + '/mqdefault.jpg';
         $('#youtube_section .mdc-grid-tile__primary-content').attr('src', thumbUrl);
-        $('#youtube_section .mdc-grid-tile__primary a').attr('href', 'https://www.youtube.com/watch?v=' + youtubeId);
+        $('#youtube_section .mdc-grid-tile').attr('href', 'https://www.youtube.com/watch?v=' + youtubeId);
     }
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
@@ -414,7 +412,7 @@ function handleData(data) {
         $('#episode_section').css('display', 'block');
         $('#episode_section').next().css('display', 'block');
         for (var i = 0; i < streamingEps.length; i++) {
-             $('#episode_section .mdc-grid-list__tiles').append('<li class="mdc-grid-tile"><div class="mdc-grid-tile__primary"><a target="_blank" href="' + streamingEps[i]['url'] + '"><img class="mdc-grid-tile__primary-content" src="' + streamingEps[i]['thumbnail'] + '"/></a></div><span class="mdc-grid-tile__secondary"><span class="mdc-grid-tile__title">' + streamingEps[i]['title'].substring(12) + '</span><span class="mdc-grid-tile__support-text">' + streamingEps[i]['title'].substring(0, 10) + '</span></span></li>');
+             $('#episode_section .mdc-grid-list__tiles').append('<a class="mdc-grid-tile" target="_blank" href="' + streamingEps[i]['url'] + '"><div class="mdc-grid-tile__primary"><img class="mdc-grid-tile__primary-content" src="' + streamingEps[i]['thumbnail'] + '"/></div><span class="mdc-grid-tile__secondary"><span class="mdc-grid-tile__title">' + streamingEps[i]['title'].substring(12) + '</span><span class="mdc-grid-tile__support-text">' + streamingEps[i]['title'].substring(0, 10) + '</span></span></a>');
         }
        
     }
