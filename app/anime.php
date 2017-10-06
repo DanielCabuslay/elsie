@@ -18,6 +18,9 @@ function formatDate($date) {
     $year = substr($date, 0, 4);
     $month = substr($date, 5, 2);
     $day = substr($date, 8, 2);
+    if (substr($day, 0, 1) == '0') {
+        $day = substr($day, 1, 1);
+    }
     $formatted_date = '';
     if ($month == '01') {
         $formatted_date = 'January ' . $day . ', ' . $year;
