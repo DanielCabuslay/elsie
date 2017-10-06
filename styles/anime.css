@@ -107,7 +107,7 @@ a {
 	display: none;
 }
 #episode_section {
-	overflow-x: scroll;
+	overflow-x: auto;
 }
 #episode_section .mdc-grid-list {
 	width: max-content;
