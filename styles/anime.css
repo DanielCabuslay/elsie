@@ -9,7 +9,7 @@ a {
 }*/
 .mdc-toolbar-fixed-adjust {
 	/*margin-top: 0;*/
-	height: 100vh;
+	height: 100%;
 }
 .opaque {
 	background: var(--mdc-theme-primary)!important;
