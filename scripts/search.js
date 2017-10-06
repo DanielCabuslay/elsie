@@ -11,6 +11,7 @@ $('#search_query').focus(function() {
     $('.mdc-toolbar__title').css('display', 'none');
     $('#list_drop_down').css('display', 'none');
     $('.mdc-toolbar__section--align-start .menu').css('display', 'none');
+    $('#account_button').css('display', 'none');
     $('#avatar').css('display', 'none');
     $('#search_section i').css('color', 'var(--mdc-theme-text-primary-on-primary-light)');
     if ($(window).width() < 1024) {
@@ -25,6 +26,7 @@ $('#search_close').click(function() {
     $('.mdc-toolbar__title').css('display', 'block');
     $('#list_drop_down').css('display', 'inline-block');
     $('.mdc-toolbar__section--align-start .menu').css('display', 'inline-block');
+    $('#account_button').css('display', 'inline-block');
     $('#avatar').css('display', 'block');
     $('#search_section i').css('color', 'var(--mdc-theme-text-primary-on-primary)');
     if ($(window).width() < 1024) {
