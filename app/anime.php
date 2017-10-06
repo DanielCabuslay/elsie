@@ -412,7 +412,8 @@ function handleData(data) {
         $('#episode_section').css('display', 'block');
         $('#episode_section').next().css('display', 'block');
         for (var i = 0; i < streamingEps.length; i++) {
-             $('#episode_section .mdc-grid-list__tiles').append('<a class="mdc-grid-tile" target="_blank" href="' + streamingEps[i]['url'] + '"><div class="mdc-grid-tile__primary"><img class="mdc-grid-tile__primary-content" src="' + streamingEps[i]['thumbnail'] + '"/></div><span class="mdc-grid-tile__secondary"><span class="mdc-grid-tile__title">' + streamingEps[i]['title'].substring(12) + '</span><span class="mdc-grid-tile__support-text">' + streamingEps[i]['title'].substring(0, 10) + '</span></span></a>');
+            var title = streamingEps[i]['title'].split(" - ");
+             $('#episode_section .mdc-grid-list__tiles').append('<a class="mdc-grid-tile" target="_blank" href="' + streamingEps[i]['url'] + '"><div class="mdc-grid-tile__primary"><img class="mdc-grid-tile__primary-content" src="' + streamingEps[i]['thumbnail'] + '"/></div><span class="mdc-grid-tile__secondary"><span class="mdc-grid-tile__title">' + title.slice(1).join(" - ") + '</span><span class="mdc-grid-tile__support-text">' + title[0] + '</span></span></a>');
         }
        
     }
