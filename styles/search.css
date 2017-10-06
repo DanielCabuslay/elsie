@@ -75,6 +75,7 @@
         display: none;
         border-radius: 0px;
         margin: 0px;
+        min-width: 0;
     }
     .mdc-toolbar__section--align-start {
         max-width: inherit;
