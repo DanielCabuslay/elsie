@@ -105,6 +105,7 @@ foreach($userList->anime as $a) {
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
             <i id="search_button_menu" class="material-icons mdc-toolbar__icon--menu">search</i>
+            <i id="account_button" class="material-icons mdc-toolbar__icon--menu">account_circle</i>
             <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
             <div class="mdc-simple-menu" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="user_menu">
                 <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">

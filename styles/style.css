@@ -4,11 +4,12 @@ body {
 #avatar {
 	width: 32px;
     border-radius: 50%;
-    margin-right: 16px;
     height: 32px;
     object-fit: cover;
-    padding: 12px 0px;
     cursor: pointer;
+    position: absolute;
+    top: 16px;
+    right: 20px;
 }
 #page_progress {
 	position: absolute;
@@ -82,6 +83,10 @@ body {
 	text-decoration: none;
 }
 @media (max-width: 1023px) {
+	#avatar {
+		top: 12px;
+		right: 12px;
+	}
 	.mobile_spacer {
 		display: block;
 		height: 60px;
