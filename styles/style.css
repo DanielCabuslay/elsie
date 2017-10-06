@@ -24,9 +24,6 @@ body {
 .mdc-toolbar-fixed-adjust {
 	display: none;
 }
-.mdc-card {
-	background-color: #fff;
-}
 .mdc-fab {
 	position: fixed;
 	z-index: 6;

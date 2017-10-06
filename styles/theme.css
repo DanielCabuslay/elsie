@@ -9,3 +9,15 @@
 html, #search_background {
 	background-color: #f5f5f5;
 }
+.mdc-card {
+	background-color: #fff;
+}
+@media (max-width: 1023px) {
+	html, #search_background {
+		background-color: #fff;
+	}
+	.mdc-card {
+		background-color: transparent;
+		box-shadow: none;
+	}
+}
