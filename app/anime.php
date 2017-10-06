@@ -238,6 +238,15 @@ foreach($userList->anime as $a) {
 
                 <hr class="mdc-list-divider">
 
+                <section id="episode_section">
+                    <div class="mdc-grid-list">
+                      <ul class="mdc-grid-list__tiles">
+                      </ul>
+                    </div>                
+                </section>
+
+                <hr class="mdc-list-divider" style="display: none;">
+
                 <section id="youtube_section">
                     <div class="mdc-grid-list">
                       <ul class="mdc-grid-list__tiles">
@@ -330,6 +339,12 @@ query ($idMal: Int) {
       airingAt
       episode
     }
+    streamingEpisodes {
+      title
+      thumbnail
+      url
+      site
+    }
     externalLinks {
       url
       site
@@ -370,6 +385,7 @@ function handleData(data) {
     var links = data['data']['Media']['externalLinks'];
     var youtubeId = data['data']['Media']['youtubeId'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
+    var streamingEps = data['data']['Media']['streamingEpisodes'];
     if (bgUrl != null) {
         $('#header_image').css('display', 'block');
         $('#header_image img').attr('src', bgUrl);
@@ -378,8 +394,8 @@ function handleData(data) {
         $('#youtube_section').css('display', 'block');
         $('#youtube_section').next().css('display', 'block');
         var thumbUrl = 'https://img.youtube.com/vi/' + youtubeId + '/mqdefault.jpg';
-        $('.mdc-grid-tile__primary-content').attr('src', thumbUrl);
-        $('.mdc-grid-tile__primary a').attr('href', 'https://www.youtube.com/watch?v=' + youtubeId);
+        $('#youtube_section .mdc-grid-tile__primary-content').attr('src', thumbUrl);
+        $('#youtube_section .mdc-grid-tile__primary a').attr('href', 'https://www.youtube.com/watch?v=' + youtubeId);
     }
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
@@ -393,6 +409,14 @@ function handleData(data) {
     }
     if (hashtag != null) {
         $('#hashtag').append('<a class="mdc-typography--body2" target="_blank" href="https://twitter.com/search?q=%23' + hashtag.substring(1) + '">' + hashtag + '</a>');
+    }
+    if (streamingEps.length > 0) {
+        $('#episode_section').css('display', 'block');
+        $('#episode_section').next().css('display', 'block');
+        for (var i = 0; i < streamingEps.length; i++) {
+             $('#episode_section .mdc-grid-list__tiles').append('<li class="mdc-grid-tile"><div class="mdc-grid-tile__primary"><a target="_blank" href="' + streamingEps[i]['url'] + '"><img class="mdc-grid-tile__primary-content" src="' + streamingEps[i]['thumbnail'] + '"/></a></div><span class="mdc-grid-tile__secondary"><span class="mdc-grid-tile__title">' + streamingEps[i]['title'].substring(12) + '</span><span class="mdc-grid-tile__support-text">' + streamingEps[i]['title'].substring(0, 10) + '</span></span></li>');
+        }
+       
     }
 
     if ($('#header_image img').attr('src').length > 0) {
