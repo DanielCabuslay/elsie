@@ -409,7 +409,10 @@ function handleData(data) {
         }
     }
     if (hashtag != null) {
-        $('#hashtag').append('<a class="mdc-typography--body2" target="_blank" href="https://twitter.com/search?q=%23' + hashtag.substring(1) + '">' + hashtag + '</a>');
+        var hashtags = hashtag.split('#');
+        for (var i = 1; i < hashtags.length; i++) {
+            $('#hashtag').append('<a class="mdc-typography--body2" target="_blank" href="https://twitter.com/search?q=%23' + hashtags[i] + '">#' + hashtags[i] + '</a>');
+        }
     }
     if (streamingEps.length > 0) {
         $('#episode_section').css('display', 'block');
