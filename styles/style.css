@@ -44,6 +44,15 @@ body {
 .mdc-simple-menu {
 	overflow-y: hidden;
 }
+.icon_button {
+	min-width: 36px;
+    padding: 0;
+    border-radius: 50%;
+}
+.icon_button i {
+	vertical-align: middle;
+	color: var(--mdc-theme-text-primary-on-light);
+}
 .translucent {
 	background-color: rgba(0,0,0,0.54);
 	display: none;

@@ -61,9 +61,8 @@ a {
 }
 #external_links {
 	position: absolute;
-	top: 16px;
-	right: 0;
-	cursor: pointer;
+	top: 9px;
+	right: -6px;
 	color: var(--mdc-theme-text-primary-on-light);
 }
 #circle_row {
