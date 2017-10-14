@@ -91,7 +91,7 @@ foreach($userList->anime as $a) {
 </head>
 <body>
 
-    <header id="main_toolbar" class="mdc-toolbar mdc-toolbar--fixed">
+    <header id="main_toolbar" class="mdc-toolbar mdc-toolbar--fixed mdc-toolbar--waterfall">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
             <a href="index.php" class="material-icons mdc-toolbar__icon--menu menu">arrow_back</a>
@@ -154,11 +154,8 @@ foreach($userList->anime as $a) {
 
     <main>
         <div id="anime_info_section" class="mdc-typography--body1" anime_id="<?= $animeInfo->id ?>">
-        <div id="header_image">
-            <img src="">
-        </div>
-            <div class="mdc-card">
-                <section id="anime_info_header">
+            <div id="hero_header">
+                <section>
                     <div id="anime_image">
                         <img id="image" src="<?= $animeInfo->image ?>">
                     </div>
@@ -198,20 +195,20 @@ foreach($userList->anime as $a) {
                                 </ul>
                             </div>
                         </div>
+
+                        <?php if($userSaved): ?>
+                            <button id="anime_fab" class="mdc-fab material-icons">
+                                <span class="mdc-fab__icon">edit</span>
+                            </button>
+                        <?php else: ?>
+                            <button id="anime_fab" class="mdc-fab material-icons">
+                                <span class="mdc-fab__icon">add</span>
+                            </button>
+                        <?php endif;?>
                     </div>
                 </section>
-
-                <hr class="mdc-list-divider">
-
-                <?php if($userSaved): ?>
-                    <button id="anime_fab" class="mdc-fab material-icons">
-                        <span class="mdc-fab__icon">edit</span>
-                    </button>
-                <?php else: ?>
-                    <button id="anime_fab" class="mdc-fab material-icons">
-                        <span class="mdc-fab__icon">add</span>
-                    </button>
-                <?php endif;?>
+            </div>
+            <div id="anime_info_body">
 
                 <section id="circle_row">
                     <div class="description_circle">
@@ -390,8 +387,9 @@ function handleData(data) {
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     var streamingEps = data['data']['Media']['streamingEpisodes'];
     if (bgUrl != null) {
-        $('#header_image').css('display', 'block');
-        $('#header_image img').attr('src', bgUrl);
+        $('#hero_header').css('background-image', 'url(' + bgUrl + ')');
+        $('#hero_header section').css('background-color', 'var(--mdc-theme-text-secondary-on-background)');
+        $('.mdc-toolbar').removeClass('mdc-toolbar--waterfall');
     } 
     if (youtubeId != null) {
         $('#youtube_section').css('display', 'block');
@@ -425,16 +423,16 @@ function handleData(data) {
         }
        
     }
-
-    if ($('#header_image img').attr('src').length > 0) {
-        $('#header_image img').on('load', function() {
-            $('.mdc-toolbar-fixed-adjust').css('display', 'block');
-            $('#page_progress').css('display', 'none');
-        });
-    } else {
-        $('.mdc-toolbar-fixed-adjust').css('display', 'block');
-        $('#page_progress').css('display', 'none');
-    }
+    $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+    $('#page_progress').css('display', 'none');
+    // if ($('#hero_header img').attr('src').length > 0) {
+    //     $('#hero_header img').on('load', function() {
+    //         $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+    //         $('#page_progress').css('display', 'none');
+    //     });
+    // } else {
+    //     $('.mdc-toolbar-fixed-adjust').css('display', 'block');
+    // }
     // var json = JSON.parse(data);
 }
 
