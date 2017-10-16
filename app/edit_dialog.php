@@ -2,7 +2,7 @@
   <div class="mdc-dialog__surface">
     <header id="edit_dialog_header" class="mdc-dialog__header">
       <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <button type="button" class="material-icons mdc-toolbar__icon--menu menu mdc-dialog__footer__button mdc-dialog__footer__button--cancel">close</button>
+            <button type="button" class="material-icons mdc-toolbar__menu-icon menu mdc-dialog__footer__button mdc-dialog__footer__button--cancel">close</button>
             <span class="mdc-toolbar__title">Edit Anime Details</span>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end">

@@ -34,9 +34,9 @@ $data = new SimpleXMLElement($xml);
     <header class="mdc-toolbar mdc-toolbar--fixed">
       <div class="mdc-toolbar__row">
         <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-            <!-- <a href="#" class="material-icons mdc-toolbar__icon--menu menu">menu</a> -->
+            <!-- <a href="#" class="material-icons mdc-toolbar__menu-icon menu">menu</a> -->
             <span class="mdc-toolbar__title">Anime List</span>
-            <i id="list_drop_down" class="material-icons mdc-toolbar__icon--menu">arrow_drop_down</i>
+            <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i>
             <div class="mdc-simple-menu" style="position: absolute; top: 12px; left: 12px;" tabindex="-1" id="list_menu">
                 <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
                     <li class="mdc-list-item" role="menuitem" tabindex="0">Anime List</li>
@@ -45,19 +45,19 @@ $data = new SimpleXMLElement($xml);
             </div>
         </section>
         <section id="search_section" class="mdc-toolbar__section">
-            <i class="material-icons mdc-toolbar__icon--menu">search</i>
+            <i class="material-icons mdc-toolbar__menu-icon">search</i>
             <form id="mal_search">
                 <div class="mdc-textfield" id="search_textfield" data-demo-no-auto-js="">
                     <input type="text" class="mdc-textfield__input" id="search_query" name="search_query" autocomplete="off" placeholder="Search" onkeyup="showResults()">
                   </div>
             </form>
-            <i id="search_close" class="material-icons mdc-toolbar__icon--menu">close</i>
+            <i id="search_close" class="material-icons mdc-toolbar__menu-icon">close</i>
         </section>
         <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-            <i id="search_button_menu" class="material-icons mdc-toolbar__icon--menu">search</i>
-            <i id="account_button" class="material-icons mdc-toolbar__icon--menu">account_circle</i>
+            <i id="search_button_menu" class="material-icons mdc-toolbar__menu-icon">search</i>
+            <i id="account_button" class="material-icons mdc-toolbar__menu-icon">account_circle</i>
             <img id="avatar" src="https://myanimelist.cdn-dena.com/images/userimages/<?= $_SESSION['id'] ?>.jpg">
-            <div class="mdc-simple-menu" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="user_menu">
+            <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="user_menu">
                 <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
                     <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/profile/<?= $_SESSION['user'] ?>">Profile</a>
                     <a class="mdc-list-item" role="menuitem" tabindex="0" href="logout.php">Logout</a>
