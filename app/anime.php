@@ -249,7 +249,7 @@ foreach($userList->anime as $a) {
 
                 <hr class="mdc-list-divider" style="display: none;">
 
-                <section id="youtube_section">
+                <section id="trailer_section">
                     <div class="mdc-grid-list">
                       <ul class="mdc-grid-list__tiles">
                         <a class="mdc-grid-tile" target="_blank" href="">
@@ -334,7 +334,9 @@ query ($idMal: Int) {
     id
     hashtag
     bannerImage
-    youtubeId
+    trailer {
+      id
+    }
     nextAiringEpisode {
       airingAt
       episode
@@ -383,7 +385,7 @@ function handleData(data) {
     var bgUrl = data['data']['Media']['bannerImage'];
     var hashtag = data['data']['Media']['hashtag'];
     var links = data['data']['Media']['externalLinks'];
-    var youtubeId = data['data']['Media']['youtubeId'];
+    var trailer = data['data']['Media']['trailer'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     var streamingEps = data['data']['Media']['streamingEpisodes'];
     if (bgUrl != null) {
@@ -391,12 +393,12 @@ function handleData(data) {
         $('#hero_header section').css('background-color', 'var(--mdc-theme-text-secondary-on-background)');
         $('.mdc-toolbar').removeClass('mdc-toolbar--waterfall');
     } 
-    if (youtubeId != null) {
-        $('#youtube_section').css('display', 'block');
-        $('#youtube_section').next().css('display', 'block');
-        var thumbUrl = 'https://img.youtube.com/vi/' + youtubeId + '/mqdefault.jpg';
-        $('#youtube_section .mdc-grid-tile__primary-content').attr('src', thumbUrl);
-        $('#youtube_section .mdc-grid-tile').attr('href', 'https://www.youtube.com/watch?v=' + youtubeId);
+    if (trailer != null) {
+        $('#trailer_section').css('display', 'block');
+        $('#trailer_section').next().css('display', 'block');
+        var thumbUrl = 'https://img.youtube.com/vi/' + trailer['id'] + '/mqdefault.jpg';
+        $('#trailer_section .mdc-grid-tile__primary-content').attr('src', thumbUrl);
+        $('#trailer_section .mdc-grid-tile').attr('href', 'https://www.youtube.com/watch?v=' + trailer['id']);
     }
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
