@@ -37,6 +37,7 @@ a {
 #hero_header section {
 	display: flex;
 	background-color: var(--mdc-theme-primary);
+	position: relative;
 }
 #anime_info_header {
 	display: flex;
@@ -48,7 +49,7 @@ a {
 #anime_image img {
 	height: inherit;
 }
-#anime_score_episode_section, #anime_description, #extra_detail_section, #trailer_section, #episode_section {
+#user_stats, #anime_description, #extra_detail_section, #trailer_section, #episode_section {
 	margin: 12px 0px;
 }
 #anime_title_section, #anime_score_episode_section {
@@ -57,11 +58,14 @@ a {
     margin-right: 5%;
 	margin-top: 12px;
 }
-#anime_title_section, #next_episode {
+#anime_score_episode_section {
+	margin-top: 0px;
+}
+#anime_title_section, #next_episode, #anime_score_episode_section {
     color: var(--mdc-theme-text-primary-on-dark);	
 }
 #hashtag a {
-    color: var(--mdc-theme-secondary);
+    color: var(--mdc-theme-secondary-light);
 }
 #anime_title {
 	width: calc(100% - 24px);
@@ -74,12 +78,20 @@ a {
 	padding-bottom: 9px;
 }
 #anime_score {
-	margin-right: 50px;
+	margin-right: 15px;
+	margin-left: 5%;
 	white-space: nowrap;
 }
 #anime_episode_count {
 	/*margin-right: 15px;*/
 	white-space: nowrap;
+}
+#user_score, #user_status {
+	margin-right: 25px;
+	white-space: nowrap;
+}
+#anime_score_episode_section i {
+	vertical-align: sub;
 }
 #external_links {
 	position: absolute;
@@ -111,11 +123,12 @@ a {
 .description_circle  .mdc-typography--body2 {
 	font-size: 1rem;
 }
-#anime_fab {
+#anime_button {
 	position: absolute;
-	top: 20rem;
     right: 4rem;
+    top: -3px;
     z-index: 3;
+    background-color: var(--mdc-theme-secondary);
 }
 #description .mdc-typography--body2 {
 	line-height: 0;
@@ -152,15 +165,13 @@ a {
 	#anime_image {
 		height: 200px;
 	}
-	#anime_image, #next_episode, #anime_score {
+	#anime_image, #next_episode, #anime_score, #user_status {
 		margin-left: 12px;
 	}
 	#anime_title_section {
 		margin-right: 12px;
 	}
-	#anime_fab {
-		position: fixed;
-	    top: auto;
+	#anime_button {
 	    right: 1rem;
 	}
 	#anime_description, #extra_detail_section, #trailer_section, #episode_section {

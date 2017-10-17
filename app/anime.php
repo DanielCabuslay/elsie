@@ -196,60 +196,39 @@ foreach($userList->anime as $a) {
                     </div>
                 </section>
                 <section id="hero_middle">
-                    <div id="next_episode">
+                    <div id="anime_score_episode_section">
+                        <span id="anime_score">
+                            <span class="mdc-typography--title">
+                                <i class="material-icons">star</i>
+                                <?php if($animeInfo->status != 'Not yet aired') {
+                                    echo $animeInfo->score;
+                                } else {
+                                    echo 'N/A';
+                                }  ?>
+                            </span>
+                        </span>
+                        <span id="anime_episode_count">
+                            <span class="mdc-typography--title">
+                                <i class="material-icons">playlist_play</i>
+                                <?php if($animeInfo->episodes != '0') {
+                                    echo $animeInfo->episodes;
+                                } else {
+                                    echo 'N/A';
+                                } ?>
+                            </span>
+                        </span>
                     </div>
+                    <?php if($userSaved): ?>
+                        <button id="anime_button" class="mdc-button mdc-button--raised">Edit Status</button>
+                    <?php else: ?>
+                        <button id="anime_button" class="mdc-button mdc-button--raised">Add to List</button>
+                    <?php endif;?>
                 </section>
                 <section id="hero_bottom">
-                        <?php if($userSaved): ?>
-                            <button id="anime_fab" class="mdc-fab material-icons">
-                                <span class="mdc-fab__icon">edit</span>
-                            </button>
-                        <?php else: ?>
-                            <button id="anime_fab" class="mdc-fab material-icons">
-                                <span class="mdc-fab__icon">add</span>
-                            </button>
-                        <?php endif;?>
-                    
+                    <div id="next_episode"></div>                    
                 </section>
             </div>
             <div id="anime_info_body">
-
-                <section id="anime_score_episode_section">
-                    <span id="anime_score">
-                        <span class="mdc-typography--display1">
-                            <?php if($animeInfo->status != 'Not yet aired') {
-                                echo $animeInfo->score;
-                            } else {
-                                echo 'N/A';
-                            }  ?>
-                            <i class="material-icons">star</i>
-                        </span>
-                    </span>
-                    <span id="anime_episode_count">
-                        <span class="mdc-typography--display1">
-                            <?php if($animeInfo->episodes != '0') {
-                                echo $animeInfo->episodes;
-                            } else {
-                                echo 'N/A';
-                            } ?>
-                            <i class="material-icons">playlist_play</i>
-                        </span>
-                    </span>
-                    <!-- <div class="description_circle">
-                        <span class="mdc-typography--caption">Episodes</span>
-                    </div> -->
-                    <!-- <div class="description_circle">
-                        <span class="mdc-typography--caption">Rating</span>
-                        <span class="mdc-typography--body2">
-                            <?php if($animeInfo->status != 'Not yet aired') {
-                                echo $animeInfo->score;
-                            } else {
-                                echo 'N/A';
-                            }  ?></span>
-                    </div> -->
-                </section>
-                
-                <hr class="mdc-list-divider">
 
                 <section id="anime_description">
                     <div id="description">
@@ -426,7 +405,7 @@ function handleData(data) {
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
         // var timeUntilAiring = moment.unix(nextEp['airingAt']).fromNow();
-        $('#next_episode').html('<span class="mdc-typography--body2">Episode ' + nextEp['episode'] + ': ' +  airingAt + '</span>');
+        $('#next_episode').html('<span class="mdc-typography--caption">Episode ' + nextEp['episode'] + ': ' +  airingAt + '</span>');
     }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
@@ -469,9 +448,9 @@ function handleError(error) {
 // window.onload = function() {
 </script>
 <script>
-document.querySelector('#anime_fab').addEventListener('click', function (evt) {
+document.querySelector('#anime_button').addEventListener('click', function (evt) {
     // $('#anime_fab').fadeOut('fast');
-    if ($('#anime_fab span').text() == 'edit') {
+    if ($('#anime_button').text() == 'Edit Status') {
         var dialog = new mdc.dialog.MDCDialog(document.querySelector('#edit_dialog'));
     } else {
         var dialog = new mdc.dialog.MDCDialog(document.querySelector('#add_dialog'));
