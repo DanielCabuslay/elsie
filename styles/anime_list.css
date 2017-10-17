@@ -10,6 +10,9 @@
     margin: auto;
     padding-left: 61px;
 }
+#anime_list_nav .mdc-tab-bar__indicator {
+	display: none;
+}
 .anime_list_item {
 	cursor: pointer;
 	position: relative;
@@ -25,8 +28,6 @@
 	vertical-align: middle;
 }
 .mdc-button__icon {
-	/*font-size: 18px;*/
-	/*vertical-align: sub;*/
 	margin-right: 0px;
 }
 #completed_list, #on_hold_list, #dropped_list, #ptw_list {
@@ -38,7 +39,6 @@
 .mdc-tab__icon+.mdc-tab__icon-text {
 	padding-bottom: 6px;
 	padding-top: 0px;
-	display: none;	
 }
 .mdc-tab__icon-text {
 	font-size: .6rem;
@@ -62,7 +62,6 @@
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;
-		display: block;
 	}
 	.mdc-tab__icon-text {
 		font-size: .6rem;

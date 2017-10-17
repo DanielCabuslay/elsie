@@ -101,7 +101,7 @@ $data = new SimpleXMLElement($xml);
                 <i class="material-icons mdc-tab__icon" aria-hidden="true">add</i>
                 <span class="mdc-tab__icon-text">Plan to Watch</span>
             </a>
-            <!-- <span class="mdc-tab-bar__indicator"></span> -->
+            <span class="mdc-tab-bar__indicator"></span>
         </nav>
         <div id="anime_list" class="mdc-typography--body1">
             <div class="mdc-card">
@@ -313,14 +313,14 @@ $data = new SimpleXMLElement($xml);
         $('.mdc-linear-progress').css('display', 'none');
     };
 </script>
-<script>
+<!-- <script>
     var drawerEl = document.querySelector('.mdc-temporary-drawer');
     var MDCTemporaryDrawer = mdc.drawer.MDCTemporaryDrawer;
     var drawer = new MDCTemporaryDrawer(drawerEl);
     document.querySelector('.menu').addEventListener('click', function() {
         drawer.open = true;
     });
-</script>
+</script> -->
 <script type="text/javascript">
 var request;
 $('.anime_list_item').click(function() {
