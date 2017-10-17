@@ -155,7 +155,7 @@ foreach($userList->anime as $a) {
     <main>
         <div id="anime_info_section" class="mdc-typography--body1" anime_id="<?= $animeInfo->id ?>">
             <div id="hero_header">
-                <section>
+                <section id="hero_top">
                     <div id="anime_image">
                         <img id="image" src="<?= $animeInfo->image ?>">
                     </div>
@@ -183,8 +183,6 @@ foreach($userList->anime as $a) {
                                  ?>
                             </span>
                         </div>
-                        <div id="next_episode">
-                        </div>
                         <div id="external_links">
                             <button id="sites_toggle" class="mdc-button icon_button">
                                 <i class="material-icons">public</i>
@@ -195,7 +193,13 @@ foreach($userList->anime as $a) {
                                 </ul>
                             </div>
                         </div>
-
+                    </div>
+                </section>
+                <section id="hero_middle">
+                    <div id="next_episode">
+                    </div>
+                </section>
+                <section id="hero_bottom">
                         <?php if($userSaved): ?>
                             <button id="anime_fab" class="mdc-fab material-icons">
                                 <span class="mdc-fab__icon">edit</span>
@@ -205,17 +209,36 @@ foreach($userList->anime as $a) {
                                 <span class="mdc-fab__icon">add</span>
                             </button>
                         <?php endif;?>
-                    </div>
+                    
                 </section>
             </div>
             <div id="anime_info_body">
 
-                <section id="circle_row">
-                    <div class="description_circle">
+                <section id="anime_score_episode_section">
+                    <span id="anime_score">
+                        <span class="mdc-typography--display1">
+                            <?php if($animeInfo->status != 'Not yet aired') {
+                                echo $animeInfo->score;
+                            } else {
+                                echo 'N/A';
+                            }  ?>
+                            <i class="material-icons">star</i>
+                        </span>
+                    </span>
+                    <span id="anime_episode_count">
+                        <span class="mdc-typography--display1">
+                            <?php if($animeInfo->episodes != '0') {
+                                echo $animeInfo->episodes;
+                            } else {
+                                echo 'N/A';
+                            } ?>
+                            <i class="material-icons">playlist_play</i>
+                        </span>
+                    </span>
+                    <!-- <div class="description_circle">
                         <span class="mdc-typography--caption">Episodes</span>
-                        <span class="mdc-typography--body2"><?= $animeInfo->episodes ?></span>
-                    </div>
-                    <div class="description_circle">
+                    </div> -->
+                    <!-- <div class="description_circle">
                         <span class="mdc-typography--caption">Rating</span>
                         <span class="mdc-typography--body2">
                             <?php if($animeInfo->status != 'Not yet aired') {
@@ -223,7 +246,7 @@ foreach($userList->anime as $a) {
                             } else {
                                 echo 'N/A';
                             }  ?></span>
-                    </div>
+                    </div> -->
                 </section>
                 
                 <hr class="mdc-list-divider">
@@ -403,7 +426,7 @@ function handleData(data) {
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
         // var timeUntilAiring = moment.unix(nextEp['airingAt']).fromNow();
-        $('#next_episode').html('<span class="mdc-typography--caption">Episode ' + nextEp['episode'] + ': ' +  airingAt + '</span>');
+        $('#next_episode').html('<span class="mdc-typography--body2">Episode ' + nextEp['episode'] + ': ' +  airingAt + '</span>');
     }
     if (links != null) {
         for(var i = 0; i < links.length; i++) {
