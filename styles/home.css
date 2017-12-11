@@ -6,27 +6,25 @@
   --mdc-theme-secondary-light: #ffb2dd;
   --mdc-theme-secondary-dark: #c94f7c;
 }
+html {
+  background-color: #fff;
+}
+body {
+  height: 100vh;
+  display: flex;
+}
 main {
-	text-align: center;
-	margin: 12px;
-}
-#help {
-	position: absolute;
-    top: 12px;
-    right: 12px;
-    cursor: pointer;
-}
-.mdc-button--primary {
-	background-color: var(--mdc-theme-primary)!important;
+  margin: auto;
+  text-align: center;
 }
 #elsie_circle {
 	background-image: url(../images/elsie-1080.jpg);
-    height: 200px;
-    background-position: center;
-    background-size: cover;
-    width: 200px;
-    margin: 1rem auto;
-    border-radius: 50%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  width: 200px;
+  margin: 1rem auto;
+  border-radius: 50%;
 }
 #title, #server_message {
 	margin-bottom: 1rem;
@@ -37,7 +35,5 @@ main {
 #server_message {
 	max-width: 500px;
 	margin: auto;
-}
-.mdc-textfield {
-	width: 300px;
+  margin-top: 1rem
 }

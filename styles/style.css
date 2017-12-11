@@ -11,18 +11,29 @@ body {
     top: 16px;
     right: 20px;
 }
-#page_progress {
+#elsie_circle {
+    background-image: url(../images/elsie-1080.jpg);
+    height: 75px;
+    background-position: center;
+    background-size: cover;
+    width: 75px;
+    margin-right: 1rem;
+    border-radius: 50%;
+}
+.mdc-linear-progress {
 	position: absolute;
 	bottom: 0;
+	display: none;
 }
 .mdc-dialog {
 	z-index: 24;
 }
-.mdc-dialog__body {
-	color: var(--mdc-theme-text-primary-on-light,rgba(0,0,0,.87));
+.mdc-dialog__header {
+	padding: 24px;
 }
-.mdc-toolbar-fixed-adjust {
-	display: none;
+.mdc-dialog__body {
+	margin-top: 0;
+	color: var(--mdc-theme-text-primary-on-light,rgba(0,0,0,.87));
 }
 .mdc-fab {
 	position: fixed;
@@ -30,16 +41,8 @@ body {
     bottom: 1.5rem;
     right: 1.5rem;
 }
-.mdc-temporary-drawer {
-	z-index: 16;
-}
-.mdc-temporary-drawer__header {
-    background-color: var(--mdc-theme-primary);
-    color: var(--mdc-theme-text-primary-on-primary);
-}
-.mdc-temporary-drawer__header-content span {
-	font-size: 1rem;
-	margin-bottom: 12px;
+.mdc-snackbar {
+	z-index: 8;
 }
 .mdc-simple-menu {
 	overflow-y: hidden;
@@ -69,6 +72,7 @@ body {
 	height: 100%;
 	background-color: #fff;
 	border-right: 1px solid rgba(0,0,0,.12);
+	width: 80px;
 }
 .bottom_bar_nav a {
     display: block; 
@@ -92,10 +96,6 @@ body {
 	#avatar {
 		top: 12px;
 		right: 12px;
-	}
-	.mobile_spacer {
-		display: block;
-		height: 60px;
 	}
 	.spacer {
 		display: none;

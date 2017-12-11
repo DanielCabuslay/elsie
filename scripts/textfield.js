@@ -1,6 +1,6 @@
 (function() {
-    var tfs = document.querySelectorAll('.mdc-textfield:not([data-demo-no-auto-js])');
+    var tfs = document.querySelectorAll('.mdc-text-field:not([data-demo-no-auto-js])');
     for (var i = 0, tf; tf = tfs[i]; i++) {
-        mdc.textfield.MDCTextfield.attachTo(tf);
+      mdc.textField.MDCTextField.attachTo(tf);
     }
-})();
+  })();

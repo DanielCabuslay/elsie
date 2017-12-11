@@ -4,11 +4,54 @@
 #list_drop_down {
 	padding-left: 2px;
 }
+#info-dialog .mdc-dialog__header {
+	padding: 0;
+	background-position: center;
+    background-size: cover;
+	color: var(--mdc-theme-text-primary-on-primary);
+	position: relative;
+}
+#anilist_banner {
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+}
+#anilist_banner, #info-dialog .mdc-dialog__header {
+	height: 248px;
+}
+#anime_title_info {
+	position: absolute;
+	background-color: var(--mdc-theme-primary);
+	transition: background-color 300ms linear;
+	display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 0
+}
+#mal_poster {
+	margin-right: 12px;
+	height: 200px;
+	margin-left: 24px;
+}
+#mal_poster, #title_text {
+	margin-top: 24px;
+}
+#info-dialog .mdc-list-group__subheader {
+	color: var(--mdc-theme-primary);
+}
+#info-dialog .mdc-dialog__body--scrollable {
+	max-height: 20rem;
+}
+#info-dialog .mdc-list-item {
+	white-space: initial;
+}
 #anime_list {
 	align-items: center;
-    width: calc(100vw - 212px);
+    width: calc(100vw - 240px);
     margin: auto;
-    padding-left: 61px;
+}
+#anime_list section .mdc-list-divider:last-child {
+	display: none;
 }
 #anime_list_nav .mdc-tab-bar__indicator {
 	display: none;
@@ -16,16 +59,6 @@
 .anime_list_item {
 	cursor: pointer;
 	position: relative;
-}
-.anime_list_options {
-	height: 48px!important;
-	display: none;
-}
-.anime_list_add, .anime_list_edit, .anime_list_delete {
-	width: calc(100vw / 3);
-}
-.anime_list_add i, .anime_list_edit i, .anime_list_delete i {
-	vertical-align: middle;
 }
 .mdc-button__icon {
 	margin-right: 0px;
@@ -46,7 +79,7 @@
 .mdc-tab--active {
 	color: var(--mdc-theme-primary)!important;
 }
-.mdc-list--two-line.mdc-list--dense .mdc-list-item, .mdc-list--two-line .mdc-list-item {
+.mdc-list--two-line.mdc-list--dense .anime_list_item, .mdc-list--two-line .anime_list_item {
 	height: 80px;
 }
 .anime_list_thumb {
@@ -54,11 +87,20 @@
     margin-right: 18px!important;
 }
 @media (max-width: 1023px) {
+	#mal_poster {
+		height: 128px;
+	}
+	#anilist_banner, #info-dialog .mdc-dialog__header {
+		height: 176px;
+	}
 	#anime_list {
 		align-items: center;
 	    width: 100%;
 	    margin: auto;
     	padding-left: 0px;
+	}
+	#anime_list .mdc-list-group {
+		padding-bottom: 60px;
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;

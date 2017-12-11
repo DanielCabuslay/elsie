@@ -1,21 +1,25 @@
 <?php
 session_start();
-
-unset($_SESSION['searchResultsXml']);
-
 $id = $_POST['id'];
-$title = $_POST['title'];
-// echo $id;
-// echo $title;
-
-$ch = curl_init("https://myanimelist.net/api/anime/search.xml?q=" . urlencode($title));
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_USERPWD, $_SESSION['user'].":".$_SESSION['password']); 
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-
-$output = curl_exec($ch);
-$status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
-
-$_SESSION['searchResultsXml'] = $output;
+$anime_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
+$anime_data = new SimpleXMLElement($anime_xml);
+foreach($anime_data->anime as $anime) {
+	if ($anime->series_animedb_id == $id) {
+		$array = [
+			"title" => $anime->series_title,
+			"image" => $anime->series_image,
+			"type" => $anime->series_type,
+			"episodes" => $anime->series_episodes,
+			"status" => $anime->series_status,
+			"start_date" => $anime->series_start,
+			"end_date" => $anime->series_end,
+			"user_status" => $anime->my_status,
+			"user_episodes" => $anime->my_watched_episodes,
+			"user_score" => $anime->my_score,
+			"user_start_date" => $anime->my_start_date,
+			"user_end_date" => $anime->my_finish_date
+		];
+		echo json_encode($array);
+	}
+}
 ?>
