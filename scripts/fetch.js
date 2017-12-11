@@ -121,7 +121,6 @@ function populateDialog(json) {
 $('#info-dialog .mdc-dialog__footer__button--accept').click(function() {
     $('#anime_title_info').css('background-color', 'var(--mdc-theme-primary)');
     $('#anilist_banner').attr('src', '');
-    $('#anilist_banner').css('opacity', 0);
     $('#hashtag').text('');
     $('#next_episode').text('');
 });
