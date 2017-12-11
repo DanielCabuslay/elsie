@@ -40,7 +40,7 @@ if (!isset($_SESSION['message'])) {
                     <input type="text" id="mal_user" name="mal_user" maxlength="16" class="mdc-text-field__input">
                     <label class="mdc-text-field__label" for="mal_user">Username</label>
                 </div><br>
-                <input type="submit" class="mdc-button mdc-button--raised mdc-button--primary" value="Login" />
+                <input type="submit" class="mdc-button mdc-button--raised mdc-button--primary" value="Enter" />
             </form>
         </div>
     </main>        

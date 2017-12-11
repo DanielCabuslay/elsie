@@ -36,6 +36,9 @@
 #mal_poster, #title_text {
 	margin-top: 24px;
 }
+#title_text {
+	margin-right: 24px;
+}
 #info-dialog .mdc-list-group__subheader {
 	color: var(--mdc-theme-primary);
 }
