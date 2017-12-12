@@ -86,7 +86,6 @@ main {
 }
 .mdc-tab--active, .mdc-tab:hover {
 	color: var(--mdc-theme-primary);
-	transition: color 150ms linear;
 }
 .mdc-list--two-line.mdc-list--dense .anime_list_item, .mdc-list--two-line .anime_list_item {
 	height: 80px;

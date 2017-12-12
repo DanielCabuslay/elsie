@@ -7,9 +7,9 @@
   --mdc-theme-secondary-dark: #0064b7;
 }*/
 :root {
-  --mdc-theme-primary: #fafafa;
-  --mdc-theme-primary-light: #ffffff;
-  --mdc-theme-primary-dark: #c7c7c7;
+  --mdc-theme-primary: #0d47a1;
+  --mdc-theme-primary-light: #5472d3;
+  --mdc-theme-primary-dark: #002171;
   --mdc-theme-secondary: #2962ff;
   --mdc-theme-secondary-light: #768fff;
   --mdc-theme-secondary-dark: #0039cb;

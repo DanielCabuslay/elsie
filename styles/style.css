@@ -43,6 +43,9 @@ body {
     bottom: 1.5rem;
     right: 1.5rem;
 }
+.mdc-tab {
+	transition: color 150ms linear;
+}
 .mdc-snackbar {
 	z-index: 8;
 }
