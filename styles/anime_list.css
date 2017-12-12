@@ -21,12 +21,13 @@
 }
 #anime_title_info {
 	position: absolute;
-	background-color: var(--mdc-theme-primary);
-	transition: background-color 200ms linear;
+	background: var(--mdc-theme-primary);
+	transition: background 300ms linear;
 	display: flex;
     height: 100%;
     width: 100%;
-    padding: 0
+    padding: 0;
+    align-items: flex-end;
 }
 #mal_poster {
 	margin-right: 12px;
@@ -34,7 +35,7 @@
 	margin-left: 24px;
 }
 #mal_poster, #title_text {
-	margin-top: 24px;
+	margin-bottom: 24px;
 }
 #title_text {
 	margin-right: 24px;

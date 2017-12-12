@@ -35,7 +35,7 @@ $('.anime_list_item').click(function() {
 
 function clearDialog() {
     //Clear previous data
-    $('#anime_title_info').css('background-color', 'var(--mdc-theme-primary)');
+    $('#anime_title_info').css('background', 'var(--mdc-theme-primary)');
     $('#anilist_banner').attr('src', '');
     $('#hashtag').text('');
     $('#next_episode').text('');
