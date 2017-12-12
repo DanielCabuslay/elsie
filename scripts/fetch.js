@@ -20,13 +20,7 @@ $('.anime_list_item').click(function() {
     });
     request.fail(function (jqXHR, textStatus, errorThrown){
         var dataObj = {
-          message: 'Unable to fetch data',
-          actionText: 'Dismiss',
-          actionHandler: function () {
-            console.error("The following error occurred: "+
-                textStatus, errorThrown
-            );
-          }
+          message: 'Unable to fetch data'
         };
         snackbar.show(dataObj);
         $('.mdc-linear-progress').css('display', 'none');

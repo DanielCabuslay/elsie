@@ -16,6 +16,10 @@ $(window).ready(function() {
   $('main').fadeIn(150);
   getContentHeight();
   $('.mdc-linear-progress').fadeOut(100);
+  var dataObj = {
+    message: 'Anime List loaded'
+  };
+  snackbar.show(dataObj);
 });
 
 $(window).resize(function() {
