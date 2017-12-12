@@ -54,7 +54,7 @@ $('#anime_list_nav a').click(function() {
       getContentHeight();
     });
   } else if (clicked_section == 'on_hold_button') {
-    $(':root').css('--mdc-theme-primary', '#fbc02d');
+    $(':root').css('--mdc-theme-primary', '#f9a825');
     $('#on_hold_list').fadeIn(150, function() {
       getContentHeight();
     });

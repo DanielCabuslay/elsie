@@ -80,7 +80,4 @@
     .mdc-toolbar__section--align-start {
         max-width: inherit;
     }
-    .mdc-toolbar__section--align-end {
-        max-width: 48px;
-    }
 }

@@ -43,7 +43,7 @@
             </ul>
         </div>
         <div class="mdc-list-group">
-            <h3 class="mdc-list-group__subheader">Your Info</h3>
+            <h3 class="mdc-list-group__subheader"><?php echo $_SESSION['user']; ?>'s Stats</h3>
             <ul class="mdc-list mdc-list--two-line mdc-list--dense">
                 <li id="info_dialog_user_status" class="mdc-list-item">
                     <span class="mdc-list-item__text">Status

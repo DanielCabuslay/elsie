@@ -13,7 +13,7 @@ $manga_data = new SimpleXMLElement($manga_xml);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title><?php echo $_SESSION['user']; ?>'s Anime List</title>
+        <title>Elsie | Anime List</title>
         <link rel="stylesheet" href="https://unpkg.com/material-components-web@0.26.0/dist/material-components-web.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -34,9 +34,8 @@ $manga_data = new SimpleXMLElement($manga_xml);
         <header class="mdc-toolbar mdc-toolbar--fixed">
             <div class="mdc-toolbar__row">
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <!-- <a href="#" class="material-icons mdc-toolbar__menu-icon menu">menu</a> -->
-                    <span class="mdc-toolbar__title">Anime List</span>
-                    <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i>
+                    <span class="mdc-toolbar__title"><?php echo $_SESSION['user']; ?>'s Anime List</span>
+                    <!-- <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i> -->
                     <div class="mdc-simple-menu" style="position: absolute; top: 12px; left: 12px;" tabindex="-1" id="list_menu">
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
                             <li class="mdc-list-item" role="menuitem" tabindex="0">Anime List</li>
@@ -44,7 +43,7 @@ $manga_data = new SimpleXMLElement($manga_xml);
                         </ul>
                     </div>
                 </section>
-                <section id="search_section" class="mdc-toolbar__section">
+                <!-- <section id="search_section" class="mdc-toolbar__section">
                     <i class="material-icons mdc-toolbar__menu-icon">search</i>
                     <form id="mal_search">
                         <div class="mdc-text-field" id="search_textfield" data-demo-no-auto-js="">
@@ -52,9 +51,9 @@ $manga_data = new SimpleXMLElement($manga_xml);
                         </div>
                     </form>
                     <i id="search_close" class="material-icons mdc-toolbar__menu-icon">close</i>
-                </section>
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
-                    <i id="search_button_menu" class="material-icons mdc-toolbar__icon">search</i>
+                </section> -->
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-end mdc-toolbar__section--shrink-to-fit" role="toolbar">
+                    <!-- <i id="search_button_menu" class="material-icons mdc-toolbar__icon">search</i> -->
                     <i id="options_button" class="material-icons mdc-toolbar__icon">more_vert</i>
                     <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="options_menu">
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
