@@ -17,7 +17,7 @@
 	width: 100%;
 }
 #anilist_banner, #info-dialog .mdc-dialog__header {
-	height: 248px;
+	height: 250px;
 }
 #anime_title_info {
 	position: absolute;
@@ -31,7 +31,7 @@
 }
 #mal_poster {
 	margin-right: 12px;
-	height: 200px;
+	width: 110px;
 	margin-left: 24px;
 }
 #mal_poster, #title_text {
@@ -92,10 +92,10 @@
 }
 @media (max-width: 1023px) {
 	#mal_poster {
-		height: 128px;
+		width: 80px;
 	}
 	#anilist_banner, #info-dialog .mdc-dialog__header {
-		height: 176px;
+		height: 175px;
 	}
 	#anime_list {
 		align-items: center;
