@@ -10,7 +10,7 @@
     <footer class="mdc-dialog__footer">
       <a type="button" class="mdc-button mdc-dialog__footer__button" target="_blank" href="https://ddccabuslay.me">My Website</a>
       <a type="button" class="mdc-button mdc-dialog__footer__button" target="_blank" href="https://github.com/DdcCabuslay/elsie">View on GitHub</a>
-      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Close</button>
+      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Close</button>
     </footer>
   </div>
   <div class="mdc-dialog__backdrop"></div>

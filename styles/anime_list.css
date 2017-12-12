@@ -22,7 +22,7 @@
 #anime_title_info {
 	position: absolute;
 	background-color: var(--mdc-theme-primary);
-	transition: background-color 300ms linear;
+	transition: background-color 200ms linear;
 	display: flex;
     height: 100%;
     width: 100%;

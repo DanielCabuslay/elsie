@@ -6,6 +6,7 @@ $anime_data = new SimpleXMLElement($anime_xml);
 foreach($anime_data->anime as $anime) {
 	if ($anime->series_animedb_id == $id) {
 		$array = [
+			"id" => $anime->series_animedb_id,
 			"title" => $anime->series_title,
 			"image" => $anime->series_image,
 			"type" => $anime->series_type,

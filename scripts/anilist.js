@@ -43,8 +43,7 @@ function fetchAniListData(id) {
         populateAniListData(data);
     }
     function handleError(error) {
-        // alert('Error, check console');
-        console.error(error);
+        console.error("No AniList data found");
     }
 }
 
@@ -54,8 +53,8 @@ function populateAniListData(data) {
     var links = data['data']['Media']['externalLinks'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (bgUrl != null) {
-        $('#anime_title_info').css('background-color', 'rgba(0, 0, 0, 0.5)');
         $('#anilist_banner').attr('src', bgUrl);
+        $('#anime_title_info').css('background-color', 'rgba(0, 0, 0, 0.55)');
     } else {
         $('#anime_title_info').css('background-color', 'var(--mdc-theme-primary)');
     }
@@ -74,13 +73,4 @@ function populateAniListData(data) {
             $('#hashtag').append('<a class="mdc-typography--body2" target="_blank" href="https://twitter.com/search?q=%23' + hashtags[i] + '">#' + hashtags[i] + '</a>');
         }
     }
-    // if ($('#hero_header img').attr('src').length > 0) {
-    //     $('#hero_header img').on('load', function() {
-    //         $('.mdc-toolbar-fixed-adjust').css('display', 'block');
-    //         $('#page_progress').css('display', 'none');
-    //     });
-    // } else {
-    //     $('.mdc-toolbar-fixed-adjust').css('display', 'block');
-    // }
-    // var json = JSON.parse(data);
 } 

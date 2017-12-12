@@ -112,7 +112,14 @@ $manga_data = new SimpleXMLElement($manga_xml);
                                 <?php foreach($anime_data->anime as $a):
                                 if ($a->my_status == '1'): ?>
                                 <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
+                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="
+                                    <?php 
+                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
+                                            echo '../images/unknown.png';
+                                        } else {
+                                            echo $a->series_image;
+                                        }
+                                    ?>">
                                     <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                         <span class="mdc-list-item__text__secondary">
                                             <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
@@ -130,7 +137,14 @@ $manga_data = new SimpleXMLElement($manga_xml);
                                 if ($a->my_status == '2'): ?>
                                 <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
                                     <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
+                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="
+                                    <?php 
+                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
+                                            echo '../images/unknown.png';
+                                        } else {
+                                            echo $a->series_image;
+                                        }
+                                    ?>">
                                     <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                         <span class="mdc-list-item__text__secondary">
                                             <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
@@ -148,7 +162,14 @@ $manga_data = new SimpleXMLElement($manga_xml);
                                 if ($a->my_status == '3'): ?>
                                 <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
                                     <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
+                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="
+                                    <?php 
+                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
+                                            echo '../images/unknown.png';
+                                        } else {
+                                            echo $a->series_image;
+                                        }
+                                    ?>">
                                     <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                         <span class="mdc-list-item__text__secondary">
                                             <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
@@ -166,7 +187,14 @@ $manga_data = new SimpleXMLElement($manga_xml);
                                 if ($a->my_status == '4'): ?>
                                 <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
                                     <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
+                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="
+                                    <?php 
+                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
+                                            echo '../images/unknown.png';
+                                        } else {
+                                            echo $a->series_image;
+                                        }
+                                    ?>">
                                     <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
                                         <span class="mdc-list-item__text__secondary">
                                             <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
@@ -184,7 +212,14 @@ $manga_data = new SimpleXMLElement($manga_xml);
                                 if ($a->my_status == '6'): ?>
                                 <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
                                     <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="<?= $a->series_image ?>">
+                                    <img class="mdc-list-item__start-detail anime_list_thumb" style="width: 49px; height: 72px;" src="
+                                    <?php 
+                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
+                                            echo '../images/unknown.png';
+                                        } else {
+                                            echo $a->series_image;
+                                        }
+                                    ?>">
                                     <span class="mdc-list-item__text title anime_title"><?= $a->series_title ?>
                                         <span class="mdc-list-item__text__secondary">
                                             <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
