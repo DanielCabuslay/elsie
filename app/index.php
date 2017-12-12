@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['user'])) {
-header('Location: ../index.php');
+header('Location: ..');
 }
 $anime_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
 $manga_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=manga');
