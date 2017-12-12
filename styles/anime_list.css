@@ -1,3 +1,6 @@
+main {
+	display: none;
+}
 .anime_id {
 	display: none;
 }
@@ -10,6 +13,9 @@
     background-size: cover;
 	color: var(--mdc-theme-text-primary-on-primary);
 	position: relative;
+}
+#info-dialog .mdc-list-group {
+	padding: 0;
 }
 #anilist_banner {
 	object-fit: cover;
@@ -30,15 +36,13 @@
     align-items: flex-end;
 }
 #mal_poster {
-	margin-right: 12px;
 	width: 110px;
-	margin-left: 24px;
 }
 #mal_poster, #title_text {
-	margin-bottom: 24px;
+	margin: 0 0 12px 12px;
 }
 #title_text {
-	margin-right: 24px;
+	margin-right: 12px;
 }
 #info-dialog .mdc-list-group__subheader {
 	color: var(--mdc-theme-primary);
@@ -80,8 +84,9 @@
 .mdc-tab__icon-text {
 	font-size: .6rem;
 }
-.mdc-tab--active {
-	color: var(--mdc-theme-primary)!important;
+.mdc-tab--active, .mdc-tab:hover {
+	color: var(--mdc-theme-primary);
+	transition: color 150ms linear;
 }
 .mdc-list--two-line.mdc-list--dense .anime_list_item, .mdc-list--two-line .anime_list_item {
 	height: 80px;
@@ -102,9 +107,6 @@
 	    width: 100%;
 	    margin: auto;
     	padding-left: 0px;
-	}
-	#anime_list .mdc-list-group {
-		padding-bottom: 60px;
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;

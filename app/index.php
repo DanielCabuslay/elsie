@@ -24,7 +24,7 @@ $manga_data = new SimpleXMLElement($manga_xml);
         <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
         <link rel="shortcut_icon" href="/images/favicon/favicon.png">
         <link rel="manifest" href="/manifest.json">
-        <meta name="theme-color" content="#0d47a1">
+        <meta name="theme-color" content="#fafafa">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
@@ -261,37 +261,5 @@ $manga_data = new SimpleXMLElement($manga_xml);
     <script src="../scripts/options_menu.js"></script>
     <script src="../scripts/fetch.js"></script>
     <script src="../scripts/anilist.js"></script>
-    <script type="text/javascript">
-    </script>
-    <script>
-    $('#anime_list_nav a').click(function() {
-        $('#anime_list section').css('display', 'none');
-        var clicked_section = $(this).attr('id');
-        if (clicked_section == 'watching_button') {
-            $('#watching_list').css('display', 'block');
-        } else if (clicked_section == 'completed_button') {
-            $('#completed_list').css('display', 'block');
-        } else if (clicked_section == 'on_hold_button') {
-            $('#on_hold_list').css('display', 'block');
-        } else if (clicked_section == 'dropped_button') {
-            $('#dropped_list').css('display', 'block');
-        } else if (clicked_section == 'ptw_button') {
-            $('#ptw_list').css('display', 'block');
-        }
-        window.scrollTo(0, 0);
-    });
-    </script>
-    <script>
-    (function() {
-    setTimeout(function () {
-    window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
-    },200)
-    })();
-    </script>
-    <script>
-    var about_dialog = new mdc.dialog.MDCDialog(document.querySelector('#about-dialog'));
-    document.querySelector('#about_option').addEventListener('click', function (evt) {
-        about_dialog.show();
-    });
-    </script>
+    <script src="../scripts/window.js"></script>
 </html>

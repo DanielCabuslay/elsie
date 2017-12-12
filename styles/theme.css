@@ -1,14 +1,22 @@
-:root {
+/*:root {
   --mdc-theme-primary: #0d47a1;
   --mdc-theme-primary-light: #5472d3;
   --mdc-theme-primary-dark: #002171;
   --mdc-theme-secondary: #0091ea;
   --mdc-theme-secondary-light: #64c1ff;
   --mdc-theme-secondary-dark: #0064b7;
+}*/
+:root {
+  --mdc-theme-primary: #fafafa;
+  --mdc-theme-primary-light: #ffffff;
+  --mdc-theme-primary-dark: #c7c7c7;
+  --mdc-theme-secondary: #2962ff;
+  --mdc-theme-secondary-light: #768fff;
+  --mdc-theme-secondary-dark: #0039cb;
 }
 a {
 	text-decoration: none;
-	color: var(--mdc-theme-secondary-light);
+	color: #fff;
 }
 html, #search_background {
 	background-color: #f5f5f5;

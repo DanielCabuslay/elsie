@@ -21,9 +21,11 @@ body {
     border-radius: 50%;
 }
 .mdc-linear-progress {
-	position: absolute;
-	bottom: 0;
-	display: none;
+	position: fixed;
+	top: 0;
+}
+.mdc-linear-progress .mdc-linear-progress__bar-inner {
+	background-color: var(--mdc-theme-secondary);
 }
 .mdc-dialog {
 	z-index: 24;
@@ -33,7 +35,7 @@ body {
 }
 .mdc-dialog__body {
 	margin-top: 0;
-	color: var(--mdc-theme-text-primary-on-light,rgba(0,0,0,.87));
+	color: var(--mdc-theme-text-primary-on-light);
 }
 .mdc-fab {
 	position: fixed;
@@ -74,6 +76,9 @@ body {
 	border-right: 1px solid rgba(0,0,0,.12);
 	width: 80px;
 }
+.bottom_bar_nav, .mdc-toolbar {
+	transition: all 180ms cubic-bezier(0.4, 0, 1, 1);
+}
 .bottom_bar_nav a {
     display: block; 
     min-width: 60px;
@@ -89,7 +94,7 @@ body {
 	vertical-align: sub;
 }
 .mdc-list-item__end-detail {
-	color: var(--mdc-theme-text-secondary-on-background,rgba(0,0,0,.54));
+	color: var(--mdc-theme-text-secondary-on-background);
 	text-decoration: none;
 }
 @media (max-width: 1023px) {
@@ -118,5 +123,11 @@ body {
 	.bottom_bar_nav a {
 		display: table-cell;
 		width: 20vw;
+	}
+	.mdc-toolbar_hidden {
+		top: -70px;
+	}
+	.bottom_bar_scroll {
+		bottom: -61px;
 	}
 }

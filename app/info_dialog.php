@@ -36,7 +36,7 @@
                     </span>
                 </li>
                 <li id="info_dialog_premiered" class="mdc-list-item">
-                    <span class="mdc-list-item__text">Premiered
+                    <span class="mdc-list-item__text">Season
                         <span class="mdc-list-item__text__secondary">Spring 2017</span>
                     </span>
                 </li>
