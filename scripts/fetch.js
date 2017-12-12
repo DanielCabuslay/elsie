@@ -3,6 +3,7 @@ const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snack
 var request;
 $('.anime_list_item').click(function() {
     $('.mdc-linear-progress').css('display', 'block');
+    clearDialog();
     var id = $(this).attr('anime_id');
     request = $.ajax({
         url: "anime_fetch_info.php",
@@ -31,6 +32,14 @@ $('.anime_list_item').click(function() {
         $('.mdc-linear-progress').css('display', 'none');
     });
 });
+
+function clearDialog() {
+    //Clear previous data
+    $('#anime_title_info').css('background-color', 'var(--mdc-theme-primary)');
+    $('#anilist_banner').attr('src', '');
+    $('#hashtag').text('');
+    $('#next_episode').text('');
+}
 
 function populateDialog(json) {
     //Image
@@ -131,13 +140,6 @@ function populateDialog(json) {
     //MAL Link
     $('#mal_link_button').attr('href', 'https://myanimelist.net/anime/' + json['id'][0]);
 }
-
-$('#info-dialog .mdc-dialog__footer__button--cancel').click(function() {
-    $('#anime_title_info').css('background-color', 'var(--mdc-theme-primary)');
-    $('#anilist_banner').attr('src', '');
-    $('#hashtag').text('');
-    $('#next_episode').text('');
-});
 
 function getPremieredDate(date) {
     var year = date.substr(0, 4);
