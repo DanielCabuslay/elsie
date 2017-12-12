@@ -84,7 +84,7 @@ function populateDialog(json) {
         $('#info_dialog_status .mdc-list-item__text__secondary').text('Not yet aired');
     }
 
-    if (json['episodes'][0] == '1' || json['status'][0] != '2') {
+    if (json['episodes'][0] == '1' || json['status'][0] != '2' || json['start_date'][0] == json['end_date'][0]) {
         $('#info_dialog_aired .mdc-list-item__text__secondary').text(formatDate(json['start_date'][0]));
     } else {
         $('#info_dialog_aired .mdc-list-item__text__secondary').text(
@@ -163,34 +163,42 @@ function formatDate(date) {
     if (day.substr(0, 1) == '0') {
         day = day.substr(1, 1);
     }
-    var formatted_date = '';
     if (month == '01') {
-        formatted_date = 'January ' + day + ', ' + year;
+        month = 'January';
     } else if (month == '02') {
-        formatted_date = 'February ' + day + ', ' + year;
+        month = 'February';
     } else if (month == '03') {
-        formatted_date = 'March ' + day + ', ' + year;
+        month = 'March';
     } else if (month == '04') {
-        formatted_date = 'April ' + day + ', ' + year;
+        month = 'April';
     } else if (month == '05') {
-        formatted_date = 'May ' + day + ', ' + year;
+        month = 'May';
     } else if (month == '06') {
-        formatted_date = 'June ' + day + ', ' + year;
+        month = 'June';
     } else if (month == '07') {
-        formatted_date = 'July ' + day + ', ' + year;
+        month = 'July';
     } else if (month == '08') {
-        formatted_date = 'August ' + day + ', ' + year;
+        month = 'August';
     } else if (month == '09') {
-        formatted_date = 'September ' + day + ', ' + year;
+        month = 'September';
     } else if (month == '10') {
-        formatted_date = 'October ' + day + ', ' + year;
+        month = 'October';
     } else if (month == '11') {
-        formatted_date = 'November ' + day + ', ' + year;
+        month = 'November';
     } else if (month == '12') {
-        formatted_date = 'December ' + day + ', ' + year;
+        month = 'December';
     } else {
-        if (year != '0000') {
-            formatted_date = year;
+        month = '';
+    }
+    var formatted_date = '';
+    if (year != '0000') {
+        formatted_date = year;
+    }
+    if (month.length > 0) {
+        if (day != '0') {
+            formatted_date = month + ' ' + day + ', ' + year; 
+        } else {
+            formatted_date = month + ' ' + year;
         }
     }
     if (formatted_date.length == 0) {
