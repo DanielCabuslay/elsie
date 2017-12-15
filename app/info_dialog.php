@@ -76,7 +76,7 @@
     <footer class="mdc-dialog__footer">
       <a id="anilist_link_button" type="button" class="mdc-button mdc-dialog__footer__button" target="_blank">AniList</a>
       <a id="mal_link_button" type="button" class="mdc-button mdc-dialog__footer__button" target="_blank">MyAnimeList</a>
-      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Close</button>
+      <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Close</button>
     </footer>
   </div>
   <div class="mdc-dialog__backdrop"></div>
