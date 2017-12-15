@@ -49,6 +49,7 @@ main, .anime_id, #anime_list section .mdc-list-divider:last-child,
 	    width: 100%;
 	    margin: auto;
     	padding-left: 0px;
+    	padding-bottom: 61px;
 	}
 	.mdc-tab__icon+.mdc-tab__icon-text {
 		padding: 0;
