@@ -101,10 +101,4 @@ body {
 		display: table-cell;
 		width: 20vw;
 	}
-	.mdc-toolbar_hidden {
-		top: -70px;
-	}
-	.bottom_bar_hidden {
-		bottom: -61px;
-	}
 }
