@@ -31,12 +31,15 @@
 }
 #mal_poster {
 	width: 110px;
-}
-#mal_poster, #title_text {
-	margin: 0 0 12px 12px;
+	margin-left: 24px;
+	border: 2px solid #fff;
 }
 #title_text {
-	margin-right: 12px;
+	margin-right: 24px;
+	margin-left: 12px;
+}
+#mal_poster, #title_text {
+	margin-bottom: 12px;
 }
 #info-dialog .mdc-list-group__subheader {
 	color: var(--mdc-theme-primary);

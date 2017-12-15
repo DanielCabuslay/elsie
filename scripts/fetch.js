@@ -1,7 +1,7 @@
 var dialog = new mdc.dialog.MDCDialog(document.querySelector('#info-dialog'));
-const snackbar = new mdc.snackbar.MDCSnackbar(document.querySelector('.mdc-snackbar'));
 var request;
 $('.anime_list_item').click(function() {
+    linearProgress.determinate = false;
     $('.mdc-linear-progress').css('display', 'block');
     clearDialog();
     var id = $(this).attr('anime_id');
@@ -12,10 +12,12 @@ $('.anime_list_item').click(function() {
         dataType: "json"
     });
     request.done(function (response, textStatus, jqXHR){
+        linearProgress.determinate = true;
         $('.mdc-dialog__body--scrollable').scrollTop(0);
-        $.when(populateDialog(response)).then(function() {
+
+        $.when(populateDialog(response, linearProgress)).then(function() {
             dialog.show();
-            $('.mdc-linear-progress').css('display', 'none');
+            $('.mdc-linear-progress').fadeOut(500);
         });
     });
     request.fail(function (jqXHR, textStatus, errorThrown){
@@ -23,7 +25,7 @@ $('.anime_list_item').click(function() {
           message: 'Unable to fetch data'
         };
         snackbar.show(dataObj);
-        $('.mdc-linear-progress').css('display', 'none');
+        $('.mdc-linear-progress').fadeOut(500);
     });
 });
 
@@ -37,9 +39,13 @@ function clearDialog() {
     $('#anilist_link_button').attr('href', ''); 
 }
 
-function populateDialog(json) {
+function populateDialog(json, linearProgress) {
+    linearProgress.progress = 0;
+    var steps = 14;
+
     //Fetch AniList Data
     fetchAniListData(json['id'][0]);
+    linearProgress.progress = 1 / steps;
 
     //Image
     if (json['image'][0] == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
@@ -47,9 +53,11 @@ function populateDialog(json) {
     } else {
         $('#mal_poster').attr('src', json['image'][0]);        
     }
+    linearProgress.progress = 2 / steps;
 
     //Title
     $('#info-dialog .mdc-dialog__header__title').text(json['title'][0]);
+    linearProgress.progress = 3 / steps;
 
     //Type
     if (json['type'][0] == '1') {
@@ -70,6 +78,7 @@ function populateDialog(json) {
     else if (json['type'][0] == '6') {
         $('#info_dialog_type .mdc-list-item__text__secondary').text('Music');
     }
+    linearProgress.progress = 4 / steps;
 
     //Episodes
     if (json['episodes'][0] == '0') {
@@ -77,6 +86,7 @@ function populateDialog(json) {
     } else {
         $('#info_dialog_episodes .mdc-list-item__text__secondary').text(json['episodes'][0]);
     }
+    linearProgress.progress = 5 / steps;
 
     //Status
     if (json['status'][0] == '1') {
@@ -88,6 +98,7 @@ function populateDialog(json) {
     else if (json['status'][0] == '3') {
         $('#info_dialog_status .mdc-list-item__text__secondary').text('Not yet aired');
     }
+    linearProgress.progress = 6 / steps;
 
     if (json['episodes'][0] == '1' || json['status'][0] != '2' || json['start_date'][0] == json['end_date'][0]) {
         $('#info_dialog_aired .mdc-list-item__text__secondary').text(formatDate(json['start_date'][0]));
@@ -95,9 +106,11 @@ function populateDialog(json) {
         $('#info_dialog_aired .mdc-list-item__text__secondary').text(
             formatDate(json['start_date'][0]) + ' to ' + formatDate(json['end_date'][0]));
     }
+    linearProgress.progress = 7 / steps;
 
     //Premiered
-        $('#info_dialog_premiered .mdc-list-item__text__secondary').text(getPremieredDate(json['start_date'][0]));
+    $('#info_dialog_premiered .mdc-list-item__text__secondary').text(getPremieredDate(json['start_date'][0]));
+    linearProgress.progress = 8 / steps;
 
     //User Status
     if (json['user_status'][0] == '1') {
@@ -115,12 +128,15 @@ function populateDialog(json) {
     else if (json['user_status'][0] == '6') {
         $('#info_dialog_user_status .mdc-list-item__text__secondary').text('Plan to Watch');
     }
+    linearProgress.progress = 9 / steps;
 
     //User Episodes
     $('#info_dialog_user_episodes .mdc-list-item__text__secondary').text(json['user_episodes'][0]);
+    linearProgress.progress = 10 / steps;
 
     //User Score
     $('#info_dialog_user_score .mdc-list-item__text__secondary').text(json['user_score'][0]);
+    linearProgress.progress = 11 / steps;
 
     //Start Date
     if (json['user_start_date'][0] == '0000-00-00') {
@@ -128,6 +144,7 @@ function populateDialog(json) {
     } else {
         $('#info_dialog_user_start_date .mdc-list-item__text__secondary').text(formatDate(json['user_start_date'][0]));
     }
+    linearProgress.progress = 12 / steps;
 
     //End Date
     if (json['user_end_date'][0] == '0000-00-00') {
@@ -135,9 +152,11 @@ function populateDialog(json) {
     } else {
         $('#info_dialog_user_end_date .mdc-list-item__text__secondary').text(formatDate(json['user_end_date'][0]));
     }
+    linearProgress.progress = 13 / steps;
 
     //MAL Link
     $('#mal_link_button').attr('href', 'https://myanimelist.net/anime/' + json['id'][0]);
+    linearProgress.progress = 14 / steps;
 }
 
 function getPremieredDate(date) {

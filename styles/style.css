@@ -1,3 +1,6 @@
+.mdc-linear-progress {
+	display: none;
+}
 body {
 	margin: 0;
 }
@@ -24,9 +27,6 @@ body {
 	position: fixed;
 	top: 0;
 }
-.mdc-linear-progress .mdc-linear-progress__bar-inner {
-	background-color: var(--mdc-theme-secondary);
-}
 .mdc-dialog {
 	z-index: 24;
 }
@@ -37,11 +37,12 @@ body {
 	margin-top: 0;
 	color: var(--mdc-theme-text-primary-on-light);
 }
-.mdc-fab {
-	position: fixed;
-	z-index: 6;
-    bottom: 1.5rem;
-    right: 1.5rem;
+.loading_splash {
+	display: flex;
+    height: 100vh;
+}
+.loading_splash div {
+	margin: auto;
 }
 .mdc-tab {
 	transition: color 150ms linear;
@@ -51,24 +52,6 @@ body {
 }
 .mdc-simple-menu {
 	overflow-y: hidden;
-}
-.icon_button {
-	min-width: 36px;
-    padding: 0;
-    border-radius: 50%;
-}
-.icon_button i {
-	vertical-align: middle;
-	color: var(--mdc-theme-text-primary-on-light);
-}
-.translucent {
-	background-color: rgba(0,0,0,0.54);
-	display: none;
-    position: fixed;
-    height: 100%;
-    width: 100%;
-    z-index: 8;
-    top: 0;
 }
 .bottom_bar_nav {
     display: block; 
@@ -130,7 +113,7 @@ body {
 	.mdc-toolbar_hidden {
 		top: -70px;
 	}
-	.bottom_bar_scroll {
+	.bottom_bar_hidden {
 		bottom: -61px;
 	}
 }

@@ -13,8 +13,8 @@ main, .anime_id, #anime_list section .mdc-list-divider:last-child,
 	padding-left: 2px;
 }
 #anime_list {
-	align-items: center;
-    width: calc(100vw - 240px);
+    width: 80%;
+    padding-left: 81px;
     margin: auto;
 }
 .anime_list_item {

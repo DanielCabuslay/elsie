@@ -55,13 +55,11 @@ function populateAniListData(data) {
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (anilistID != null) {
         $('#anilist_link_button').attr('href', 'https://anilist.co/anime/' + anilistID);
-        $('#anilist_link_button').css('display', 'inline-block');        
+        $('#anilist_link_button').css('display', 'inline-block');
     }
     if (bgUrl != null) {
         $('#anilist_banner').attr('src', bgUrl);
         $('#anime_title_info').css('background', 'linear-gradient(transparent, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.67))');
-    } else {
-        $('#anime_title_info').css('background', 'var(--mdc-theme-primary)');
     }
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');

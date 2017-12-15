@@ -18,10 +18,10 @@ $manga_data = new SimpleXMLElement($manga_xml);
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="../styles/style.css">
-        <link rel="stylesheet" href="../styles/theme.css">
         <link rel="stylesheet" href="../styles/anime_list.css">
         <link rel="stylesheet" href="../styles/info_dialog.css">
         <link rel="stylesheet" href="../styles/search.css">
+        <link rel="stylesheet" href="../styles/theme.css">
         <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
         <link rel="shortcut_icon" href="/images/favicon/favicon.png">
         <link rel="manifest" href="/manifest.json">
@@ -36,8 +36,8 @@ $manga_data = new SimpleXMLElement($manga_xml);
             <div class="mdc-toolbar__row">
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
                     <div class="toolbar_title">
-                        <div class="mdc-typography--body2"><?php echo $_SESSION['user']; ?></div>
-                        <div class="mdc-typography--caption">Anime List</div>
+                        <div class="mdc-typography--subheading2">Anime List</div>
+                        <div class="mdc-typography--caption"></div>
                     </div>
                     <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i>
                     <div class="mdc-simple-menu" style="position: absolute; top: 12px; left: 12px;" tabindex="-1" id="list_menu">
@@ -68,7 +68,7 @@ $manga_data = new SimpleXMLElement($manga_xml);
                     </div>
                 </section>
             </div>
-            <div role="progressbar" class="mdc-linear-progress mdc-linear-progress--indeterminate mdc-linear-progress--accent">
+            <div role="progressbar" class="mdc-linear-progress">
                 <div class="mdc-linear-progress__buffering-dots"></div>
                 <div class="mdc-linear-progress__buffer"></div>
                 <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
@@ -237,12 +237,6 @@ $manga_data = new SimpleXMLElement($manga_xml);
                     </div>
                 </div>
             </div>
-            <div class="mdc-snackbar mdc-snackbar--align-start" aria-live="assertive" aria-atomic="true" aria-hidden="true">
-              <div class="mdc-snackbar__text"></div>
-              <div class="mdc-snackbar__action-wrapper">
-                <button type="button" class="mdc-snackbar__action-button"></button>
-              </div>
-            </div>
             <div id="search_background"></div>
             <div id="search_sheet" class="mdc-typography--body1">
                 <div id="search_body">
@@ -254,6 +248,15 @@ $manga_data = new SimpleXMLElement($manga_xml);
                 </div>
             </div>
         </main>
+        <div class="loading_splash">
+            <div class="mdc-typography--body1">Fetching Anime List...</div>
+        </div>
+        <div class="mdc-snackbar mdc-snackbar--align-start" aria-live="assertive" aria-atomic="true" aria-hidden="true">
+          <div class="mdc-snackbar__text"></div>
+          <div class="mdc-snackbar__action-wrapper">
+            <button type="button" class="mdc-snackbar__action-button"></button>
+          </div>
+        </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.js"></script>
