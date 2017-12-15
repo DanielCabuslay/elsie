@@ -1,0 +1,57 @@
+#anilist_link_button {
+	display: none;
+}
+#info-dialog .mdc-dialog__header {
+	padding: 0;
+	background-position: center;
+    background-size: cover;
+	color: var(--mdc-theme-text-primary-on-primary);
+	position: relative;
+}
+#info-dialog .mdc-list-group {
+	padding: 0;
+}
+#anilist_banner {
+	object-fit: cover;
+	object-position: center;
+	width: 100%;
+}
+#anilist_banner, #info-dialog .mdc-dialog__header {
+	height: 250px;
+}
+#anime_title_info {
+	position: absolute;
+	background: var(--mdc-theme-primary);
+	transition: background 300ms linear;
+	display: flex;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    align-items: flex-end;
+}
+#mal_poster {
+	width: 110px;
+}
+#mal_poster, #title_text {
+	margin: 0 0 12px 12px;
+}
+#title_text {
+	margin-right: 12px;
+}
+#info-dialog .mdc-list-group__subheader {
+	color: var(--mdc-theme-primary);
+}
+#info-dialog .mdc-dialog__body--scrollable {
+	max-height: 20rem;
+}
+#info-dialog .mdc-list-item {
+	white-space: initial;
+}
+@media (max-width: 1023px) {
+	#mal_poster {
+		width: 80px;
+	}
+	#anilist_banner, #info-dialog .mdc-dialog__header {
+		height: 175px;
+	}
+}
