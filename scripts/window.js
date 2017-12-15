@@ -1,6 +1,6 @@
 function getContentHeight() {
   if ($(window).width() < 1024) {
-    var content_height = $(window).height() - $('header').height();
+    var content_height = $(window).height() - ($('.mdc-toolbar').height() + $('.bottom_bar_nav').height());
     if ($('#anime_list').height() > content_height) {
       $('#anime_list .mdc-list-group').css('padding-bottom', '0px');
     } else {
@@ -13,9 +13,9 @@ function getContentHeight() {
 
 $(window).ready(function() {
   $(':root').css('--mdc-theme-primary', '#388e3c');
-  $('main').fadeIn(150);
+  $('main').fadeIn(100);
+  $('.mdc-linear-progress').delay(100).fadeOut(100);
   getContentHeight();
-  $('.mdc-linear-progress').fadeOut(100);
 });
 
 $(window).resize(function() {
@@ -25,7 +25,7 @@ $(window).resize(function() {
 var lastScrollTop = 0;
 $(window).scroll(function(event) {
   var position = $(this).scrollTop();
-  if (position > lastScrollTop && position >= $('.anime_list_item').height()) {
+  if (position > lastScrollTop) {
     $('.bottom_bar_nav').addClass('bottom_bar_scroll');
     $('.mdc-toolbar').addClass('mdc-toolbar_hidden');
   } else {
