@@ -1,0 +1,8 @@
+{
+  "short_name": "Elsie",
+  "name": "Elsie",
+  "theme_color": "#0d47a1",
+  "background_color": "#eeeeee",
+  "start_url": "index.php",
+  "display": "standalone"
+}

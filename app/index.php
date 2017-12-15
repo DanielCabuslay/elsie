@@ -4,9 +4,9 @@ if(!isset($_SESSION['user'])) {
 header('Location: ..');
 }
 $anime_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
-$manga_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=manga');
+// $manga_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=manga');
 $anime_data = new SimpleXMLElement($anime_xml);
-$manga_data = new SimpleXMLElement($manga_xml);
+// $manga_data = new SimpleXMLElement($manga_xml);
 ?>
 <!DOCTYPE html>
 <html class="mdc-typography">
@@ -24,7 +24,7 @@ $manga_data = new SimpleXMLElement($manga_xml);
         <link rel="stylesheet" href="../styles/theme.css">
         <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
         <link rel="shortcut_icon" href="/images/favicon/favicon.png">
-        <link rel="manifest" href="/manifest.json">
+        <link rel="manifest" href="../manifest.json">
         <meta name="theme-color" content="#0d47a1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="mobile-web-app-capable" content="yes">
