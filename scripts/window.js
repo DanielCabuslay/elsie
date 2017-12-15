@@ -36,7 +36,7 @@ $(window).resize(function() {
 var lastScrollTop = 0;
 $(window).scroll(function(event) {
   var position = $(this).scrollTop();
-  if (position > lastScrollTop && position > $('.anime_list_item').height() && $(window).width() < 1024) {
+  if (position > lastScrollTop) {
     $('.bottom_bar_nav').addClass('bottom_bar_hidden');
     $('.mdc-toolbar').addClass('mdc-toolbar_hidden');
   } else {
