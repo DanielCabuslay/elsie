@@ -16,10 +16,6 @@ $(window).ready(function() {
   $('main').fadeIn(150);
   getContentHeight();
   $('.mdc-linear-progress').fadeOut(100);
-  var dataObj = {
-    message: 'Anime List loaded'
-  };
-  snackbar.show(dataObj);
 });
 
 $(window).resize(function() {
@@ -40,37 +36,35 @@ $(window).scroll(function(event) {
 });
 
 $('#anime_list_nav a').click(function() {
-  $('.mdc-linear-progress').fadeIn(100);
-  $('#anime_list section').fadeOut(150);
+  $('#anime_list section').fadeOut(100);
   var clicked_section = $(this).attr('id');
   if (clicked_section == 'watching_button') {
     $(':root').css('--mdc-theme-primary', '#388e3c');
-    $('#watching_list').fadeIn(150, function() {
+    $('#watching_list').delay(100).fadeIn(100, function() {
       getContentHeight();
     });
   } else if (clicked_section == 'completed_button') {
     $(':root').css('--mdc-theme-primary', '#1976d2');
-    $('#completed_list').fadeIn(150, function() {
+    $('#completed_list').delay(100).fadeIn(100, function() {
       getContentHeight();
     });
   } else if (clicked_section == 'on_hold_button') {
     $(':root').css('--mdc-theme-primary', '#f9a825');
-    $('#on_hold_list').fadeIn(150, function() {
+    $('#on_hold_list').delay(100).fadeIn(100, function() {
       getContentHeight();
     });
   } else if (clicked_section == 'dropped_button') {
     $(':root').css('--mdc-theme-primary', '#d32f2f');
-    $('#dropped_list').fadeIn(150, function() {
+    $('#dropped_list').delay(100).fadeIn(100, function() {
       getContentHeight();
     });
   } else if (clicked_section == 'ptw_button') {
     $(':root').css('--mdc-theme-primary', '#616161');
-    $('#ptw_list').fadeIn(150, function() {
+    $('#ptw_list').delay(100).fadeIn(100, function() {
       getContentHeight();
       });
   }
   window.scrollTo(0, 0);
-  $('.mdc-linear-progress').fadeOut(100);
 });
 
 (function() {
