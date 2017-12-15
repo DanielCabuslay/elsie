@@ -13,10 +13,10 @@ $('.anime_list_item').click(function() {
     });
     request.done(function (response, textStatus, jqXHR){
         $('.mdc-dialog__body--scrollable').scrollTop(0);
-        fetchAniListData(id);
-        populateDialog(response);
-        dialog.show();
-        $('.mdc-linear-progress').css('display', 'none');
+        $.when(populateDialog(response)).then(function() {
+            dialog.show();
+            $('.mdc-linear-progress').css('display', 'none');
+        });
     });
     request.fail(function (jqXHR, textStatus, errorThrown){
         var dataObj = {
@@ -33,9 +33,14 @@ function clearDialog() {
     $('#anilist_banner').attr('src', '');
     $('#hashtag').text('');
     $('#next_episode').text('');
+    $('#anilist_link_button').css('display', 'none');
+    $('#anilist_link_button').attr('href', ''); 
 }
 
 function populateDialog(json) {
+    //Fetch AniList Data
+    fetchAniListData(json['id'][0]);
+
     //Image
     if (json['image'][0] == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
         $('#mal_poster').attr('src', '../images/unknown.png');

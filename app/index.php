@@ -34,8 +34,11 @@ $manga_data = new SimpleXMLElement($manga_xml);
         <header class="mdc-toolbar mdc-toolbar--fixed">
             <div class="mdc-toolbar__row">
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
-                    <span class="mdc-toolbar__title"><?php echo $_SESSION['user']; ?>'s Anime List</span>
-                    <!-- <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i> -->
+                    <div class="toolbar_title">
+                        <div class="mdc-typography--body2"><?php echo $_SESSION['user']; ?></div>
+                        <div class="mdc-typography--caption">Anime List</div>
+                    </div>
+                    <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i>
                     <div class="mdc-simple-menu" style="position: absolute; top: 12px; left: 12px;" tabindex="-1" id="list_menu">
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
                             <li class="mdc-list-item" role="menuitem" tabindex="0">Anime List</li>

@@ -1,8 +1,13 @@
-main {
+main, .anime_id, #anime_list section .mdc-list-divider:last-child, 
+#anime_list_nav .mdc-tab-bar__indicator, #anilist_link_button,
+#completed_list, #on_hold_list, #dropped_list, #ptw_list,
+.mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab--active:after,
+.mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:active:after,
+.mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:hover:after {
 	display: none;
 }
-.anime_id {
-	display: none;
+.toolbar_title {
+	margin: auto 8px auto 24px;
 }
 #list_drop_down {
 	padding-left: 2px;
@@ -58,24 +63,12 @@ main {
     width: calc(100vw - 240px);
     margin: auto;
 }
-#anime_list section .mdc-list-divider:last-child {
-	display: none;
-}
-#anime_list_nav .mdc-tab-bar__indicator {
-	display: none;
-}
 .anime_list_item {
 	cursor: pointer;
 	position: relative;
 }
 .mdc-button__icon {
 	margin-right: 0px;
-}
-#completed_list, #on_hold_list, #dropped_list, #ptw_list {
-	display: none;
-}
-.mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab--active:after, .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:active:after, .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:hover:after {
-	display: none;
 }
 .mdc-tab__icon+.mdc-tab__icon-text {
 	padding-bottom: 6px;
@@ -112,6 +105,11 @@ main {
 	}
 	.mdc-tab__icon-text {
 		font-size: .6rem;
+	}
+}
+@media (max-width: 599px) {
+	.toolbar_title {
+		margin: auto 8px auto 16px;
 	}
 }
 @media (min-width: 1024px) {

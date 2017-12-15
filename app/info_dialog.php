@@ -36,7 +36,7 @@
                     </span>
                 </li>
                 <li id="info_dialog_premiered" class="mdc-list-item">
-                    <span class="mdc-list-item__text">Season
+                    <span class="mdc-list-item__text">Premiered
                         <span class="mdc-list-item__text__secondary">Spring 2017</span>
                     </span>
                 </li>
@@ -74,6 +74,7 @@
         </div>
     </section>
     <footer class="mdc-dialog__footer">
+      <a id="anilist_link_button" type="button" class="mdc-button mdc-dialog__footer__button" target="_blank">AniList</a>
       <a id="mal_link_button" type="button" class="mdc-button mdc-dialog__footer__button" target="_blank">MyAnimeList</a>
       <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--cancel">Close</button>
     </footer>
