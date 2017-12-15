@@ -13,7 +13,7 @@ $manga_data = new SimpleXMLElement($manga_xml);
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Elsie | Anime List</title>
+        <title><?php echo $_SESSION['user']; ?>'s Anime List | Elsie</title>
         <link rel="stylesheet" href="https://unpkg.com/material-components-web@0.26.0/dist/material-components-web.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
