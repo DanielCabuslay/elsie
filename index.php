@@ -29,10 +29,11 @@ if (!isset($_SESSION['message'])) {
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 </head>
 <body>
+    <?php include 'app/about_dialog.php' ?>
     <main>
         <div id="elsie_circle"></div>
         <div id="title" class="mdc-typography--display3">Elsie</div>
-        <div class="mdc-typography--body1">Elsie is a Material Design MyAnimeList Web Client. You can browse your anime list and search for anime.</div>
+        <button id="about_option" class="mdc-button mdc-button--raised mdc-button--primary">What is Elsie?</button>
         <div id="server_message" class="mdc-typography--body1"><?php echo $_SESSION['message']; unset($_SESSION['message']); ?></div>
         <div id="login_form">
             <form action="mal_verify_user.php" method="post" id="mal_login">
@@ -48,4 +49,5 @@ if (!isset($_SESSION['message'])) {
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/material-components-web@0.26.0/dist/material-components-web.min.js"></script>
 <script src="scripts/textfield.js"></script>
+<script src="scripts/about_dialog.js"></script>
 </html>

@@ -14,15 +14,6 @@ body {
     top: 16px;
     right: 20px;
 }
-#elsie_circle {
-    background-image: url(../images/elsie-1080.jpg);
-    height: 75px;
-    background-position: center;
-    background-size: cover;
-    width: 75px;
-    margin-right: 1rem;
-    border-radius: 50%;
-}
 .mdc-linear-progress {
 	position: fixed;
 	top: 0;

@@ -94,8 +94,3 @@ $('#anime_list_nav a').click(function() {
     window.navBar = new mdc.tabs.MDCTabBar(document.querySelector('.bottom_bar_nav'));
   }, 200)
 })();
-
-var about_dialog = new mdc.dialog.MDCDialog(document.querySelector('#about-dialog'));
-document.querySelector('#about_option').addEventListener('click', function(evt) {
-  about_dialog.show();
-});

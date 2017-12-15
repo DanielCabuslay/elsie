@@ -268,4 +268,5 @@ $manga_data = new SimpleXMLElement($manga_xml);
     <script src="../scripts/fetch.js"></script>
     <script src="../scripts/anilist.js"></script>
     <script src="../scripts/window.js"></script>
+    <script src="../scripts/about_dialog.js"></script>
 </html>
