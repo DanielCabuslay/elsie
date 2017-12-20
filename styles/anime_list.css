@@ -1,4 +1,4 @@
-main, .anime_id, #anime_list section .mdc-list-divider:last-child, 
+.mdc-linear-progress, .anime_id, #anime_list section .mdc-list-divider:last-child, 
 #anime_list_nav .mdc-tab-bar__indicator,
 #completed_list, #on_hold_list, #dropped_list, #ptw_list,
 .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab--active:after,
@@ -30,9 +30,6 @@ main, .anime_id, #anime_list section .mdc-list-divider:last-child,
 }
 .mdc-tab__icon-text {
 	font-size: .6rem;
-}
-.mdc-tab--active, .mdc-tab:hover {
-	color: var(--mdc-theme-primary);
 }
 .mdc-list--two-line.mdc-list--dense .anime_list_item, .mdc-list--two-line .anime_list_item {
 	height: 80px;

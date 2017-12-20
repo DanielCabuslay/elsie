@@ -1,6 +1,3 @@
-.mdc-linear-progress {
-	display: none;
-}
 body {
 	margin: 0;
 }
@@ -14,10 +11,6 @@ body {
     top: 16px;
     right: 20px;
 }
-.mdc-linear-progress {
-	position: fixed;
-	top: 0;
-}
 .mdc-dialog {
 	z-index: 24;
 }
@@ -30,16 +23,14 @@ body {
 }
 .loading_splash {
 	display: flex;
-    height: 100vh;
+	flex-direction: column;
 }
-.loading_splash div {
-	margin: auto;
+.loading_splash .mdc-typography--body2 {
+	margin: 1rem auto;
 }
-.mdc-tab {
-	transition: color 150ms linear;
-}
-.mdc-snackbar {
-	z-index: 8;
+.mdc-linear-progress {
+	position: fixed;
+	top: 0;
 }
 .mdc-simple-menu {
 	overflow-y: hidden;

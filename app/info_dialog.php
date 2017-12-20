@@ -7,11 +7,20 @@
             <div id="title_text">
                 <h2 class="mdc-dialog__header__title"></h2>
                 <div id="hashtag"></div>
-                <div id="next_episode"></div>
             </div>
         </div>
     </header>
     <section class="mdc-dialog__body mdc-dialog__body--scrollable">
+        <div id="next_episode" class="mdc-list-group">
+            <h3 class="mdc-list-group__subheader">Next Episode</h3>
+            <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                <li class="mdc-list-item">
+                    <span class="mdc-list-item__text">
+                        <span class="mdc-list-item__text__secondary"></span>
+                    </span>
+                </li>
+            </ul>
+        </div>
         <div class="mdc-list-group">
             <h3 class="mdc-list-group__subheader">Anime Info</h3>
             <ul class="mdc-list mdc-list--two-line mdc-list--dense">

@@ -3,10 +3,6 @@ session_start();
 if(!isset($_SESSION['user'])) {
 header('Location: ..');
 }
-$anime_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=anime');
-// $manga_xml = file_get_contents('http://myanimelist.net/malappinfo.php?u=' . $_SESSION['user'] . '&status=all&type=manga');
-$anime_data = new SimpleXMLElement($anime_xml);
-// $manga_data = new SimpleXMLElement($manga_xml);
 ?>
 <!DOCTYPE html>
 <html class="mdc-typography">
@@ -22,8 +18,8 @@ $anime_data = new SimpleXMLElement($anime_xml);
         <link rel="stylesheet" href="../styles/info_dialog.css">
         <link rel="stylesheet" href="../styles/search.css">
         <link rel="stylesheet" href="../styles/theme.css">
-        <link rel="icon" type="image/png" href="/images/favicon/favicon.png">
-        <link rel="shortcut_icon" href="/images/favicon/favicon.png">
+        <!-- <link rel="icon" type="image/png" href="/images/favicon/favicon.png"> -->
+        <!-- <link rel="shortcut_icon" href="/images/favicon/favicon.png"> -->
         <link rel="manifest" href="../manifest.json">
         <meta name="theme-color" content="#0d47a1">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +32,7 @@ $anime_data = new SimpleXMLElement($anime_xml);
             <div class="mdc-toolbar__row">
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
                     <div class="toolbar_title">
-                        <div class="mdc-typography--subheading2">Anime List</div>
+                        <div class="mdc-typography--body2">Anime List</div>
                         <div class="mdc-typography--caption"></div>
                     </div>
                     <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i>
@@ -63,7 +59,7 @@ $anime_data = new SimpleXMLElement($anime_xml);
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
                             <a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="https://myanimelist.net/profile/<?= $_SESSION['user'] ?>">Profile</a>
                             <li id="about_option" class="mdc-list-item" role="menuitem" tabindex="0">About Elsie</li>
-                            <a class="mdc-list-item" role="menuitem" tabindex="0" href="logout.php">Switch Users</a>
+                            <a class="mdc-list-item" role="menuitem" tabindex="0" href="logout.php">Change Users</a>
                         </ul>
                     </div>
                 </section>
@@ -110,130 +106,9 @@ $anime_data = new SimpleXMLElement($anime_xml);
             <div id="anime_list" class="mdc-typography--body1">
                 <div class="mdc-card">
                     <div class="mdc-list-group">
-                        <section id="watching_list">
-                            <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                <?php foreach($anime_data->anime as $a):
-                                if ($a->my_status == '1'): ?>
-                                <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" src="
-                                    <?php 
-                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
-                                            echo '../images/unknown.png';
-                                        } else {
-                                            echo $a->series_image;
-                                        }
-                                    ?>">
-                                    <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
-                                        <span class="mdc-list-item__text__secondary">
-                                            <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
-                                            <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
-                                        </span>
-                                    </span>
-                                </li>
-                                <hr class="mdc-list-divider">
-                                <?php endif; endforeach; ?>
-                            </ul>
-                        </section>
-                        <section id="completed_list">
-                            <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                <?php foreach($anime_data->anime as $a):
-                                if ($a->my_status == '2'): ?>
-                                <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
-                                    <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" src="
-                                    <?php 
-                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
-                                            echo '../images/unknown.png';
-                                        } else {
-                                            echo $a->series_image;
-                                        }
-                                    ?>">
-                                    <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
-                                        <span class="mdc-list-item__text__secondary">
-                                            <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
-                                            <i class="material-icons list-icon">playlist_add_check</i> <?= $a->series_episodes ?>
-                                        </span>
-                                    </span>
-                                </li>
-                                <hr class="mdc-list-divider">
-                                <?php endif; endforeach; ?>
-                            </ul>
-                        </section>
-                        <section id="on_hold_list">
-                            <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                <?php foreach($anime_data->anime as $a):
-                                if ($a->my_status == '3'): ?>
-                                <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
-                                    <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" src="
-                                    <?php 
-                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
-                                            echo '../images/unknown.png';
-                                        } else {
-                                            echo $a->series_image;
-                                        }
-                                    ?>">
-                                    <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
-                                        <span class="mdc-list-item__text__secondary">
-                                            <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
-                                            <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
-                                        </span>
-                                    </span>
-                                </li>
-                                <hr class="mdc-list-divider">
-                                <?php endif; endforeach; ?>
-                            </ul>
-                        </section>
-                        <section id="dropped_list">
-                            <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                <?php foreach($anime_data->anime as $a):
-                                if ($a->my_status == '4'): ?>
-                                <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
-                                    <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" src="
-                                    <?php 
-                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
-                                            echo '../images/unknown.png';
-                                        } else {
-                                            echo $a->series_image;
-                                        }
-                                    ?>">
-                                    <span class="mdc-list-item__text anime_title"><?= $a->series_title ?>
-                                        <span class="mdc-list-item__text__secondary">
-                                            <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
-                                            <i class="material-icons list-icon">playlist_add_check</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
-                                        </span>
-                                    </span>
-                                </li>
-                                <hr class="mdc-list-divider">
-                                <?php endif; endforeach; ?>
-                            </ul>
-                        </section>
-                        <section id="ptw_list">
-                            <ul class="mdc-list mdc-list--two-line mdc-list--dense">
-                                <?php foreach($anime_data->anime as $a):
-                                if ($a->my_status == '6'): ?>
-                                <li class="mdc-list-item anime_list_item" anime_id="<?= $a->series_animedb_id ?>">
-                                    <span class="anime_id"><?= $a->series_animedb_id ?></span>
-                                    <img class="mdc-list-item__start-detail anime_list_thumb" src="
-                                    <?php 
-                                        if ($a->series_image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
-                                            echo '../images/unknown.png';
-                                        } else {
-                                            echo $a->series_image;
-                                        }
-                                    ?>">
-                                    <span class="mdc-list-item__text title anime_title"><?= $a->series_title ?>
-                                        <span class="mdc-list-item__text__secondary">
-                                            <i class="material-icons list-icon">star_rate</i><?= $a->my_score ?>/10
-                                            <i class="material-icons list-icon">playlist_play</i><?= $a->my_watched_episodes ?>/<?= $a->series_episodes ?>
-                                        </span>
-                                    </span>
-                                </li>
-                                <hr class="mdc-list-divider">
-                                <?php endif; endforeach; ?>
-                            </ul>
-                        </section>
+                        <ul class="mdc-list mdc-list--two-line mdc-list--dense">
+                            <!-- list populated in JS -->
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -249,7 +124,7 @@ $anime_data = new SimpleXMLElement($anime_xml);
             </div>
         </main>
         <div class="loading_splash">
-            <div class="mdc-typography--body1">Fetching Anime List...</div>
+            <div class="mdc-typography--body2">Loading...</div>
         </div>
         <div class="mdc-snackbar mdc-snackbar--align-start" aria-live="assertive" aria-atomic="true" aria-hidden="true">
           <div class="mdc-snackbar__text"></div>
@@ -268,5 +143,5 @@ $anime_data = new SimpleXMLElement($anime_xml);
     <script src="../scripts/fetch.js"></script>
     <script src="../scripts/anilist.js"></script>
     <script src="../scripts/window.js"></script>
-    <script src="../scripts/about_dialog.js"></script>
+    <script src="../scripts/dialog.js"></script>
 </html>

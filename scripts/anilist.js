@@ -63,7 +63,10 @@ function populateAniListData(data) {
     }
     if (nextEp != null) {
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
-        $('#next_episode').html('<span class="mdc-typography--caption">Episode ' + nextEp['episode'] + ': ' +  airingAt + '</span>');
+        $('#next_episode .mdc-list-item__text').html('Episode ' + nextEp['episode'] + 
+            '<span class="mdc-list-item__text__secondary">' + airingAt + '</span>'
+            );
+        $('#next_episode').css('display', 'block');
     }
     // if (links != null) {
     //     for(var i = 0; i < links.length; i++) {

@@ -2,9 +2,9 @@
   --mdc-theme-primary: #0d47a1;
   --mdc-theme-primary-light: #5472d3;
   --mdc-theme-primary-dark: #002171;
-  --mdc-theme-secondary: #2962ff;
-  --mdc-theme-secondary-light: #768fff;
-  --mdc-theme-secondary-dark: #0039cb;
+  --mdc-theme-secondary: #00b0ff;
+  --mdc-theme-secondary-light: #69e2ff;
+  --mdc-theme-secondary-dark: #0081cb;
 }
 a {
 	text-decoration: none;
@@ -18,6 +18,9 @@ html, #search_background {
 }
 .mdc-linear-progress .mdc-linear-progress__bar-inner {
   background-color: var(--mdc-theme-secondary);
+}
+.mdc-tab--active, .mdc-tab:hover {
+  color: var(--mdc-theme-primary);
 }
 @media (max-width: 1023px) {
 	html, #search_background {

@@ -1,10 +1,9 @@
-var dialog = new mdc.dialog.MDCDialog(document.querySelector('#info-dialog'));
 var request;
-$('.anime_list_item').click(function() {
-    linearProgress.determinate = false;
+
+function fetchAnime(id) {
+    linearProgress.progress = 0;
     $('.mdc-linear-progress').css('display', 'block');
     clearDialog();
-    var id = $(this).attr('anime_id');
     request = $.ajax({
         url: "anime_fetch_info.php",
         type: "post",
@@ -12,11 +11,10 @@ $('.anime_list_item').click(function() {
         dataType: "json"
     });
     request.done(function (response, textStatus, jqXHR){
-        linearProgress.determinate = true;
         $('.mdc-dialog__body--scrollable').scrollTop(0);
 
-        $.when(populateDialog(response, linearProgress)).then(function() {
-            dialog.show();
+        $.when(populateDialog(response)).then(function() {
+            info_dialog.show();
             $('.mdc-linear-progress').fadeOut(500);
         });
     });
@@ -27,20 +25,70 @@ $('.anime_list_item').click(function() {
         snackbar.show(dataObj);
         $('.mdc-linear-progress').fadeOut(500);
     });
-});
+}
+
+function fetchList(status) {
+    linearProgress.progress = 0;
+    $('#anime_list').fadeOut(100);
+    $('.loading_splash').delay(100).fadeIn(100);
+    $('.mdc-linear-progress').css('display', 'block');
+    request = $.ajax({
+        url: "fetch_list.php",
+        type: "post",
+        data: {status: status},
+        dataType: "json"
+    });
+    request.done(function (response, textStatus, jqXHR){
+        $('#anime_list .mdc-list').empty();
+        $.when(populateList(response)).then(function() {
+            $('.loading_splash').fadeOut(100);
+            $('#anime_list').delay(100).fadeIn(100);
+            $('.mdc-linear-progress').fadeOut(500);            
+        });
+    });
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        var dataObj = {
+          message: 'Unable to fetch data'
+        };
+        snackbar.show(dataObj);
+        $('.mdc-linear-progress').fadeOut(500);
+    });
+}
+
+function populateList(json) {
+    var steps = json.length;
+    for (i = 0; i < steps; i++) {
+        var image = json[i]['image'][0];
+        if (image == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
+            image = '../images/unknown.png';
+        } 
+        $('#anime_list .mdc-list').append(
+            '<li class="mdc-list-item anime_list_item" anime_id="' + json[i]['id'][0] + '">' + 
+            '<img class="mdc-list-item__start-detail anime_list_thumb" src="' + image + '">' +
+            '<span class="mdc-list-item__text anime_title">' + json[i]['title'][0] + 
+            '<span class="mdc-list-item__text__secondary">' +
+            '<i class="material-icons list-icon">star_rate</i>' + json[i]['user_score'][0] +
+            '<i class="material-icons list-icon">playlist_add_check</i>' + json[i]['user_episodes'][0] + '/' + json[i]['episodes'][0] +
+            '</span></span></li><hr class="mdc-list-divider">'
+            );
+        linearProgress.progress = (i + 1) / steps;
+        $('#anime_list li[anime_id=' + json[i]['id'][0] +']').bind('click', function() {
+            fetchAnime($(this).attr('anime_id'));
+        });
+    }
+}
 
 function clearDialog() {
     //Clear previous data
     $('#anime_title_info').css('background', 'var(--mdc-theme-primary)');
     $('#anilist_banner').attr('src', '');
     $('#hashtag').text('');
-    $('#next_episode').text('');
+    $('#next_episode').css('display', 'none');
     $('#anilist_link_button').css('display', 'none');
     $('#anilist_link_button').attr('href', ''); 
 }
 
-function populateDialog(json, linearProgress) {
-    linearProgress.progress = 0;
+function populateDialog(json) {
     var steps = 14;
 
     //Fetch AniList Data
