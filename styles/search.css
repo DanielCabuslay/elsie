@@ -54,30 +54,19 @@
 #search_results .mdc-list {
     padding: 0 16px;
 }
-.search_result_item, #search_button_menu, #search_close {
+.search_result_item, #search_button, #search_close {
     cursor: pointer;
 }
-.search_result_item {
-	height: 80px!important;
-}
-.search_result_thumb {
-    object-fit: cover;
-    margin-right: 18px!important;
-}
-#search_button_menu {
+#search_button {
     display: none;
 }
 @media (max-width: 1023px) {
-    #search_button_menu {
+    #search_button {
         display: inline-block;
     }
     #search_section {
-        display: none;
         border-radius: 0px;
         margin: 0px;
         min-width: 0;
-    }
-    .mdc-toolbar__section--align-start {
-        max-width: inherit;
     }
 }

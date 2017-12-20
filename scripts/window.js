@@ -3,6 +3,9 @@ const determinate = document.querySelector('.mdc-linear-progress');
 const linearProgress = mdc.linearProgress.MDCLinearProgress.attachTo(determinate);
 
 $(document).ready(function() {
+  if ($(window).width() < 1024) {
+    $('#search_section').css('display', 'none');
+  }
   linearProgress.determinate = true;
   linearProgress.progress = 0;
   $('.mdc-linear-progress').fadeIn(100);

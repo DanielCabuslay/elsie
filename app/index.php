@@ -43,7 +43,7 @@ header('Location: ..');
                         </ul>
                     </div>
                 </section>
-                <!-- <section id="search_section" class="mdc-toolbar__section">
+                <section id="search_section" class="mdc-toolbar__section">
                     <i class="material-icons mdc-toolbar__menu-icon">search</i>
                     <form id="mal_search">
                         <div class="mdc-text-field" id="search_textfield" data-demo-no-auto-js="">
@@ -51,9 +51,9 @@ header('Location: ..');
                         </div>
                     </form>
                     <i id="search_close" class="material-icons mdc-toolbar__menu-icon">close</i>
-                </section> -->
-                <section class="mdc-toolbar__section mdc-toolbar__section--align-end mdc-toolbar__section--shrink-to-fit" role="toolbar">
-                    <!-- <i id="search_button_menu" class="material-icons mdc-toolbar__icon">search</i> -->
+                </section>
+                <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
+                    <i id="search_button" class="material-icons mdc-toolbar__icon">search</i>
                     <i id="options_button" class="material-icons mdc-toolbar__icon">more_vert</i>
                     <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="options_menu">
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
@@ -112,16 +112,7 @@ header('Location: ..');
                     </div>
                 </div>
             </div>
-            <div id="search_background"></div>
-            <div id="search_sheet" class="mdc-typography--body1">
-                <div id="search_body">
-                    <div id="search_results">
-                        <ul id="search_results_list" class="mdc-list mdc-list--two-line mdc-list--dense">
-                            <!-- handled through mal_search.php -->
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <?php include 'search.php' ?>
         </main>
         <div class="loading_splash">
             <div class="mdc-typography--body2">Loading...</div>

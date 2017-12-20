@@ -2,6 +2,7 @@ var request;
 
 function fetchAnime(id) {
     linearProgress.progress = 0;
+    linearProgress.determinate = false;
     $('.mdc-linear-progress').css('display', 'block');
     clearDialog();
     request = $.ajax({
@@ -11,6 +12,7 @@ function fetchAnime(id) {
         dataType: "json"
     });
     request.done(function (response, textStatus, jqXHR){
+        linearProgress.determinate = true;
         $('.mdc-dialog__body--scrollable').scrollTop(0);
 
         $.when(populateDialog(response)).then(function() {
@@ -29,6 +31,7 @@ function fetchAnime(id) {
 
 function fetchList(status) {
     linearProgress.progress = 0;
+    linearProgress.determinate = false;
     $('#anime_list').fadeOut(100);
     $('.loading_splash').delay(100).fadeIn(100);
     $('.mdc-linear-progress').css('display', 'block');
@@ -39,6 +42,7 @@ function fetchList(status) {
         dataType: "json"
     });
     request.done(function (response, textStatus, jqXHR){
+        linearProgress.determinate = true;
         $('#anime_list .mdc-list').empty();
         $.when(populateList(response)).then(function() {
             $('.loading_splash').fadeOut(100);
