@@ -54,19 +54,19 @@ function populateAniListData(data) {
     var links = data['data']['Media']['externalLinks'];
     var nextEp = data['data']['Media']['nextAiringEpisode'];
     if (anilistID != null) {
-        $('#anilist_link_button').attr('href', 'https://anilist.co/anime/' + anilistID);
         $('#anilist_link_button').css('display', 'inline-block');
+        $('#anilist_link_button').attr('href', 'https://anilist.co/anime/' + anilistID);
     }
     if (bgUrl != null) {
-        $('#anilist_banner').attr('src', bgUrl);
         $('#anime_title_info').css('background', 'linear-gradient(transparent, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.67))');
+        $('#anilist_banner').attr('src', bgUrl);
     }
     if (nextEp != null) {
+        $('#next_episode').css('display', 'block');
         var airingAt = moment.unix(nextEp['airingAt']).format('MMM. D [at] h:mm a');
         $('#next_episode .mdc-list-item__text').html('Episode ' + nextEp['episode'] + 
             '<span class="mdc-list-item__text__secondary">' + airingAt + '</span>'
             );
-        $('#next_episode').css('display', 'block');
     }
     // if (links != null) {
     //     for(var i = 0; i < links.length; i++) {

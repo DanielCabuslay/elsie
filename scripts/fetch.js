@@ -48,6 +48,9 @@ function fetchList(status) {
             $('.loading_splash').fadeOut(100);
             $('#anime_list').delay(100).fadeIn(100);
             $('.mdc-linear-progress').fadeOut(500);
+            setTimeout(function() {
+                $('#anime_list .anime_list_thumb').lazy();
+            }, 100);
         });
     });
     request.fail(function (jqXHR, textStatus, errorThrown){
@@ -68,7 +71,7 @@ function populateList(json) {
         } 
         $('#anime_list .mdc-list').append(
             '<li class="mdc-list-item anime_list_item" anime_id="' + json[i]['id'][0] + '">' + 
-            '<img class="mdc-list-item__start-detail anime_list_thumb" src="' + image + '">' +
+            '<img class="mdc-list-item__start-detail anime_list_thumb" data-src="' + image + '">' +
             '<span class="mdc-list-item__text anime_title">' + json[i]['title'][0] + 
             '<span class="mdc-list-item__text__secondary">' +
             '<i class="material-icons list-icon">star_rate</i>' + json[i]['user_score'][0] +
@@ -96,10 +99,14 @@ function populateDialog(json) {
     var steps = 14;
 
     //Fetch AniList Data
-    fetchAniListData(json['id'][0]);
-    linearProgress.progress = 1 / steps;
+    $.when(fetchAniListData(json['id'][0])).then(function() {
+        linearProgress.progress = 1 / steps;
+        fetchMalData(json, steps);
+    });
+}
 
-    //Image
+function fetchMalData(json, steps) {
+     //Image
     if (json['image'][0] == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
         $('#mal_poster').attr('src', '../images/unknown.png');
     } else {

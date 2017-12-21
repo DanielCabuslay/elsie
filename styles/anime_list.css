@@ -1,6 +1,5 @@
-.mdc-linear-progress, .anime_id, #anime_list section .mdc-list-divider:last-child, 
+.mdc-linear-progress, .anime_id, #anime_list .mdc-list-divider:last-child, 
 #anime_list_nav .mdc-tab-bar__indicator,
-#completed_list, #on_hold_list, #dropped_list, #ptw_list,
 .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab--active:after,
 .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:active:after,
 .mdc-tab-bar:not(.mdc-tab-bar-upgraded) .mdc-tab:hover:after {
@@ -39,6 +38,9 @@
     margin-right: 18px;
     width: 49px;
     height: 72px;
+    background-image: url(../images/loading.gif);
+    background-size: cover;
+    background-position: center;
 }
 @media (max-width: 1023px) {
 	#anime_list {

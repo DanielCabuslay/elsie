@@ -47,7 +47,7 @@ header('Location: ..');
                     <i class="material-icons mdc-toolbar__menu-icon">search</i>
                     <form id="mal_search">
                         <div class="mdc-text-field" id="search_textfield" data-demo-no-auto-js="">
-                            <input type="text" class="mdc-text-field__input" id="search_query" name="search_query" autocomplete="off" placeholder="Search" onkeyup="showResults()">
+                            <input type="text" class="mdc-text-field__input" id="search_query" name="search_query" autocomplete="off" placeholder="Search">
                         </div>
                     </form>
                     <i id="search_close" class="material-icons mdc-toolbar__menu-icon">close</i>
@@ -126,6 +126,7 @@ header('Location: ..');
     </body>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.lazy/1.7.6/jquery.lazy.min.js"></script>
     <script src="https://unpkg.com/material-components-web@0.26.0/dist/material-components-web.min.js"></script>
     <script src="../scripts/search.js"></script>
     <script src="../scripts/toolbar.js"></script>
