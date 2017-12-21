@@ -30,8 +30,7 @@ body {
 }
 .mdc-linear-progress {
 	position: absolute;
-	bottom: -4px;
-	z-index: 8;
+	top: 0;
 }
 .mdc-simple-menu {
 	overflow-y: hidden;

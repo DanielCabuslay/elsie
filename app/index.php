@@ -36,7 +36,7 @@ header('Location: ..');
                         <div class="mdc-typography--body2">Anime List</div>
                         <div class="mdc-typography--caption"></div>
                     </div>
-                    <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i>
+                    <!-- <i id="list_drop_down" class="material-icons mdc-toolbar__menu-icon">arrow_drop_down</i> -->
                     <div class="mdc-simple-menu" style="position: absolute; top: 12px; left: 12px;" tabindex="-1" id="list_menu">
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
                             <li class="mdc-list-item" role="menuitem" tabindex="0">Anime List</li>

@@ -23,6 +23,9 @@ foreach($anime_data->anime as $anime) {
 		array_push($list_array, $anime_info);
 	}
 }
+usort($list_array, function($a,$b) {
+	return strnatcasecmp($a['title'], $b['title']);
+});	
 if ($sort == 2) {
 	usort($list_array, function($a,$b) {
 		return intval($a['type']) > intval($b['type']);
@@ -43,10 +46,6 @@ if ($sort == 2) {
 	usort($list_array, function($a,$b) {
 		return intval($a['user_score']) < intval($b['user_score']);
 	});
-} else {
-	usort($list_array, function($a,$b) {
-		return strnatcasecmp($a['title'], $b['title']);
-	});	
 }
 echo json_encode($list_array);
 ?>
