@@ -10,7 +10,7 @@ a {
 	text-decoration: none;
 	color: #fff;
 }
-html, #search_background {
+html {
 	background-color: #f5f5f5;
 }
 .mdc-card {
@@ -23,7 +23,7 @@ html, #search_background {
   color: var(--mdc-theme-primary);
 }
 @media (max-width: 1023px) {
-	html, #search_background {
+	html {
 		background-color: #fff;
 	}
 	.mdc-card {

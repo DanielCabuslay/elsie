@@ -47,7 +47,7 @@ function fetchList(status) {
         $.when(populateList(response)).then(function() {
             $('.loading_splash').fadeOut(100);
             $('#anime_list').delay(100).fadeIn(100);
-            $('.mdc-linear-progress').fadeOut(500);            
+            $('.mdc-linear-progress').fadeOut(500);
         });
     });
     request.fail(function (jqXHR, textStatus, errorThrown){

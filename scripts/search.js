@@ -13,21 +13,20 @@ $('#search_query').focus(function() {
         $('.mdc-toolbar__section--align-start, .mdc-toolbar__section--align-end').css('display', 'none');
     }
 });
-$('#search_close').click(function() {
+$('#search_close, #search_sheet, #search_background').click(function() {
     $('html').css('overflow-y', 'inherit');
     $('.mdc-toolbar #search_section').css('background-color', 'rgba(0,0,0,.2)');
     $('.mdc-toolbar__section--align-start, .mdc-toolbar__section--align-end').css('visibility', 'visible');
     $('#search_section i').css('color', 'var(--mdc-theme-text-primary-on-primary)');
-    if ($(window).width() < 1024) {
-        $('.mdc-toolbar__section--align-start, .mdc-toolbar__section--align-end').css('display', 'inline-flex');
-        $('#search_section').css('display', 'none'); 
-    }
-    $('#search_close').css('display', 'none');
+    $('#search_section, #search_close').css('display', 'none');
     $('#search_sheet').css('top', '-100%');
     $('#search_header').fadeOut('fast');
     $('#search_query').val('');
     $('#search_results_list').empty();
     $('#search_background').fadeOut('fast');
+    if ($(window).width() < 1024) {
+        $('.mdc-toolbar__section--align-start, .mdc-toolbar__section--align-end').css('display', 'inline-flex');
+    }
 });
 
 function showResults() {
@@ -53,7 +52,6 @@ $("#mal_search").submit(function(event) {
         dataType: "json"
     });
     request.done(function (response, textStatus, jqXHR){
-        console.log(response);
         $.when(populateSearchResults(response)).then(function() {
             $('#search_sheet').css('top', '0');
             $('.mdc-linear-progress').fadeOut(500);
