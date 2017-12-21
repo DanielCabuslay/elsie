@@ -139,5 +139,5 @@ header('Location: ..');
     <script src="../scripts/anilist.js"></script>
     <script src="../scripts/window.js"></script>
     <script src="../scripts/dialog.js"></script>
-    <script src="../scripts/sort_dialog.js"></script>
+    <script src="../scripts/sort.js"></script>
 </html>
