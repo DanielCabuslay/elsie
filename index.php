@@ -49,5 +49,10 @@ if (!isset($_SESSION['message'])) {
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://unpkg.com/material-components-web@0.26.0/dist/material-components-web.min.js"></script>
 <script src="scripts/textfield.js"></script>
-<script src="scripts/about_dialog.js"></script>
+<script>
+    var about_dialog = new mdc.dialog.MDCDialog(document.querySelector('#about-dialog'));
+    document.querySelector('#about_option').addEventListener('click', function(evt) {
+      about_dialog.show();
+    });
+</script>
 </html>
