@@ -55,7 +55,7 @@ header('Location: ..');
                 </section>
                 <section class="mdc-toolbar__section mdc-toolbar__section--align-end" role="toolbar">
                     <i id="search_button" class="material-icons mdc-toolbar__icon">search</i>
-                    <i id="sort_button" class="material-icons mdc-toolbar__icon">sort_by_alpha</i>
+                    <i id="sort_button" class="material-icons mdc-toolbar__icon">sort</i>
                     <i id="options_button" class="material-icons mdc-toolbar__icon">more_vert</i>
                     <div class="mdc-simple-menu mdc-simple-menu--open-from-top-right" style="position: absolute; top: 12px; right: 12px;" tabindex="-1" id="options_menu">
                         <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">

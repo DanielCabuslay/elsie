@@ -5,16 +5,6 @@ $('#sort-dialog .mdc-list-item input').click(function(evt) {
 	sort_dialog.close();
 });
 
-// $('#sort-dialog .mdc-list-item').click(function() {
-// 	if ($(this).find('input').prop('checked') == true) {
-// 		$(this).find('input').prop('checked', false);
-// 	} else {
-// 		$(this).find('input').prop('checked', true);
-// 	}
-// 	getSortValue();
-// 	sort_dialog.close();
-// });
-
 function getSortValue() {
 	if ($('#title-radio').prop('checked') == true) {
 		return 1;
@@ -28,9 +18,10 @@ function getSortValue() {
 	if ($('#status-radio').prop('checked') == true) {
 		return 4;
 	}
-}
-
-function sort(element) {
-	getSortValue();
-	sort_dialog.close();
+	if ($('#score-asec-radio').prop('checked') == true) {
+		return 5;
+	}
+	if ($('#score-desc-radio').prop('checked') == true) {
+		return 6;
+	}
 }

@@ -44,27 +44,27 @@
             </div>
           </div>
           <label for="status-radio">Status</label>
-        </li><!-- 
-        <li class="mdc-list-item">
-          <div class="mdc-radio">
-            <input class="mdc-radio__native-control" type="radio" id="start-date-radio" name="radios">
-            <div class="mdc-radio__background">
-              <div class="mdc-radio__outer-circle"></div>
-              <div class="mdc-radio__inner-circle"></div>
-            </div>
-          </div>
-          <label for="start-date-radio">Start Date</label>
         </li>
         <li class="mdc-list-item">
           <div class="mdc-radio">
-            <input class="mdc-radio__native-control" type="radio" id="end-date-radio" name="radios">
+            <input class="mdc-radio__native-control" type="radio" id="score-asec-radio" name="radios">
             <div class="mdc-radio__background">
               <div class="mdc-radio__outer-circle"></div>
               <div class="mdc-radio__inner-circle"></div>
             </div>
           </div>
-          <label for="end-date-radio">End Date</label>
-        </li> -->
+          <label for="start-date-radio">User Score (Ascending)</label>
+        </li>
+        <li class="mdc-list-item">
+          <div class="mdc-radio">
+            <input class="mdc-radio__native-control" type="radio" id="score-desc-radio" name="radios">
+            <div class="mdc-radio__background">
+              <div class="mdc-radio__outer-circle"></div>
+              <div class="mdc-radio__inner-circle"></div>
+            </div>
+          </div>
+          <label for="start-date-radio">User Score (Descending)</label>
+        </li>
       </ul>
     </section>
   </div>
