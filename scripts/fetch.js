@@ -38,7 +38,7 @@ function fetchList(status) {
     request = $.ajax({
         url: "fetch_list.php",
         type: "post",
-        data: {status: status},
+        data: {status: status, sort: getSortValue()},
         dataType: "json"
     });
     request.done(function (response, textStatus, jqXHR){

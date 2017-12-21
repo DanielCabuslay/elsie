@@ -36,3 +36,21 @@ $('#anime_list_nav a').click(function() {
   }
   window.scrollTo(0, 0);
 });
+
+function getCurrentList() {
+  if ($('#watching_button').hasClass('mdc-tab--active')) {
+    return 1;
+  } 
+  if ($('#completed_button').hasClass('mdc-tab--active')) {
+    return 2;
+  }
+  if ($('#on_hold_button').hasClass('mdc-tab--active')) {
+    return 3;
+  }
+  if ($('#dropped_button').hasClass('mdc-tab--active')) {
+    return 4;
+  }
+  if ($('#ptw_button').hasClass('mdc-tab--active')) {
+    return 6;
+  }
+}

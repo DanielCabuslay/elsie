@@ -59,9 +59,6 @@
 #search_results .mdc-list {
     padding: 0 16px;
 }
-.search_result_item, #search_button, #search_close {
-    cursor: pointer;
-}
 @media (max-width: 1023px) {
     #search_button {
         display: inline-block;

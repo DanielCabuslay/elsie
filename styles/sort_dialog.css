@@ -1,0 +1,9 @@
+#sort-dialog .mdc-dialog__header {
+	padding-bottom: 12px;
+}
+#sort-dialog .mdc-list {
+	padding: 0;
+}
+/*#sort-dialog .mdc-list-item {
+	cursor: pointer;
+}*/
