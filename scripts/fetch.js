@@ -110,10 +110,11 @@ function fetchMalData(json, steps) {
      //Image
     if (json['image'][0] == 'https://myanimelist.cdn-dena.com/images/anime//0.jpg') {
         $('#mal_poster').attr('src', '../images/unknown.png');
+        $('#poster_background img').attr('src', '../images/unknown.png');   
     } else {
-        $('#mal_poster').attr('src', json['image'][0]);        
+        $('#mal_poster').attr('src', json['image'][0]);
+        $('#poster_background img').attr('src', json['image'][0]);
     }
-    $('#poster_background img').attr('src', json['image'][0]);
     linearProgress.progress = 2 / steps;
 
     //Title
