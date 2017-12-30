@@ -68,7 +68,7 @@ function populateAniListData(data) {
             '<span class="mdc-list-item__text__secondary">' + airingAt + '</span>'
             );
     }
-    if (links != null) {
+    if (links != null && links.length > 0) {
         $('#external_links').css('display', 'block');
         for(var i = 0; i < links.length; i++) {
             $('#external_links ul').append('<a class="mdc-list-item" target="_blank" href="' + links[i]['url'] + '">' + 
