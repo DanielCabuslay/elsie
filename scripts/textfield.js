@@ -6,6 +6,6 @@
 })();
 
 $('#mal_login').submit(function() {
-	var inputs = $(this).find("input");
-	inputs.prop("disabled", true);
+	var submit = $(this).find(".mdc-button");
+	submit.prop("disabled", true);
 });
