@@ -55,8 +55,11 @@ body {
 .list-icon {
 	font-size: 1rem;
 	width: 1rem;
-	margin: 0px 5px;
+	margin: 0px 5px 0px 10px;
 	vertical-align: sub;
+}
+.list-icon:first-child {
+	margin-left: 0px;
 }
 .mdc-list-item__end-detail {
 	color: var(--mdc-theme-text-secondary-on-background);

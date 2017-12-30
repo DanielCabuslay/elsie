@@ -8,7 +8,7 @@
     </section>
     <footer class="mdc-dialog__footer">
       <a type="button" class="mdc-button mdc-dialog__footer__button" target="_blank" href="https://ddccabuslay.me">My Website</a>
-      <a type="button" class="mdc-button mdc-dialog__footer__button" target="_blank" href="https://github.com/DdcCabuslay/elsie">View on GitHub</a>
+      <a type="button" class="mdc-button mdc-dialog__footer__button" target="_blank" href="https://github.com/DdcCabuslay/elsie">GitHub</a>
       <button type="button" class="mdc-button mdc-dialog__footer__button mdc-dialog__footer__button--accept">Close</button>
     </footer>
   </div>
