@@ -22,6 +22,13 @@ html {
 .mdc-tab--active, .mdc-tab:hover {
   color: var(--mdc-theme-primary);
 }
+.translucent_background {
+    background-color: rgba(0,0,0,0.75);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;	
+}
 @media (max-width: 1023px) {
 	html {
 		background-color: #fff;

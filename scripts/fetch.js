@@ -11,7 +11,7 @@ function fetchAnime(id) {
         data: {id: id},
         dataType: "json"
     });
-    request.done(function (response, textStatus, jqXHR){
+    request.done(function (response) {
         linearProgress.determinate = true;
         $('.mdc-dialog__body--scrollable').scrollTop(0);
 
@@ -20,7 +20,7 @@ function fetchAnime(id) {
             $('.mdc-linear-progress').fadeOut(500);
         });
     });
-    request.fail(function (jqXHR, textStatus, errorThrown){
+    request.fail(function (jqXHR, textStatus, errorThrown) {
         var dataObj = {
           message: 'Unable to fetch data'
         };
@@ -92,7 +92,8 @@ function clearDialog() {
     $('#hashtag').text('');
     $('#next_episode').css('display', 'none');
     $('#anilist_link_button').css('display', 'none');
-    $('#anilist_link_button').attr('href', ''); 
+    $('#anilist_link_button').attr('href', '');    
+    $('#poster_background img').attr('src', '');
 }
 
 function populateDialog(json) {
@@ -112,6 +113,7 @@ function fetchMalData(json, steps) {
     } else {
         $('#mal_poster').attr('src', json['image'][0]);        
     }
+    $('#poster_background img').attr('src', json['image'][0]);
     linearProgress.progress = 2 / steps;
 
     //Title

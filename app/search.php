@@ -1,4 +1,4 @@
-<div id="search_background"></div>
+<div class="translucent_background" id="search_background"></div>
 <div id="search_sheet" class="mdc-typography--body1">
     <div id="search_body">
         <div id="search_results">

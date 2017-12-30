@@ -116,6 +116,12 @@ header('Location: ..');
                 </div>
             </div>
             <?php include 'search.php' ?>
+            <div class="translucent_background" id="poster_background">
+                <i class="material-icons">close</i>
+                <div class="flexbox">
+                    <img>
+                </div>
+            </div>
         </main>
         <div class="loading_splash">
             <div class="mdc-typography--body2">Loading...</div>
@@ -140,4 +146,5 @@ header('Location: ..');
     <script src="../scripts/window.js"></script>
     <script src="../scripts/dialog.js"></script>
     <script src="../scripts/sort.js"></script>
+    <script src="../scripts/poster.js"></script>
 </html>
