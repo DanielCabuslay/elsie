@@ -51,6 +51,9 @@
 #info-dialog .mdc-list-item {
 	white-space: initial;
 }
+#external_links .mdc-list-item__text__secondary {
+	white-space: nowrap;
+}
 @media (max-width: 1023px) {
 	#mal_poster {
 		width: 80px;

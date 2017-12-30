@@ -21,6 +21,10 @@
                 </li>
             </ul>
         </div>
+        <div id="external_links" class="mdc-list-group">
+            <h3 class="mdc-list-group__subheader">Official Links</h3>
+            <ul class="mdc-list mdc-list--two-line mdc-list--dense"></ul>
+        </div>
         <div class="mdc-list-group">
             <h3 class="mdc-list-group__subheader">Anime Info</h3>
             <ul class="mdc-list mdc-list--two-line mdc-list--dense">

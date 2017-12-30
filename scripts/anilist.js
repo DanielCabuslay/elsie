@@ -68,11 +68,14 @@ function populateAniListData(data) {
             '<span class="mdc-list-item__text__secondary">' + airingAt + '</span>'
             );
     }
-    // if (links != null) {
-    //     for(var i = 0; i < links.length; i++) {
-    //         $('#external_links_menu ul').append('<a class="mdc-list-item" role="menuitem" tabindex="0" target="_blank" href="' + links[i]['url'] + '">' + links[i]['site'] + '</a>');
-    //     }
-    // }
+    if (links != null) {
+        $('#external_links').css('display', 'block');
+        for(var i = 0; i < links.length; i++) {
+            $('#external_links ul').append('<a class="mdc-list-item" target="_blank" href="' + links[i]['url'] + '">' + 
+                '<span class="mdc-list-item__text">' + links[i]['site'] + 
+                '<span class="mdc-list-item__text__secondary">' + links[i]['url'] + '</span></span></a>');
+        }
+    }
     if (hashtag != null) {
         var hashtags = hashtag.split('#');
         for (var i = 1; i < hashtags.length; i++) {

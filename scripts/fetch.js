@@ -90,8 +90,8 @@ function clearDialog() {
     $('#anime_title_info').css('background', 'var(--mdc-theme-primary)');
     $('#anilist_banner').attr('src', '');
     $('#hashtag').text('');
-    $('#next_episode').css('display', 'none');
-    $('#anilist_link_button').css('display', 'none');
+    $('#external_links ul').empty();
+    $('#next_episode, #external_links, #anilist_link_button').css('display', 'none');
     $('#anilist_link_button').attr('href', '');    
     $('#poster_background img').attr('src', '');
 }
